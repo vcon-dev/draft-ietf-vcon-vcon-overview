@@ -1,6 +1,6 @@
 ---
-title: "The JSON format for vCon - Conversation Data Container"
-abbrev: "JSON vCon"
+title: "The CDDL format for vCon - Conversation Data Container"
+abbrev: "CDDL vCon"
 category: std
 
 docname: draft-petrie-vcon-latest
@@ -48,6 +48,10 @@ normative:
 
   GEOPRIV: RFC4119
 
+  CBOR: RFC8949
+
+  CDDL: RFC8610
+
   HTTPS: RFC9110
 
   JSON: RFC8259
@@ -71,8 +75,6 @@ normative:
   UUID: I-D.draft-peabody-dispatch-new-uuid-format
 
 informative:
-
-  CBOR: RFC7049
 
   ISOBMFF:
     target: https://www.iso.org/standard/83102.html
@@ -197,7 +199,8 @@ The initial set of use cases for vCons are expected to be in the interchange bet
 It is expected that JavaScript handling of vCons in the front end and RESTful interfaces and back end platforms will be used for operations and manipulation of vCons.
 Many media analysis services which will be used with vCons, such as transcription, already use JSON based interfaces.
 For this reason, JSON has been chosen for the initial format binding of vCons and the scope of this document.
-Other bindings (e.g. [CBOR] or [ISOBMFF]) may be consider for vCon in the future in other documents.
+The [CDDL] schema definition for vCon is included in [vCon CDDL Schema](#vcon-cddl-schema) to enable formatting vCOn in either [JSOn] or [CBOR] formats.
+Other bindings may be consider for vCon in the future in other documents.
 
 Requirements:
 
@@ -299,7 +302,10 @@ The following  are considered not in scope or non-requirements:
 
 ## JSON Notation
 
-The convention for [JSON] notation used in this document is copied from sections 1.1-1.5 of [JMAP].
+For the ease of documentation, the convention for [JSON] notation used in this document is copied from sections 1.1-1.5 of [JMAP].
+It is also acceptable to format vCon using [CBOR].
+It is intended that both of these formats are easily coverted to the other and that the parameters and objects are compatible with the exceptions of binary parameters which are express in [BASE64URL] in [JSON] and binary text in [CBOR].
+[CCDL] provides for this dualality with type 6.21.
 
 Date - A string that MUST have the form of an [RFC3339] date string as defined for the Date type in section 1.4 of [JMAP].
 
@@ -716,7 +722,7 @@ TODO: Do we just specify for the start of the conversation?
 
 TODO: timezone for the location of the party?
 
-#### uuid
+### uuid
 
 The uuid is a unique identifier for the participant.
 In a contact center, this is particularly important for the call agent participant, and must be static across interactions to allow correlation with the actual agent configuration provisioned into the systems.
@@ -724,7 +730,7 @@ In a contact center, this is particularly important for the call agent participa
 * uuid: "String" (optional)
 
 
-#### role
+### role
 
 The role that the participant played in the conversation.
 In a call center there are roles: such as: agents, customer, supervisor and specialist.
@@ -733,9 +739,17 @@ The role parameter provides the ability to label the role that the part played i
 
 * role: "String" (optional)
 
-TODO: Should we define a set of tokens for some roles and also let this parameter be open ended?
+The following values for the role parameter MAY be used:
 
-#### contact_list
+  + "agent"
+  + "customer"
+  + "supervisor"
+  + "sme" (for subjet mater expert)
+  + "thirdparty"
+
+Other values for the role parameter MAY also be used.
+
+### contact_list
 
 In a contact center scenario, the conversation with this party may be part of a larger effort of contacting a group of parties, individually or perhaps in groups.
 It is sometimes useful to reference the list from which this party was included.
@@ -974,6 +988,16 @@ There may also be many interactions for a single conversation or vCon.
 The interaction parameter is used as a label or foreign key in reference to the interaction ID.
 
 * interaction "String" (optional)
+
+### skill
+
+A contact center may service multiple purposes or customers.
+In this scenario it is important to label the conversation segment or dialog.
+The agent or automita which services the dialog are required to have a specific skill.
+To facilitate this in a vCon dialog, the skill parameter is provided.
+The string values of the skill parameter are contact center specific.
+
+* skill "String" (optional)
 
 ## Analysis Object
 
@@ -1335,6 +1359,10 @@ IANA registration of new media subtype: vcon for media type application:
 
 # vCon CDDL Schema
 
+The following is the [CDDL] schema for vCon.
+
+Note: this CDDL schema is not fully verified and needs some stylistic edits.
+
 ~~~
 {::include vcon.cddl}
 ~~~
@@ -1428,4 +1456,6 @@ TODO: group vCon example
 # Acknowledgments
 {:numbered="false"}
 
-TODO: acknowledgements
+  * Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
+  * Thank you to Rohan Mahy for his help in getting started with the CDDL schema for vCon.
+

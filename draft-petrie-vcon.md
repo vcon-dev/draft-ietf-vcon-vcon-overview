@@ -1363,6 +1363,8 @@ The following is the [CDDL] schema for vCon.
 
 Note: this CDDL schema is not fully verified and needs some stylistic edits.
 
+The [vCon CDDL schema](https://raw.githubusercontent.com/ietf-wg-vcon/draft-petrie-vcon-vcon-container/main/vcon.cddl) can be downloaded directly from the repo.
+
 ~~~
 {::include vcon.cddl}
 ~~~

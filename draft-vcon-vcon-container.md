@@ -3,7 +3,7 @@ title: "The CDDL format for vCon - Conversation Data Container"
 abbrev: "CDDL vCon"
 category: std
 
-docname: draft-petrie-vcon-latest
+docname: draft-vcon-vcon-container-latest
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:

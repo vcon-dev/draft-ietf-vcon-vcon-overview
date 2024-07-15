@@ -4,6 +4,7 @@ abbrev: "CDDL vCon"
 category: std
 
 docname: draft-vcon-vcon-container-latest
+
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:

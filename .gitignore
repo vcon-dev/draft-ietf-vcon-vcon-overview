@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-petrie-vcon.xml
+draft-vcon-vcon-container.xml
 package-lock.json
 report.xml
 !requirements.txt

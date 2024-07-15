@@ -28,8 +28,8 @@ venue:
 #  type: Working Group
 #  mail: WG@example.com
 #  arch: https://example.com/WG
-  github: "dgpetrie/draft-petrie-vcon"
-  latest: "https://dgpetrie.github.io/draft-petrie-vcon/draft-petrie-vcon.html"
+  github: "ietf-wg-vcon/draft-petrie-vcon-vcon-container"
+  latest: "https://ietf-wg-vcon.github.io/draft-petrie-vcon-vcon-container/draft-petrie-vcon.html"
 
 author:
  -

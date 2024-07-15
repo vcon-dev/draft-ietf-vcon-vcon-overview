@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-# area: ART
-# workgroup: Dispatch Working Group
+area: "Applications and Real-Time"
+workgroup: "Virtualized Conversations"
 keyword:
  - conversation
  - vcon
@@ -24,12 +24,12 @@ keyword:
  - video conference
  - conference recording
 venue:
-#  group: WG
-#  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+  group: "Virtualized Conversations"
+  type: "Working Group"
+  mail: "vcon@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "ietf-wg-vcon/draft-petrie-vcon-vcon-container"
-  latest: "https://ietf-wg-vcon.github.io/draft-petrie-vcon-vcon-container/draft-petrie-vcon.html"
+  latest: "https://ietf-wg-vcon.github.io/draft-petrie-vcon-vcon-container/draft-vcon-vcon-container.html"
 
 author:
  -

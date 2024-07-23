@@ -29,8 +29,8 @@ venue:
   type: "Working Group"
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
-  github: "ietf-wg-vcon/draft-petrie-vcon-vcon-container"
-  latest: "https://ietf-wg-vcon.github.io/draft-petrie-vcon-vcon-container/draft-vcon-vcon-container.html"
+  github: "ietf-wg-vcon/draft-vcon-vcon-container"
+  latest: "https://ietf-wg-vcon.github.io/draft-vcon-vcon-container/draft-vcon-vcon-container.html"
 
 author:
  -

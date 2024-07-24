@@ -3,7 +3,7 @@ title: "The CDDL format for vCon - Conversation Data Container"
 abbrev: "CDDL vCon"
 category: std
 
-docname: draft-vcon-vcon-container-latest
+docname: draft-ietf-vcon-vcon-container-latest
 
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
@@ -29,8 +29,8 @@ venue:
   type: "Working Group"
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
-  github: "ietf-wg-vcon/draft-vcon-vcon-container"
-  latest: "https://ietf-wg-vcon.github.io/draft-vcon-vcon-container/draft-vcon-vcon-container.html"
+  github: "ietf-wg-vcon/draft-ietf-vcon-vcon-container"
+  latest: "https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-container/draft-ietf-vcon-vcon-container.html"
 
 author:
  -

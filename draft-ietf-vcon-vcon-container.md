@@ -1,6 +1,6 @@
 ---
-title: "The CDDL format for vCon - Conversation Data Container"
-abbrev: "CDDL vCon"
+title: "The JSON format for vCon - Conversation Data Container"
+abbrev: "JSON vCon"
 category: std
 
 docname: draft-ietf-vcon-vcon-container-latest
@@ -18,7 +18,7 @@ keyword:
  - CDR
  - call detail record
  - call meta data
- - call recordings
+ - call recording
  - email thread
  - text conversation
  - video recording
@@ -49,10 +49,6 @@ normative:
 
   GEOPRIV: RFC4119
 
-  CBOR: RFC8949
-
-  CDDL: RFC8610
-
   HTTPS: RFC9110
 
   JSON: RFC8259
@@ -76,6 +72,10 @@ normative:
   UUID: I-D.draft-peabody-dispatch-new-uuid-format
 
 informative:
+
+  CBOR: RFC8949
+
+  CDDL: RFC8610
 
   ISOBMFF:
     target: https://www.iso.org/standard/83102.html
@@ -200,8 +200,7 @@ The initial set of use cases for vCons are expected to be in the interchange bet
 It is expected that JavaScript handling of vCons in the front end and RESTful interfaces and back end platforms will be used for operations and manipulation of vCons.
 Many media analysis services which will be used with vCons, such as transcription, already use JSON based interfaces.
 For this reason, JSON has been chosen for the initial format binding of vCons and the scope of this document.
-The [CDDL] schema definition for vCon is included in [vCon CDDL Schema](#vcon-cddl-schema) to enable formatting vCOn in either [JSOn] or [CBOR] formats.
-Other bindings may be consider for vCon in the future in other documents.
+Other bindings (e.g. [CBOR] or [CDDL]) may be consider for vCon in the future in other documents.
 
 Requirements:
 
@@ -304,9 +303,6 @@ The following  are considered not in scope or non-requirements:
 ## JSON Notation
 
 For the ease of documentation, the convention for [JSON] notation used in this document is copied from sections 1.1-1.5 of [JMAP].
-It is also acceptable to format vCon using [CBOR].
-It is intended that both of these formats are easily coverted to the other and that the parameters and objects are compatible with the exceptions of binary parameters which are express in [BASE64URL] in [JSON] and binary text in [CBOR].
-[CCDL] provides for this dualality with type 6.21.
 
 Date - A string that MUST have the form of an [RFC3339] date string as defined for the Date type in section 1.4 of [JMAP].
 
@@ -1358,18 +1354,6 @@ IANA registration of new media subtype: vcon for media type application:
 
 --- back
 
-# vCon CDDL Schema
-
-The following is the [CDDL] schema for vCon.
-
-Note: this CDDL schema is not fully verified and needs some stylistic edits.
-
-The [vCon CDDL schema](https://raw.githubusercontent.com/ietf-wg-vcon/draft-petrie-vcon-vcon-container/main/vcon.cddl) can be downloaded directly from the repo.
-
-~~~
-{::include vcon.cddl}
-~~~
-
 # Example vCons
 
 This appendix contains example vCons in the unsigned, signed and encrypted form.
@@ -1460,5 +1444,5 @@ TODO: group vCon example
 {:numbered="false"}
 
   * Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
-  * Thank you to Rohan Mahy for his help in getting started with the CDDL schema for vCon.
+  * Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
 

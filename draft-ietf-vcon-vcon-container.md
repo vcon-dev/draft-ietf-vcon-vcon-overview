@@ -61,6 +61,8 @@ normative:
 
   MAILTO: RFC6068
 
+  MEDIATYPE: RFC6838
+
   MIME: RFC2045
 
   PASSporT: RFC8225
@@ -1325,10 +1327,47 @@ TODO: do we want to put the vCon UUID in the Unprotected Object so that we can u
 
 # IANA Considerations
 
-IANA registration of new media subtype: vcon for media type application:
+This section includes the information required for IANA to register the application/vcon media type per [MEDIATYPE].
 
-    application/vcon
+Type name: application
 
+Subtype name: vcon+json
+
+Required parameters: N/A
+
+Optional parameters: N/A; unrecognized parameters should be ignored.
+
+Encoding considerations: [JSON]
+
+Additional information:
+
+Security considerations: See Security Considerations section of this document.
+
+Interoperability considerations:
+
+Published specification: [VCON], this document
+
+Applications that use this media type:
+
+Fragment identifier considerations:
+
+Additional Information:
+
+   Deprecated alias names for this type: N/A
+
+   Magic number(s): N/A
+
+   File extension(s): "vcon"
+
+   Macintosh file type code(s): N/A
+
+   Windows Clipboard Name: VCON
+
+Author: See the Author's Addresses section of this document.
+
+Change controller: IETF
+
+TODO: what is needed for gzip compression??
 
 --- back
 

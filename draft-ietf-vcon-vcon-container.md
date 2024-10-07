@@ -169,40 +169,18 @@ In the metadata, vCons contain the unique ID of the parent vCon, such that they 
 
 ## Use Cases and Requirements
 
-In large enterprises, different products may be served by different call centers (inhouse or out sourced).
-The call centers may have different communications infrastructure and even different platform vendors (e.g. IP PBX, email servers).
-Consequently, the CDR and meta data as well as the conversation recordings may be stored in different formats and locations.
-This creates artificial silos of storage and analysis.
-Using vCon as a standard exchange, storage, analysis input and output format, would ease integration efforts and cross enterprise analysis of products and call center metrics.
-This would also ease customer analysis across product lines which may currently be difficult due to separated, heterogeneous communications silos.
-Having conversation data in the vCon format would lower the cost and speed deployment of both inhouse and outsourced analysis tools for import into ML and AI based tools, transcription, translation and sentiment analysis.
-Having conversation data in a standard vCon container would ease the export of conversation data from hosted services.
-This would enable more analysis capabilities.
+The use cases for vCon in a contact center environment are explored in the appendix: [cc-usecases](#contact-center-use-cases).
+These use cases and others have led to the metadata contents of this definition of the vCon container.
 
-In some locations, regulations make it mandatory for enterprises to delete private information upon request of the individual.
-Large enterprises with siloed communications systems have difficulty locating or identifying all of the private data for an individual due to the disparate communications systems.
-Using the vCon as the standard container for all communications system, storing the conversation data centrally and removing it from the siloed communications systems, allows for easier management, correlation, tracking and deletion of individual's private data.
-Without centralizing the storage of the conversations in a standardized container, deleting an individuals private data is untenable and the enterprise cannot assert that they have fulfilled their requirement to locate and delete all of the private data.
+TODO: would love to see use case Internet-Drafts for ECRIT and Messaging.
 
-Large call centers may have tens of thousands of call agents making hundreds of thousands of calls a day.
-Supervising the agents and calls in a large call center is a huge efort.
-Using vCons to capture all of the conversations for all of the agents, enables more automation of evaluation, training and coaching of call center agents.
-DEVOPS tools such as checking for conversation with too low a volume or agents with faulty headsets becomes easier and less costly using vCons.
-Call centers often have to provide service level proof and reports to their customers.
-These service level evaluations, monitoring and reporting can be more easily provided and at a lower cost via third party solutions with vCons as a standard conversation container.
-
-Conversations can have legal and regulatory significance.
-Regulations may require conversation of record to be stored for compliance.
-A conversation can become a verbal contract, making the conversation data a legal instrument.
-Having a standard container for the conversation data and asserting the integrity of the data make it easier to distribute the conversation data to the parties involved.
-
-The initial set of use cases for vCons are expected to be in the interchange between front end and back end application and lower layers of the network stack, critical for enablement of analysis of conversations.
+May of the initial set of use cases for vCons are expected to be in the interchange between front end and back end application and lower layers of the network stack, critical for enablement of analysis of conversations.
 It is expected that JavaScript handling of vCons in the front end and RESTful interfaces and back end platforms will be used for operations and manipulation of vCons.
 Many media analysis services which will be used with vCons, such as transcription, already use JSON based interfaces.
 For this reason, JSON has been chosen for the initial format binding of vCons and the scope of this document.
 Other bindings (e.g. [CBOR] or [CDDL]) may be consider for vCon in the future in other documents.
 
-Requirements:
+An outline of the vCon requirements derived from the explored use case follows:
 
 * Standardize container for conversational data exchange
 
@@ -741,7 +719,7 @@ The following values for the role parameter MAY be used:
   + "agent"
   + "customer"
   + "supervisor"
-  + "sme" (for subjet mater expert)
+  + "sme" (for subject mater expert)
   + "thirdparty"
 
 Other values for the role parameter MAY also be used.
@@ -990,7 +968,7 @@ The interaction parameter is used as a label or foreign key in reference to the 
 
 A contact center may service multiple purposes or customers.
 In this scenario it is important to label the conversation segment or dialog.
-The agent or automita which services the dialog are required to have a specific skill.
+The agent or automata which services the dialog are required to have a specific skill.
 To facilitate this in a vCon dialog, the skill parameter is provided.
 The string values of the skill parameter are contact center specific.
 
@@ -1353,6 +1331,10 @@ IANA registration of new media subtype: vcon for media type application:
 
 
 --- back
+
+# Contact Center Use Cases
+
+TODO: insert draft-rosenberg-vcon-cc-usecases here
 
 # Example vCons
 

@@ -1270,6 +1270,10 @@ The x5c or x5u requirement makes the management and use of vCons easier, allowin
 
     The string value of x5u MUST contain an [HTTPS] URL as defined in section 4.1.5 of [JWS].
 
+* uuid: "String" (SHOULD be provided)
+
+    The string value of the UUID for the vCon contained in the payload parameter.
+
 TODO: How to deal with expired signatures?
 
 ## Encrypted Form of vCon Object
@@ -1309,7 +1313,9 @@ A encrypted vCon uses [JWE] and takes the General JWE JSON Serialization Syntax 
 
     The string value of enc SHOULD be "A256CBC-HS512"
 
-TODO: do we want to put the vCon UUID in the Unprotected Object so that we can use it as a key?
+* uuid: "String" (SHOULD be provided)
+
+    The string value of the UUID for the vCon contained in the ciphertext parameter.
 
 ### Recipient Object
 
@@ -1368,6 +1374,7 @@ Author: See the Author's Addresses section of this document.
 Change controller: IETF
 
 TODO: what is needed for gzip compression??
+TODO: do we need mediatypes for JWS and JWE forms of vCon??
 
 --- back
 

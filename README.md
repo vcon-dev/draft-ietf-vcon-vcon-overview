@@ -1,6 +1,6 @@
-# The CDDL format for vCon - Conversation Data Container
+# The JSON format for vCon - Conversation Data Container
 
-This is the working area for the IETF [VCON Working Group](https://datatracker.ietf.org/wg/vcon/documents/) Internet-Draft, "The CDDL format for vCon - Conversation Data Container".
+This is the working area for the IETF [VCON Working Group](https://datatracker.ietf.org/wg/vcon/documents/) Internet-Draft, "The JSON format for vCon - Conversation Data Container".
 
 * [Editor's Copy](https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-container/#go.draft-ietf-vcon-vcon-container.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-vcon-vcon-container)

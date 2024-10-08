@@ -1273,6 +1273,8 @@ The x5c or x5u requirement makes the management and use of vCons easier, allowin
 * uuid: "String" (SHOULD be provided)
 
     The string value of the UUID for the vCon contained in the payload parameter.
+    This is added for convenience to not require verification of the signed vCon to get it's UUID.
+    When the vCon is verified, the value of this uuid parameter SHOULD be verified against the UUID in the signed vCon.
 
 TODO: How to deal with expired signatures?
 
@@ -1316,6 +1318,8 @@ A encrypted vCon uses [JWE] and takes the General JWE JSON Serialization Syntax 
 * uuid: "String" (SHOULD be provided)
 
     The string value of the UUID for the vCon contained in the ciphertext parameter.
+    This is provided for identification of the encrypted vCon without the need of the key to decrypt the vCon.
+    The value of this uuid parameter SHOULD be verified when the vCon is decrypted.
 
 ### Recipient Object
 

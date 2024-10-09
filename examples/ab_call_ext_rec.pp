@@ -19,16 +19,16 @@
         0,
         1
       ],
-      "url": "https://raw.githubusercontent.com/dgpetrie/draft-pe
-        etrie-vcon/main/examples/ab_call.wav",
+      "url": "https://github.com/ietf-wg-vcon/draft-ietf-vcon-vco
+        n-container/raw/refs/heads/main/examples/ab_call.wav",
       "mimetype": "audio/x-wav",
       "filename": "ab_call.wav",
       "signature": "Re9R7UWKaD7yN9kxoYLbFFNSKU8XfH18NFbTc3AgT4_aB
-        BubMtvGUEtRmP6XUxSS3Nl4LU-1mOCtezoTHQ67cVQ",
+        ubMtvGUEtRmP6XUxSS3Nl4LU-1mOCtezoTHQ67cVQ",
       "alg": "SHA-512"
     }
   ],
   "analysis": [],
   "attachments": [],
-  "uuid": "018b4f72-d0e7-8d8e-b9a2-279e0d16bc46"
+  "uuid": "019272a0-7ee9-8013-b9a2-279e0d16bc46"
 }

@@ -23,7 +23,7 @@
       "mimetype": "text/plain",
       "encoding": "none",
       "body": "Hi Bob:\nI just wanted to follow up to see that yo
-        our account is ok now.\n\nRegards,\nAlice\n\n"
+        ur account is ok now.\n\nRegards,\nAlice\n\n"
     },
     {
       "type": "text",
@@ -36,10 +36,10 @@
       "mimetype": "text/plain; charset=UTF-8",
       "encoding": "none",
       "body": "Hi Alice:\nAll is fine. Thanks.\n\n    On Friday, 
-         September 23, 2022, 23:24:59 PM UTC, Alice <a@example.co
+        September 23, 2022, 23:24:59 PM UTC, Alice <a@example.com
         > wrote:  \n \n  Hi Bob:\n  I just wanted to follow up to
-        see that your account is ok now.\n  \n  Regards,\n  Alice
-        n"
+         see that your account is ok now.\n  \n  Regards,\n  Alic
+        e\n"
     },
     {
       "type": "text",
@@ -52,11 +52,12 @@
       "mimetype": "text/plain",
       "encoding": "none",
       "body": "Awesome!\n\n    On Friday, September 23, 2022, 23:
-        :34: PM UTC, Bob <b@example.com> wrote:  \n\n  Hi Alice:\
+        34: PM UTC, Bob <b@example.com> wrote:  \n\n  Hi Alice:\n
           All is fine. Thanks.\n  \n      On Friday, September 23
-         2022, 23:24:59 PM UTC, Alice <a@example.com> wrote:  \n 
-         \n    Hi Bob:\n    I just wanted to follow up to see tha
-         your account is ok now.\n    \n    Regards,\n    Alice\n
+        , 2022, 23:24:59 PM UTC, Alice <a@example.com> wrote:  \n
+           \n    Hi Bob:\n    I just wanted to follow up to see t
+        hat your account is ok now.\n    \n    Regards,\n    Alic
+        e\n"
     }
   ],
   "analysis": [],

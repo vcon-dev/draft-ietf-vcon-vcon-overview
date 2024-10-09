@@ -19,8 +19,8 @@ awk 'BEGIN {max = 65}
           if(line_len + start > len) line_len = len - start + 1
           printf("%*s%s\n", prefix, "", substr($0, start, line_len))
           #print(prefix substr($0, start, line_len));
-          start = trunk;
-          trunk = start + 1 + max - pref;
+          start = trunk + 1;
+          trunk = start - 1 + max - pref;
           prefix = pref
         }
       }

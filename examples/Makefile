@@ -30,12 +30,12 @@ vcon_includes: $(INCLUDES)
 clean:
 	rm -f ${INCLUDES} ${GENERATED_EXAMPLES} ${GENERATED_DEPENDENCIES}
 
-%.pp: %.vcon
+%.pp: %.vcon 
 	echo "building $@ from $^"
 	cat $^ | ./trunc_lines.sh > $@
 
-ab_call_ext_rec.vcon: ${VCON_PATH}vcon ${VCON} ab.vcon ab_call.wav 
-	(export PYTHONPATH=${VCON_PYPATH}:${PATHONPATH} ; ${VCON} -i ab.vcon add ex-recording ab_call.wav 2022-06-21T13:53:26-04:00 "[0,1]" https://raw.githubusercontent.com/dgpetrie/draft-petrie-vcon/main/examples/ab_call.wav  | jq '.' > ab_call_ext_rec.vcon)
+ab_call_ext_rec.vcon: ${VCON_PATH}vcon ${VCON} ab.vcon ab_call.wav Makefile
+	(export PYTHONPATH=${VCON_PYPATH}:${PATHONPATH} ; ${VCON} -i ab.vcon add ex-recording ab_call.wav 2022-06-21T13:53:26-04:00 "[0,1]" https://github.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/raw/refs/heads/main/examples/ab_call.wav | jq '.' > ab_call_ext_rec.vcon)
 
 ab_call_ext_rec_signed.vcon: ${VCON_PATH}vcon ${VCON} ab_call_ext_rec.vcon
 	(export PYTHONPATH=${VCON_PYPATH}:${PATHONPATH} ; ${VCON} -i ab_call_ext_rec.vcon sign ${CERTPATH}fake_grp.key ${CERTPATH}fake_grp.crt ${CERTPATH}fake_div.crt ${CERTPATH}fake_ca_root.crt | jq '.' > ab_call_ext_rec_signed.vcon)

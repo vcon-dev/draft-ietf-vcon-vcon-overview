@@ -19,10 +19,12 @@
         0,
         1
       ],
-      "url": "https://github.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/raw/refs/heads/main/examples/ab_call.mp3",
+      "url": "https://github.com/ietf-wg-vcon/draft-ietf-vcon-vco
+        n-container/raw/refs/heads/main/examples/ab_call.mp3",
       "mimetype": "audio/x-mp3",
       "filename": "ab_call.mp3",
-      "signature": "GLy6IPaIUM1GqzZqfIPZlWjaDsNgNvZM0iCONNThnH0a75fhUM6cYzLZ5GynSURREvZwmOh54-2lRRieyj82UQ",
+      "signature": "GLy6IPaIUM1GqzZqfIPZlWjaDsNgNvZM0iCONNThnH0a7
+        5fhUM6cYzLZ5GynSURREvZwmOh54-2lRRieyj82UQ",
       "alg": "SHA-512"
     }
   ],
@@ -34,7 +36,8 @@
         "metadata": {
           "transaction_key": "deprecated",
           "request_id": "410a0b7e-92e1-4a97-b724-a3ddd71d5706",
-          "sha256": "04dc074100461f5082f2a7a286d0161f0e2728025e83c20592aa7ea3724c2933",
+          "sha256": "04dc074100461f5082f2a7a286d0161f0e2728025e83
+            c20592aa7ea3724c2933",
           "created": "2024-10-14T23:04:58.518Z",
           "duration": 33.119938,
           "channels": 1,
@@ -54,7 +57,15 @@
             {
               "alternatives": [
                 {
-                  "transcript": "Hello. This is example.com. My name is Bob. How can I help you? Hi. I'd like to add Fu to my service. Okay. Can you give me your name and phone number so I can look up your account? My name is Alice, and my number is 123-456-7890. Thank you. Okay. I've added 2 to your service. Is there anything else I can help you with? No. Thank you. Goodbye. Goodbye. Have a nice day.",
+                  "transcript": "Hello. This is example.com. My n
+                    ame is Bob. How can I help you? Hi. I'd like 
+                    to add Fu to my service. Okay. Can you give m
+                    e your name and phone number so I can look up
+                     your account? My name is Alice, and my numbe
+                    r is 123-456-7890. Thank you. Okay. I've adde
+                    d 2 to your service. Is there anything else I
+                     can help you with? No. Thank you. Goodbye. G
+                    oodbye. Have a nice day.",
                   "confidence": 1,
                   "words": [
                     {
@@ -734,7 +745,16 @@
                     }
                   ],
                   "paragraphs": {
-                    "transcript": "\nSpeaker 0: Hello. This is example.com. My name is Bob. How can I help you? Hi.\n\nI'd like to add Fu to my service. Okay. Can you give me your name and phone number so I can look up your account? My name is Alice, and my number is 123-456-7890. Thank you.\n\nOkay. I've added 2 to your service. Is there anything else I can help you with? No. Thank you.\n\nGoodbye. Goodbye. Have a nice day.",
+                    "transcript": "\nSpeaker 0: Hello. This is ex
+                      ample.com. My name is Bob. How can I help y
+                      ou? Hi.\n\nI'd like to add Fu to my service
+                      . Okay. Can you give me your name and phone
+                       number so I can look up your account? My n
+                      ame is Alice, and my number is 123-456-7890
+                      . Thank you.\n\nOkay. I've added 2 to your 
+                      service. Is there anything else I can help 
+                      you with? No. Thank you.\n\nGoodbye. Goodby
+                      e. Have a nice day.",
                     "paragraphs": [
                       {
                         "sentences": [
@@ -772,7 +792,8 @@
                       {
                         "sentences": [
                           {
-                            "text": "I'd like to add Fu to my service.",
+                            "text": "I'd like to add Fu to my ser
+                              vice.",
                             "start": 6.24,
                             "end": 8.58
                           },
@@ -782,12 +803,15 @@
                             "end": 9.62
                           },
                           {
-                            "text": "Can you give me your name and phone number so I can look up your account?",
+                            "text": "Can you give me your name an
+                              d phone number so I can look up you
+                              r account?",
                             "start": 10,
                             "end": 13.299999
                           },
                           {
-                            "text": "My name is Alice, and my number is 123-456-7890.",
+                            "text": "My name is Alice, and my num
+                              ber is 123-456-7890.",
                             "start": 13.815,
                             "end": 17.355
                           },
@@ -810,12 +834,14 @@
                             "end": 23.515
                           },
                           {
-                            "text": "I've added 2 to your service.",
+                            "text": "I've added 2 to your service
+                              .",
                             "start": 24.134874,
                             "end": 25.654875
                           },
                           {
-                            "text": "Is there anything else I can help you with?",
+                            "text": "Is there anything else I can
+                               help you with?",
                             "start": 25.654875,
                             "end": 27.674875
                           },
@@ -870,6 +896,45 @@
       "vendor": "deepgram",
       "schema": "deepgram_prerecorded",
       "product": "transcription"
+    },
+    {
+      "type": "transcript-redacted",
+      "dialog": 0,
+      "body": [
+        {
+          "parties": 0,
+          "start": "2022-06-21T17:53:27.200000+00:00",
+          "duration": 4.9800001,
+          "text": "Hello.  This is {{URL}}.  My name is Bob.  How
+             can I help you?  Hi."
+        },
+        {
+          "parties": 0,
+          "start": "2022-06-21T17:53:32.240000+00:00",
+          "duration": 15.194999999999999,
+          "text": "I'd like to add Fu to my service.  Okay.  Can 
+            you give me your name and phone number so I can look 
+            up your account?  My name is Alice, and my number is 
+            {{PHONE_NUMBER}}.  Thank you."
+        },
+        {
+          "parties": 0,
+          "start": "2022-06-21T17:53:49.015000+00:00",
+          "duration": 6.239874999999998,
+          "text": "Okay.  I've added 2 to your service.  Is there
+             anything else I can help you with?  No.  Thank you."
+        },
+        {
+          "parties": 0,
+          "start": "2022-06-21T17:53:55.254875+00:00",
+          "duration": 2.9000020000000006,
+          "text": "Goodbye.  Goodbye.  Have a nice day."
+        }
+      ],
+      "encoding": "json",
+      "vendor": "CapitalOne",
+      "schema": "data_labeler_schema",
+      "product": "dataprofiler"
     }
   ],
   "attachments": [],

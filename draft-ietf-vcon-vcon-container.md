@@ -1434,7 +1434,9 @@ It has a single Dialog Object which reference a single channel wav format record
 
 ## Two Party Call vCon with Analysis
 
-TODO: vCon with analysis example
+TODO: fix diarization in transcript
+
+{::include examples/ab_call_ext_rec_analysis.pp}
 
 ## Signed vCon
 

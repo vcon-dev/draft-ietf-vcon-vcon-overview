@@ -1467,7 +1467,7 @@ The private key to decrypt it can be found at:
 ## Redacted vCon
 
 ~~~
-{::include examples/ab_call_ext_rec_redacted.pp}
+TODO: insert redacted here
 ~~~
 
 ## Appended Signed vCon

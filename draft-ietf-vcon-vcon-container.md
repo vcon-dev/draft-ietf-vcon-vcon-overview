@@ -1453,7 +1453,7 @@ The certificate chain is included in the x5c parameter of the header Object.
 {::include examples/ab_call_ext_rec_signed.pp}
 ~~~
 
-## Encrypted  vCon
+## Encrypted vCon
 
 This example vCon is the encrypted form of the [Signed vCon](#signed-vcon) example.
 The private key to decrypt it can be found at:
@@ -1464,9 +1464,11 @@ The private key to decrypt it can be found at:
 {::include examples/ab_call_ext_rec_encrypted.pp}
 ~~~
 
-## Redacted Signed vCon
+## Redacted vCon
 
-TODO: redacted vCon example
+~~~
+{::include examples/ab_call_ext_rec_redacted.pp}
+~~~
 
 ## Appended Signed vCon
 

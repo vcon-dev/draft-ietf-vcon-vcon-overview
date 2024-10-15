@@ -840,12 +840,12 @@ The Dialog Object SHOULD contain the body and encoding parameters or the url, al
 
 For inline included dialog:
 
-* body: "String"
+* body: "String" (optional in an a redacted vCon)
 * encoding: "String"
 
 Alternatively, for externally referenced dialog:
 
-* url: "String"
+* url: "String"  (optional in an a redacted vCon)
 * alg: "String"
 * signature: "String"
 
@@ -1465,6 +1465,10 @@ The private key to decrypt it can be found at:
 ~~~
 
 ## Redacted vCon
+
+This is an example redaction of the vCon in the example [Two Party Call vCon With Externally Referenced Recording](#name-two-party-call-vcon-with-ex).
+Most notible is the [Redacted object](#redacted) which references the lesser redacted version of this vCon.
+In addition the **url** parameter has been redacted from the [Dialog Object](#dialog-object), but the rest of the [Dialog Object](#dialog-object) was left in the redaction.
 
 ~~~
 {::include examples/ab_call_ext_rec_redacted.pp}

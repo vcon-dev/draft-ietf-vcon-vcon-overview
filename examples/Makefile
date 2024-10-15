@@ -9,7 +9,8 @@ GENERATED_EXAMPLES=ab_call_ext_rec.vcon \
          ab_email_acct_prob_thread.vcon \
          ab_email_prob_followup_text_thread.vcon \
          ab_call_ext_rec_analysis.vcon \
-         ab_call_ext_rec_with_redact.vcon
+         ab_call_ext_rec_with_redact.vcon \
+         ab_call_ext_rec_redacted.vcon
 GENERATED_DEPENDENCIES= ab_email_prob_followup_alice.vcon \
          ab_email_prob_followup_bob_reply.vcon \
          b_email_acct_prob_image.vcon
@@ -74,4 +75,7 @@ ab_call_ext_rec_analysis.vcon: ab_call_ext_rec.vcon
 
 ab_call_ext_rec_with_redact.vcon: ab_call_ext_rec_analysis.vcon
 	(export PYTHONPATH=${VCON_PYPATH}:${PATHONPATH} ; ${VCON} -i ab_call_ext_rec_analysis.vcon filter redact_pii | jq '.' > ab_call_ext_rec_with_redact.vcon)
+
+ab_call_ext_rec_redacted.vcon: ab_call_ext_rec_with_redact.vcon
+	(export PYTHONPATH=${VCON_PYPATH}:${PATHONPATH} ; jq '. + {parties: [.parties[] | delpaths([["foo"], ["tel"]])]} + {dialog: [.dialog[] | delpaths([["body"], ["url"]])]} + {analysis: [.analysis[1]]} + {redacted: {uuid: .uuid, type: "PII Redaction"}} + {uuid: "01928e10-193e-8231-b9a2-279e0d16bc46"}' ab_call_ext_rec_with_redact.vcon > ab_call_ext_rec_redacted.vcon)
 

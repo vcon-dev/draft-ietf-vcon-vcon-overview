@@ -956,15 +956,23 @@ In some case it may be appropriate to attached the campaign data as an Attachmen
 
 * campaign: "String" (optional)
 
-### interaction
+### interaction_type
 
-In a contact center scenario, interactions with a party are often labeled.
+
+
+* interaction_type "String" (optional)
+
+TODO: add enumerated values from JDR
+
+### interaction_id
+
+In a contact center scenario, interactions with a party are often labeled with an identifier.
 In some case the interaction is contained in a single dialog.
 In others there may be multiple dialogs (e.g. messages or calls) that are all part of a single interaction.
 There may also be many interactions for a single conversation or vCon.
 The interaction parameter is used as a label or foreign key in reference to the interaction ID.
 
-* interaction "String" (optional)
+* interaction_id "String" (optional)
 
 ### skill
 
@@ -975,6 +983,15 @@ To facilitate this in a vCon dialog, the skill parameter is provided.
 The string values of the skill parameter are contact center specific.
 
 * skill "String" (optional)
+
+### application
+
+The application parameter is used to capture the application, communication channel or context over which the conversation was held.
+The conversation mode can be identified by looking at the dialog type.
+However that does not different between different communication platform service providers or hosting service.
+For example, the applicaiton parameter can be used to identify the web conference hosting serivce.
+
+* application "String" (optional)
 
 ## Analysis Object
 
@@ -1467,7 +1484,7 @@ The private key to decrypt it can be found at:
 ## Redacted vCon
 
 This is an example redaction of the vCon in the example [Two Party Call vCon With Externally Referenced Recording](#name-two-party-call-vcon-with-ex).
-Most notible is the [Redacted object](#redacted) which references the lesser redacted version of this vCon.
+Most notable is the [Redacted object](#redacted) which references the lesser redacted version of this vCon.
 In addition the **url** parameter has been redacted from the [Dialog Object](#dialog-object), but the rest of the [Dialog Object](#dialog-object) was left in the redaction.
 
 ~~~

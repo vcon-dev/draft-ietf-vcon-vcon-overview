@@ -6,8 +6,8 @@ The following table maps meta-data requirements defined in draft-rosenberg-vcon-
 |draft-rosenberg-vcon-cc-usecases |draft-petrie-vcon |||
 | ------------ | --------- | ------- | --------- |
 | **CC Meta-Data** | **Parameter** | **Section** | **Action** |
-|Interaction Type |Dialog Object: type and mimetype?? |4.3.1 and 4.3.6 |Perhaps more needed?  Currently no differentiation between email, SMS and web chat; or video and screen recording. |
-|Interaction ID | | |Add interaction parameter to Dialog Object.  Added 4.3.13 ||
+|Interaction Type |Dialog Object: type and mimetype?? | added interaction_type 4.3.13, added application 4.3.15 |Perhaps more needed?  Currently no differentiation between email, SMS and web chat; or video and screen recording. |
+|Interaction ID | | |Add interaction_id parameter to Dialog Object.  Added 4.3.14 ||
 |File Type |Dialog Object: type and mimetype |4.3.1 and 4.3.6 ||
 |Media meta-data |Dialog Object and Dialog Content |4.3 ||
 |Start Time |Dialog Object: start |4.3.2 ||

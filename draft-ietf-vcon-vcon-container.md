@@ -1483,7 +1483,7 @@ The private key to decrypt it can be found at:
 
 ## Redacted vCon
 
-This is an example redaction of the vCon in the example [Two Party Call vCon With Externally Referenced Recording](#name-two-party-call-vcon-with-ex).
+This is an example redaction of the vCon in the example [Two Party Call vCon With Externally Referenced Recording](#two-party-call-vcon-with-externally-referenced-recording).
 Most notable is the [Redacted object](#redacted) which references the lesser redacted version of this vCon.
 In addition the **url** parameter has been redacted from the [Dialog Object](#dialog-object), but the rest of the [Dialog Object](#dialog-object) was left in the redaction.
 

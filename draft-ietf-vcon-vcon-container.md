@@ -151,7 +151,7 @@ For machine learning efforts, vCons can track what information was used in the t
 
 A vCon contains four major categories of data: metadata , dialog , analysis and attachments.
 The metadata portion allows for an expanded set of data from a typical call detail record ([CDR]), with identifications of the participants or parties to the conversation, references to related or earlier versions of the vCon.
-The dialog portion contains a set of multimedia and mime elements, each representing the actual, physical conversation in it's original media form: text, audio or video.
+The dialog portion contains a set of multimedia and media type elements, each representing the actual, physical conversation in it's original media form: text, audio or video.
 The analysis portion contains data derived from the metadata and dialog portions, intended to carry items like transcripts, translations, summaries, text to speech, sentiment analysis and other semantic tagging.
 Finally, the attachment portion contains any other documents, such as slide deck or sales lead information, which provides context and support for the conversation itself.
 The vCon may also container integrity checking information such as the issuer of the vCon and tamperproof features such as signatures.
@@ -292,7 +292,7 @@ Date - A string that MUST have the form of an [RFC3339] date string as defined f
 
 "UnsignedFloat" - a positive JSON floating point number containing a decimal point as defined in section 6 of [JSON].
 
-"Mime" - A "String" value that MUST be of the following form as defined in section 5.1 of [MIME]:
+"Mediatype" - A "String" value that MUST be of the following form as defined in section 5.1 of [MIME]:
     type "/" subtype
 
 "A[]" and array of values of type A.
@@ -399,7 +399,7 @@ The the value of vcon parameter contains the syntactic version of the JSON forma
 
 * vcon: "String"
 
-    For syntax defined in this document, the string MUST have the value: "0.0.1"
+    For syntax defined in this document, the string MUST have the value: "0.0.2"
 
 ### uuid
 
@@ -807,12 +807,12 @@ The originator parameter is only provided if the first party of the dialog Objec
 
     The originator value is the index into the parties Objects Array, to the party that originated the dialog.
 
-### mimetype
+### mediatype
 
-The media type for the piece of dialog included or referenced is provided in the mimetype parameter.
-The mimetype parameter MUST be provided for inline dialog files and MUST be provided if the Content-Type header in the [HTTPS] response for the externally referenced URL is not provided.
+The media type for the piece of dialog included or referenced is provided in the mediatype parameter.
+The mediatype parameter MUST be provided for inline dialog files and MUST be provided if the Content-Type header in the [HTTPS] response for the externally referenced URL is not provided.
 
-* mimetype: "Mime" (optional for externally referenced files)
+* mediatype: "Mediatype" (optional for externally referenced files)
 
     The media types SHOULD be one of the following strings:
 
@@ -943,7 +943,7 @@ To capture the above roles and dialog segments, the following parameters are def
 
     The value of the target-dialog parameter is the index into the dialogs Object array to the "recording", "text" or "incomplete" type dialog for the target dialog between the Transferee and the Transfer Target.
 
-    A "transfer" type dialog MUST NOT contain the parties, originator, mimetype, filename or Dialog Content parameters.
+    A "transfer" type dialog MUST NOT contain the parties, originator, mediatype, filename or Dialog Content parameters.
 
 The "transfer" type dialog only captures the roles, operations and events of the parties and the dialog setup.
 It does not capture the purpose or reason for the transfer as that is analysis to be captures in the analysis section of the Vcon after the conversation has occurred.
@@ -989,7 +989,7 @@ The string values of the skill parameter are contact center specific.
 The application parameter is used to capture the application, communication channel or context over which the conversation was held.
 The conversation mode can be identified by looking at the dialog type.
 However that does not different between different communication platform service providers or hosting service.
-For example, the applicaiton parameter can be used to identify the web conference hosting serivce.
+For example, the application parameter can be used to identify the web conference hosting service.
 
 * application "String" (optional)
 
@@ -1000,7 +1000,7 @@ This document does not attempt to suggest a SHOULD support list of types.
 Nor are formats for analysis data defined in this document.
 That is for research and specification outside the scope of this document.
 For this reason the Analysis Object provides multiple ways to define the media type of the analysis file.
-If a well known media or mime type is defined, it SHOULD be used.
+If a well known media type is defined, it SHOULD be used.
 For analysis data or files types for which a media type is not defined, the vendor and schema parameters SHOULD be used.
 
 ### type
@@ -1026,13 +1026,13 @@ The dialog parameter is used to indicate which Dialog Objects this analysis was 
 
     The value of the dialog parameter is the index to the dialog or array of indices to dialogs in the dialog array to which this analysis object corresponds.
 
-### mimetype
+### mediatype
 
-The media type for the included or referenced analysis file is provided in the mimetype parameter.
+The media type for the included or referenced analysis file is provided in the mediatype parameter.
 
-* mimetype: "Mime" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
+* mediatype: "Mediatype" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
 
-    The mimetype string contains the media type or [MIME] type of the analysis file.
+    The mediatype string contains the media type or [MIME] type of the analysis file.
 
 ### filename
 
@@ -1111,13 +1111,13 @@ This party is identified by the party parameter in the Attachment Object.
 
     The value of the party parameter is the index into the Parties Object array to the party that contributed the attachment.
 
-### mimetype
+### mediatype
 
-The media type for the included or referenced attachment file is provided in the mimetype parameter.
+The media type for the included or referenced attachment file is provided in the mediatype parameter.
 
-* mimetype: "Mime" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
+* mediatype: "Mediatype" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
 
-    The mimetype string contains the media type or [MIME] type of the attached file.
+    The mediatype string contains the media type or [MIME] type of the attached file.
 
 ### filename
 
@@ -1352,13 +1352,19 @@ A encrypted vCon uses [JWE] and takes the General JWE JSON Serialization Syntax 
 
     The string value of alg SHOULD be "RSA-OAEP".
 
+
+TODO: describe how to differentiate unsigned, JWS and JWE forms of vCon
+
 # IANA Considerations
 
 This section includes the information required for IANA to register the application/vcon media type per [MEDIATYPE].
 
+## JSON Format vCon Mediatype
+
 Type name: application
 
 Subtype name: vcon+json
+Subtype name: vcon+gzip
 
 Required parameters: N/A
 
@@ -1394,8 +1400,13 @@ Author: See the Author's Addresses section of this document.
 
 Change controller: IETF
 
-TODO: what is needed for gzip compression??
-TODO: do we need mediatypes for JWS and JWE forms of vCon??
+
+# Non-Upward Compatible Changes to the vCon Container
+
+## Version 0.0.1 to 0.0.2
+
+  "mimetype" parameters were renamed to "mediatype"
+
 
 --- back
 

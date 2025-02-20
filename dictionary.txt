@@ -9,6 +9,7 @@ bots
 CBC
 CBOR
 Cc
+CDDL
 CDR
 civicaddress
 Civicaddress
@@ -23,9 +24,10 @@ De
 dev
 DEVOPS
 dgpetrie
+diarization
 DOB
 docname
-efort
+ECRIT
 enablement
 enc
 encyrpted
@@ -40,6 +42,7 @@ githubusercontent
 gml
 gmlpos
 grp
+gzip
 hno
 hns
 howe
@@ -72,8 +75,10 @@ JWT
 LLC
 lmk
 loc
+Mahy
 mailto
 MAILTO
+mediatype
 Merkle
 metadata
 mimetype
@@ -109,9 +114,11 @@ REC
 redaction
 refcontent
 RESTful
+Rohan
 RSA
 SaaS
 SHA
+Siciliano
 siloed
 sipez
 SIPez

@@ -371,7 +371,7 @@ defines the crypto algorithm used to generate the digest along with the Base64Ur
 SHA-512 hash, as defined in section 6.3 and 6.4 [SHA-512], of the body of the content at the given url.
 
 The hash algorithm is identified by "sha512".
-SHA-512 is part of the SHA-2 set of cryptographic hash functions [SHA-512] defined by the US National 
+SHA-512 is part of the SHA-2 set of cryptographic hash functions [SHA-512] defined by the US National
 Institute of Standards and Technology (NIST).
 Implementations MAY support additional recommended hash algorithms in [IANA-COSE-ALG]; that is, the hash
 algorithm has "Yes" in the "Recommended" column of the IANA registry.

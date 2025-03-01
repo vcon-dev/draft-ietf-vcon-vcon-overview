@@ -366,8 +366,7 @@ The string token value(s) for the content_hash parameter use the same approach u
 The relevant text is copied here for convenience and to remove the normative dependency.
 The hash string token values in the content_hash parameter are formed from combining a string that
 defines the crypto algorithm used to generate the digest along with the Base64Url Encoded value of the
-SHA-512 hash
-(as defined in section 6.3 and 6.4 [SHA-512]) of the body of the content at the given url.
+SHA-512 hash, as defined in section 6.3 and 6.4 [SHA-512], of the body of the content at the given url.
 
 The hash algorithm is identified by "sha512".
 SHA-512 is part of the SHA-2 set of cryptographic hash functions [SHA-512] defined by the US National 

@@ -51,7 +51,9 @@ normative:
 
   HTTPS: RFC9110
 
-  IANA-COSE-ALG: "COSE Algorithms <https://www.iana.org/assignments/cose/cose.xhtml>", n.d..
+  IANA-COSE-ALG:
+    target: <https://www.iana.org/assignments/cose/cose.xhtml>
+    title: "COSE Algorithms"
 
   JSON: RFC8259
 

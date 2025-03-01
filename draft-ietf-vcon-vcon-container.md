@@ -51,6 +51,8 @@ normative:
 
   HTTPS: RFC9110
 
+  IANA-COSE-ALG: "COSE Algorithms <https://www.iana.org/assignments/cose/cose.xhtml>", n.d..
+
   JSON: RFC8259
 
   JWS: RFC7515
@@ -93,6 +95,8 @@ informative:
   SHA-512: RFC6234
 
   SIP-XFER: RFC5589
+
+  STIR-PASS: I-D.draft-ietf-stir-passport-rcd
 
   vCard: RFC7095
 
@@ -162,7 +166,7 @@ vCons may have two or more parties involved, but at least one should be a human.
 For instance, an interaction between a bot and a human is an appropriate scope for vCons, but a conversation between two bots would not.
 
 Due to the size and complexity of some portions of a vCon, both inline and externally referenced dialog, analysis, attachments and other vCon reference assets are supported.
-For instance, vCons may reference a videoconference media recording as an external URL with an accompanying signature of the contents to detect tampering.
+For instance, vCons may reference a videoconference media recording as an external URL with an accompanying content hash of the contents to detect tampering.
 Alternatively, vCons may directly contain the media of the entire dialog internally, keeping the conversation in one place, and optionally encrypted.
 
 vCons are designed to be a digital asset, versioned and signed.
@@ -305,7 +309,7 @@ Objects or arrays with no or null values MAY be excluded from the vCon.
 
 Objects that contain a file or data inline (i.e. within the vCon) MUST have the parameters: body and encoding.
 JSON does not support binary data values.
-For this reason inline files MUST be base64url (see Section 2 [JWS]) encoded to be included as a valid JSON string value if they are not already valid JSON strings.
+For this reason inline files MUST be Base64url (see Section 2 [JWS]) encoded to be included as a valid JSON string value if they are not already valid JSON strings.
 
 ### body
 
@@ -321,7 +325,7 @@ The encoding parameter describes the type of encoding that was performed on the 
 
     This MUST be one of the following strings:
 
-    * "base64url": The payload of the file has been base64url encoded and provided as the string value of the body parameter.
+    * "base64url": The payload of the file has been Base64Url encoded and provided as the string value of the body parameter.
 
     * "json": The value of the body string is a JSON object.
 
@@ -330,10 +334,13 @@ The encoding parameter describes the type of encoding that was performed on the 
 ## Externally Referenced Files
 
 Files and data stored externally from the vCon MUST be "signed" to ensure that they have not been modified.
-Objects that refer to a file which is externally stored from the vCon MUST have the parameters: url, alg and signature.  These parameters are defined in the following subsections.
+Objects that refer to a file which is externally stored from the vCon MUST have the parameters: url,
+content_hash.
+These parameters are defined in the following subsections.
 The use of [SHA-512] hash for ensuring that the externally referenced data or file has not been modified, is defined in this document.
 Other methods of ensuring integrity may be added in the future.
-The following subsections define how the specific algorithm used and how that signature information is included in a vCon so that the content can be verified.
+The following subsections define how the specific algorithm used and how that content hash information is
+included in a vCon so that the content can be verified.
 
 ### url
 
@@ -343,25 +350,35 @@ HTTPS MUST be used for retrieval to protect the privacy of the contents of the f
 * url: "String"
 
 
-### alg
+### content_hash
 
-The alg parameter describes the method used for signing the file payload at the given url.
-Only one method of signing of externally referenced files is defined in this document.
-So only one value is defined for the alg parameter.
+The integrity of externally referenced files are protected using a hash of the external content.
+The algorithm and hash value are contained in the content_hash parameter.
+The value of the content_hash can be a single token or an array of tokens if multiple hash
+algorithms are desired to be provided.
+The SHA-512 [SHA-512] algorithm MUST be supported.
+Other algorythms MAY be included.
+The algorithm used for signing the externally referenced file is defined in section 6.3 and 6.4 of [SHA-512].
 
-*  alg: "String"
+  content_hash: "String" \| String[]
 
-    This SHOULD be the following string:
+The string token value(s) for the content_hash parameter use the same approach used in section 6 of [STIR-PASS].
+The relevant text is copied here for convenience and to remove the normative dependency.
+The hash string token values in the content_hash parameter are formed from combining a string that
+defines the crypto algorithm used to generate the digest along with the Base64Url Encoded value of the
+SHA-512 hash
+(as defined in section 6.3 and 6.4 [SHA-512]) of the body of the content at the given url.
 
-    + "SHA-512":  The algorithm used for signing the externally referenced file is defined in section 6.3 and 6.4 of [SHA-512].
-
-### signature
-
-The [SHA-512] hash on the externally referenced file is included in the signature string value.
-
-* signature: "String"
-
-    The string value of the signature parameter is the Base64Url Encoded value of the SHA-512 hash (as defined in section 6.3 and 6.4 [SHA-512]) of the body of the content at the given url.
+The hash algorithm is identified by "sha512".
+SHA-512 is part of the SHA-2 set of cryptographic hash functions [SHA-512] defined by the US National 
+Institute of Standards and Technology (NIST).
+Implementations MAY support additional recommended hash algorithms in [IANA-COSE-ALG]; that is, the hash
+algorithm has "Yes" in the "Recommended" column of the IANA registry.
+Hash algorithm identifiers MUST use only lowercase letters, and they MUST NOT contain hyphen characters.
+The character following the algorithm string MUST be a hyphen character, "-", or ASCII 45.
+The subsequent characters are the Base64Url encoded (see Section 2 [JWS]) digest of a canonicalized and concatenated string
+or binary data based on the JSON pointer referenced elements of "rcd" claim or the URI referenced content
+contained in the claim.
 
 # vCon JSON Object
 
@@ -447,7 +464,7 @@ A redacted vCon SHOULD provide a reference to the unredacted or prior, less reda
 The purpose of the Redacted Object is to provide the reference to the unredacted or less redacted version of the vCon from which this vCon was derived.
 For privacy reasons, it may be necessary to redact a vCon to construct another vCon without the PII.
 This allows the non-PII portion of the vCon to still be analyzed or used in a broader scope.
-The Redacted Object SHOULD contain the uuid parameter and MAY include the vCon inline via the body and encoding parameters or alternatively the url, alg and signature parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The Redacted Object SHOULD contain the uuid parameter and MAY include the vCon inline via the body and encoding parameters or alternatively the url, content_hash parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
 If the unredacted vCon is included in the body, the unredacted vCon MUST be in the encrypted form.
 If a reference to the unredacted vCon is provided in the url parameter, the access to that URL MUST be restricted to only those who should be allowed to see the identity or PII for the redacted vCon.
 
@@ -482,11 +499,11 @@ As defined in [Inline Files](#inline-files) body and encoding MAY be included:
 * body: "String"
 * encoding: "String"
 
-Alternatively, as defined in [Externally Referenced Files](#externally-referenced-files) url, alg and signature MAY be included:
+Alternatively, as defined in [Externally Referenced Files](#externally-referenced-files) url SHOULD be
+included unless redacted and content_hash MUST be included:
 
 * url: "String"
-* alg: "String"
-* signature: "String"
+* content_hash: "String" \| "String[]"
 
 The following diagram illustrates an example partial JSON object tree for a redacted vCon.
 The top level object is a JWS signed vCon which contains a vCon in the unsigned form in the payload parameter.
@@ -507,7 +524,7 @@ In these cases, to allow for adding of additional information a new vCon instanc
 The prior vCon instance version is referenced by the Appended Object.
 Then the appended information is added to the new vCon instance version (i.e. top level vCon object).
 
-The prior vCon instance version SHOULD be referenced via the uuid of the prior vCon instance version, and MAY include the body and encoding parameters or alternatively the url, alg and signature parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The prior vCon instance version SHOULD be referenced via the uuid of the prior vCon instance version, and MAY include the body and encoding parameters or alternatively the url and content_hash parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
 
 * appended: "Appended" (optional, mutually exclusive with redacted and group parameters)
 
@@ -522,11 +539,11 @@ Alternatively, as defined in [Inline Files](#inline-files) body and encoding MAY
 * body: "String"
 * encoding: "String"
 
-Alternatively, as defined in [Externally Referenced Files](#externally-referenced-files) url, alg and signature MAY be included:
+Alternatively, as defined in [Externally Referenced Files](#externally-referenced-files) url and content_hash
+MAY be included:
 
 * url: "String"
-* alg: "String"
-* signature: "String"
+* content_hash: "String" \| "String[]"
 
 The following figure illustrates an example partial JSON object tree for an appended vCon.
 The top level object is the JWS signed appended vCon which contains the unsigned form of the vCon in it's payload parameter.
@@ -836,7 +853,10 @@ This can be done in the filename parameter.
 
 ### Dialog Content
 
-The Dialog Object SHOULD contain the body and encoding parameters or the url, alg and signature parameters for all dialog types other than "incomplete" and "transfer", these parameters MUST NOT be present for "incomplete" or "transfer" dialog types (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The Dialog Object SHOULD contain the body and encoding parameters or the url and content_hash parameters for
+all dialog types other than "incomplete" and "transfer", these parameters MUST NOT be present for
+"incomplete" or "transfer" dialog types (see [Inline Files](#inline-files) and
+[Externally Referenced Files](#externally-referenced-files)).
 
 For inline included dialog:
 
@@ -846,8 +866,7 @@ For inline included dialog:
 Alternatively, for externally referenced dialog:
 
 * url: "String"  (optional in an a redacted vCon)
-* alg: "String"
-* signature: "String"
+* content_hash: "String" \| "String[]"
 
 ### disposition
 
@@ -1072,7 +1091,8 @@ The schema parameter allows the data format, schema or configuration used to gen
 
 ### Analysis Content
 
-The Analysis Object SHOULD contain the body and encoding parameters or the url, alg and signature parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The Analysis Object SHOULD contain the body and encoding parameters or the url and content_hash parameters
+(see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
 
 For inline included analysis:
 
@@ -1082,8 +1102,7 @@ For inline included analysis:
 Alternatively, for externally referenced analysis:
 
 * url: "String"
-* alg: "String"
-* signature: "String"
+* content_hash: "String" \| "String[]"
 
 ## Attachment Object
 
@@ -1130,7 +1149,8 @@ This can be done in the filename parameter.
 
 ### Attachment Content
 
-The Attachment Object SHOULD contain the body and encoding parameters or the url, alg and signature parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The Attachment Object SHOULD contain the body and encoding parameters or the url and content_hash parameters
+(see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
 
 For inline included attachments:
 
@@ -1140,8 +1160,7 @@ For inline included attachments:
 Alternatively, for externally referenced attachments:
 
 * url: "String"
-* alg: "String"
-* signature: "String"
+* content_hash: "String" \| "String[]"
 
 ## Group Object
 
@@ -1153,7 +1172,8 @@ There are situations in the above example, where it is desired to treat these as
 For this reason, it may be necessary to aggregate the separate vCon into a single vCon which is considered the whole of a conversation.
 The Group Object includes or refers to a vCon to be aggregated into the whole of a single vCon conversation.
 
-The Group Object SHOULD contain the uuid and either the body and encoding parameters or the url, alg and signature parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The Group Object SHOULD contain the uuid and either the body and encoding parameters or the url content_hash
+parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
 The vCon MAY be referenced via UUID:
 
 * uuid: "String"
@@ -1172,11 +1192,11 @@ The encoding parameter MUST be included with the body parameter, if provided, to
     The encoding string MUST have the value: "json".
 
 Alternatively, the vCon can be externally referenced.
-The url, alg and signature parameters and values are defined in [Externally Referenced Files](#externally-referenced-files).
+The url and content_hash parameters and values are defined in
+[Externally Referenced Files](#externally-referenced-files).
 
 * url: "String"
-* alg: "String"
-* signature: "String"
+* content_hash: "String" \| "String[]"
 
 # Security Considerations
 
@@ -1239,7 +1259,8 @@ In some deployments, it is not practical to include all of the file contents of 
 In support of that, a file may be externally referenced.
 When external files are referenced, the signature on the vCon does not secure the file contents from modification.
 For this reason any externally referenced files SHOULD also have a signature.
-vCons use the [SHA-512] hash method for integrity checking of externally referenced file content and include its url, alg and signature in the vCon which are included in the integrity signature for the whole vCon.
+vCons use the [SHA-512] hash method for integrity checking of externally referenced file content and include
+its url and content_hash in the vCon which are included in the integrity signature for the whole vCon.
 
 After retrieving externally referenced files, before using its content, the payload of the HTTPS request should be verified using the signature parameter value for the hash for the url body using the procedure defined in section 6.3 and 6.4 of [SHA-512].
 
@@ -1405,7 +1426,9 @@ Change controller: IETF
 
 ## Version 0.0.1 to 0.0.2
 
-  "mimetype" parameters were renamed to "mediatype"
+  * "mimetype" parameters were renamed to "mediatype"
+
+  * "alg" and "signature" were combined into "content_hash"
 
 
 --- back

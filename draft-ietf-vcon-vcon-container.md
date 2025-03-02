@@ -49,6 +49,8 @@ normative:
 
   GEOPRIV: RFC4119
 
+  GZIP: RFC1952
+
   HTTPS: RFC9110
 
   IANA-COSE-ALG:
@@ -1412,6 +1414,7 @@ This section includes the information required for IANA to register the applicat
 
 ## JSON Format vCon Mediatype
 
+The JSON format for vCon is manditory to implement.
 
 Type name: application
 
@@ -1455,9 +1458,10 @@ Change controller: IETF
 ## gzip Format vCon Mediatype
 
 A gzip format vCon is a JSON format vCon that has been compressed using the gzip [GZIP] compression algorythm.
-gzip format is used to reduce the size of potentially very large vCons container audio or video media in
+The gzip format is used to reduce the size of potentially very large vCons containing audio or video media in
 dialog objects.
-Applications SHOULD support the receiving of gzip format vCons, but do not need to send the gzip format.
+Applications SHOULD support the receiving of gzip format vCons, but do not need to use the gzip format
+when sending.
 
 
 Type name: application

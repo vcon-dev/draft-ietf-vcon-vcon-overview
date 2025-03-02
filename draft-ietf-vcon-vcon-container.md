@@ -862,6 +862,7 @@ The Dialog Object SHOULD contain the body and encoding parameters or the url and
 all dialog types other than "incomplete" and "transfer", these parameters MUST NOT be present for
 "incomplete" or "transfer" dialog types (see [Inline Files](#inline-files) and
 [Externally Referenced Files](#externally-referenced-files)).
+The exception to this is that the body or url MAY be absent if it is redacted.
 
 For inline included dialog:
 
@@ -1017,6 +1018,18 @@ For example, the application parameter can be used to identify the web conferenc
 
 * application "String" (optional)
 
+### message_id
+
+Some messaging systems assign a unique message identifier to each message.
+The message_id parameter may be used to label the message for either cross referencing back to the messaging
+system or to prevent the addition of duplicate messages to the vCon.
+For example SMTP [SMTP] messages have a message-id in the SMTP header.
+In the SMTP case a message may exist in multiple mailboxes or tags.
+When exporting these SMTP messages, the message_id parameter may be used to avoid adding the same message,
+to the vCon containing the email thread, more than once.
+
+* message_id: "string" (optional)
+
 ## Analysis Object
 
 Analysis is a broad and in some cases developing field.
@@ -1098,6 +1111,7 @@ The schema parameter allows the data format, schema or configuration used to gen
 
 The Analysis Object SHOULD contain the body and encoding parameters or the url and content_hash parameters
 (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The exception to this is that the body or url MAY be absent if it is redacted.
 
 For inline included analysis:
 
@@ -1156,6 +1170,7 @@ This can be done in the filename parameter.
 
 The Attachment Object SHOULD contain the body and encoding parameters or the url and content_hash parameters
 (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
+The exception to this is that the body or url MAY be absent if it is redacted.
 
 For inline included attachments:
 

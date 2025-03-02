@@ -130,6 +130,10 @@ informative:
       org: ITU
       date: 1998
 
+  PY-VCON:
+    target: https://github.com/py-vcon
+    title: "Python open source CLI, library and workflow server"
+
 --- abstract
 
 A vCon is the container for data and information relating to a real-time, human conversation.
@@ -1443,6 +1447,8 @@ TODO: insert draft-rosenberg-vcon-cc-usecases here
 This appendix contains example vCons in the unsigned, signed and encrypted form.
 The JSON has been indented for readability.
 Long text lines have been wrapped with a left hand white space indent for readability purposes.
+The example vcons in this document were generated using the [PY-VCON] command line interface.
+
 
 ## Two Party Call vCon With Inline Recording
 
@@ -1539,4 +1545,5 @@ TODO: group vCon example
 
   * Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
   * Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
+  * The examples in this document were generated using the command line interface (CLI) from the py-vcon [PY-VCON] python open source project.
 

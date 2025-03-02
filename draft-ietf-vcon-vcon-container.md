@@ -1407,9 +1407,11 @@ TODO: describe how to differentiate unsigned, JWS and JWE forms of vCon
 
 # IANA Considerations
 
-This section includes the information required for IANA to register the application/vcon media type per [MEDIATYPE].
+This section includes the information required for IANA to register the application/vcon media type per
+[MEDIATYPE].
 
 ## JSON Format vCon Mediatype
+
 
 Type name: application
 
@@ -1421,6 +1423,52 @@ Required parameters: N/A
 Optional parameters: N/A; unrecognized parameters should be ignored.
 
 Encoding considerations: [JSON]
+
+Additional information:
+
+Security considerations: See Security Considerations section of this document.
+
+Interoperability considerations:
+
+Published specification: [VCON], this document
+
+Applications that use this media type:
+
+Fragment identifier considerations:
+
+Additional Information:
+
+   Deprecated alias names for this type: N/A
+
+   Magic number(s): N/A
+
+   File extension(s): "vcon"
+
+   Macintosh file type code(s): N/A
+
+   Windows Clipboard Name: VCON
+
+Author: See the Author's Addresses section of this document.
+
+Change controller: IETF
+
+## gzip Format vCon Mediatype
+
+A gzip format vCon is a JSON format vCon that has been compressed using the gzip [GZIP] compression algorythm.
+gzip format is used to reduce the size of potentially very large vCons container audio or video media in
+dialog objects.
+Applications SHOULD support the receiving of gzip format vCons, but do not need to send the gzip format.
+
+
+Type name: application
+
+Subtype name: vcon+gzip
+
+Required parameters: N/A
+
+Optional parameters: N/A; unrecognized parameters should be ignored.
+
+Encoding considerations: [GZIP]
 
 Additional information:
 

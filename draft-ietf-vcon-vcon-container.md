@@ -75,6 +75,8 @@ normative:
 
   PIDF-LO: RFC5491
 
+  SMTP: RFC5321
+
   TEL: RFC3966
 
   UUID: I-D.draft-peabody-dispatch-new-uuid-format
@@ -307,7 +309,7 @@ Date - A string that MUST have the form of an [RFC3339] date string as defined f
 "Mediatype" - A "String" value that MUST be of the following form as defined in section 5.1 of [MIME]:
     type "/" subtype
 
-"A[]" and array of values of type A.
+"A\[\]" and array of values of type A.
 
 All parameters are assumed to be mandatory unless other wise noted.
 
@@ -368,7 +370,7 @@ The SHA-512 [SHA-512] algorithm MUST be supported.
 Other algorythms MAY be included.
 The algorithm used for signing the externally referenced file is defined in section 6.3 and 6.4 of [SHA-512].
 
-  content_hash: "String" \| String[]
+  content_hash: "String" \| String\[\]
 
 The string token value(s) for the content_hash parameter use the same approach used in section 6 of [STIR-PASS].
 The relevant text is copied here for convenience and to remove the normative dependency.
@@ -510,7 +512,7 @@ Alternatively, as defined in [Externally Referenced Files](#externally-reference
 included unless redacted and content_hash MUST be included:
 
 * url: "String"
-* content_hash: "String" \| "String[]"
+* content_hash: "String" \| "String\[\]"
 
 The following diagram illustrates an example partial JSON object tree for a redacted vCon.
 The top level object is a JWS signed vCon which contains a vCon in the unsigned form in the payload parameter.
@@ -550,7 +552,7 @@ Alternatively, as defined in [Externally Referenced Files](#externally-reference
 MAY be included:
 
 * url: "String"
-* content_hash: "String" \| "String[]"
+* content_hash: "String" \| "String\[\]"
 
 The following figure illustrates an example partial JSON object tree for an appended vCon.
 The top level object is the JWS signed appended vCon which contains the unsigned form of the vCon in it's payload parameter.
@@ -584,7 +586,7 @@ In support of these constructs, it may be desirable to aggregate a group of vCon
 The conversations may be over heterogeneous or homogeneous medium.
 A vCon MAY aggregated a group of vCon instances in the group array, using a Group Object for each vCon instance.
 
-* group: "Group[]" (optional, mutually exclusive with redacted and appended parameters)
+* group: "Group\[\]" (optional, mutually exclusive with redacted and appended parameters)
 
     The group array contains a [Group Object](#group-object) for each vCon.
 
@@ -595,7 +597,7 @@ Whether the parties were observers, passive or active participants in the conver
 
 TODO: Should this be a object not an array to make it easier to append parties (i.e. indices of append vCons change when appended)?
 
-* parties: "Party[]"
+* parties: "Party\[\]"
 
     The value of the parties parameter is an array of [Party Objects](#party-object).
 
@@ -603,7 +605,7 @@ TODO: Should this be a object not an array to make it easier to append parties (
 
 The actual conversation which occurred over text, audio or video that was captured, is contained in the dialog Objects Array.
 
-* dialog: "Dialog[]" (optional)
+* dialog: "Dialog\[\]" (optional)
 
     The value of the dialog parameter is an array of [Dialog Objects](#dialog-object).
 
@@ -611,7 +613,7 @@ The actual conversation which occurred over text, audio or video that was captur
 
 Analysis, which is performed on the conversational data, is stored in the analysis Objects array.
 
-* analysis: "Analysis[]" (optional)
+* analysis: "Analysis\[\]" (optional)
 
     The value of the analysis parameter is an array of [Analysis Objects](#analysis-object).
 
@@ -619,7 +621,7 @@ Analysis, which is performed on the conversational data, is stored in the analys
 
 Ancillary documents, discussed, presented, referenced or related to the conversation may be stored in the attachments array.
 
-* attachments: "Attachment[]" (optional)
+* attachments: "Attachment\[\]" (optional)
 
     The value of the attachments parameter is an array of [Attachment Objects](#attachment-object).
 
@@ -803,9 +805,9 @@ For recordings, it is the duration of the recording.
 
 The party(s) which generated the text or recording for this piece of dialog are indicated in the parties parameter.
 
-* parties: "UnsignedInt" \| "UnsignedInt[]" \| ("UnsignedInt" \| "UnsignedInt[]")[]
+* parties: "UnsignedInt" \| "UnsignedInt\[\]" \| ("UnsignedInt" \| "UnsignedInt\[\]")\[\]
 
-    Single channel recordings should have a parties value of the form: "UnisignedInt" or "UnsignedInt[]" where the integer value or array of integer values are the indices to the Party Object(s) in the parties array that contributed to the mix for the single channel recording.
+    Single channel recordings should have a parties value of the form: "UnisignedInt" or "UnsignedInt\[\]" where the integer value or array of integer values are the indices to the Party Object(s) in the parties array that contributed to the mix for the single channel recording.
     The index for the Party Object SHOULD be included even if the indicated party was silent the entire piece of dialog.
 
     Multi-channel recordings MUST have a parties value that is an array of the same size as the number of channels in the recording.
@@ -874,7 +876,7 @@ For inline included dialog:
 Alternatively, for externally referenced dialog:
 
 * url: "String"  (optional in an a redacted vCon)
-* content_hash: "String" \| "String[]"
+* content_hash: "String" \| "String\[\]"
 
 ### disposition
 
@@ -901,7 +903,7 @@ This latter definition of call disposition is not dialog, but analysis of the co
 Participants in a dialog may not all join and leave at the same time.
 To support the capturing of the information when parties join, drop, go on hold or mute and unmute, the party_history array may be added to the Dialog Object.
 
-* party_history: "Party_History[]" (optional)
+* party_history: "Party_History\[\]" (optional)
 
 #### Party_History Object
 
@@ -1061,7 +1063,7 @@ The type parameter is used to label the semantic type of analysis data.
 Analysis typically pertains to one or more of the Dialog Objects in the dialog array.
 The dialog parameter is used to indicate which Dialog Objects this analysis was based upon.
 
-* dialog: "UnsignedInt" \| "UnsignedInt[]" (optional only if the analysis was not derived from any of the dialog)
+* dialog: "UnsignedInt" \| "UnsignedInt\[\]" (optional only if the analysis was not derived from any of the dialog)
 
     The value of the dialog parameter is the index to the dialog or array of indices to dialogs in the dialog array to which this analysis object corresponds.
 
@@ -1123,7 +1125,7 @@ For inline included analysis:
 Alternatively, for externally referenced analysis:
 
 * url: "String"
-* content_hash: "String" \| "String[]"
+* content_hash: "String" \| "String\[\]"
 
 ## Attachment Object
 
@@ -1182,7 +1184,7 @@ For inline included attachments:
 Alternatively, for externally referenced attachments:
 
 * url: "String"
-* content_hash: "String" \| "String[]"
+* content_hash: "String" \| "String\[\]"
 
 ### dialog
 
@@ -1227,7 +1229,7 @@ The url and content_hash parameters and values are defined in
 [Externally Referenced Files](#externally-referenced-files).
 
 * url: "String"
-* content_hash: "String" \| "String[]"
+* content_hash: "String" \| "String\[\]"
 
 # Security Considerations
 
@@ -1305,7 +1307,7 @@ The vCon General JWS JSON Serialization MUST include x5c or x5u in the unprotect
     The value of the payload is the Base64Url Encoded string containing the unsigned form of the JSON vCon.
     The general construction of the payload string value is described in section 7.2.1 of [JWK]
 
-* signatures "Signature[]"
+* signatures "Signature\[\]"
 
     The value of signatures is an array of [Signature Objects](#signature-object)
 
@@ -1331,7 +1333,7 @@ The x5c or x5u requirement makes the management and use of vCons easier, allowin
 
     The string value of alg is defined in section 4.1.1 of [JWS].  For a signed vCon this value SHOULD be "RS256" to maximize interoperability.
 
-* x5c: "String[]" (MUST provide x5c or x5u)
+* x5c: "String\[\]" (MUST provide x5c or x5u)
 
     The array of string values for x5c are defined in section 4.1.6 of [JWS].
 
@@ -1360,7 +1362,7 @@ A encrypted vCon uses [JWE] and takes the General JWE JSON Serialization Syntax 
 
 * unprotected: "Unprotected"
 
-* recipients: "Recipient[]"
+* recipients: "Recipient\[\]"
 
 * iv: "String"
 
@@ -1433,7 +1435,7 @@ Security considerations: See Security Considerations section of this document.
 
 Interoperability considerations:
 
-Published specification: [VCON], this document
+Published specification: VCON, this document
 
 Applications that use this media type:
 

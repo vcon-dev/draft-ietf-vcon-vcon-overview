@@ -1182,6 +1182,15 @@ Alternatively, for externally referenced attachments:
 * url: "String"
 * content_hash: "String" \| "String[]"
 
+### dialog
+
+Attachements are added as data related to the dialog.
+The dialog parameter is used to identify the dialog that the attachment is part of.
+The dialog is identified by the index to the dialog Object in the dialog objects array.
+
+* dialog: "UnsignedInt"
+
+
 ## Group Object
 
 A conversation may have take place using different modes (e.g. web chat which evolves to email, which evolves to phone call, which evolves to video conference).

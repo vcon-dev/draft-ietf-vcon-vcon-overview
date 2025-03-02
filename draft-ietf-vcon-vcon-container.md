@@ -168,7 +168,7 @@ The metadata portion allows for an expanded set of data from a typical call deta
 The dialog portion contains a set of multimedia and media type elements, each representing the actual, physical conversation in it's original media form: text, audio or video.
 The analysis portion contains data derived from the metadata and dialog portions, intended to carry items like transcripts, translations, summaries, text to speech, sentiment analysis and other semantic tagging.
 Finally, the attachment portion contains any other documents, such as slide deck or sales lead information, which provides context and support for the conversation itself.
-The vCon may also container integrity checking information such as the issuer of the vCon and tamperproof features such as signatures.
+The vCon may also container integrity checking information such as the issuer of the vCon and tamper-proof features such as signatures.
 
 A vCon acts as the definition of the conversation, and are created by systems during and after the conversation itself.
 Some communication modes, like SMS texting, lack natural session boundaries and require explicit definition.
@@ -176,7 +176,7 @@ vCons may have two or more parties involved, but at least one should be a human.
 For instance, an interaction between a bot and a human is an appropriate scope for vCons, but a conversation between two bots would not.
 
 Due to the size and complexity of some portions of a vCon, both inline and externally referenced dialog, analysis, attachments and other vCon reference assets are supported.
-For instance, vCons may reference a videoconference media recording as an external URL with an accompanying content hash of the contents to detect tampering.
+For instance, vCons may reference a video conference media recording as an external URL with an accompanying content hash of the contents to detect tampering.
 Alternatively, vCons may directly contain the media of the entire dialog internally, keeping the conversation in one place, and optionally encrypted.
 
 vCons are designed to be a digital asset, versioned and signed.
@@ -298,18 +298,18 @@ The following  are considered not in scope or non-requirements:
 
 For the ease of documentation, the convention for [JSON] notation used in this document is copied from sections 1.1-1.5 of [JMAP].
 
-Date - A string that MUST have the form of an [RFC3339] date string as defined for the Date type in section 1.4 of [JMAP].
+* Date - A string that MUST have the form of an [RFC3339] date string as defined for the Date type in section 1.4 of [JMAP].
 
-"String" - a JSON string type
+* "String" - a JSON string type
 
-"UnsignedInt" - a positive JSON integer as defined in section 1.3 of [JMAP].
+* "UnsignedInt" - a positive JSON integer as defined in section 1.3 of [JMAP].
 
-"UnsignedFloat" - a positive JSON floating point number containing a decimal point as defined in section 6 of [JSON].
+* "UnsignedFloat" - a positive JSON floating point number containing a decimal point as defined in section 6 of [JSON].
 
-"Mediatype" - A "String" value that MUST be of the following form as defined in section 5.1 of [MIME]:
+* "Mediatype" - A "String" value that MUST be of the following form as defined in section 5.1 of [MIME]:
     type "/" subtype
 
-"A\[\]" and array of values of type A.
+* "A\[\]" and array of values of type A.
 
 All parameters are assumed to be mandatory unless other wise noted.
 
@@ -323,7 +323,8 @@ For this reason inline files MUST be Base64url (see Section 2 [JWS]) encoded to 
 
 ### body
 
-The body parameter contains the payload of the file to be included inline.  Depending upon the data in the file, it may require encoding to be used as a valid JSON string value.
+The body parameter contains the payload of the file to be included inline.
+Depending upon the data in the file, it may require encoding to be used as a valid JSON string value.
 
 * body: "String"
 
@@ -333,7 +334,7 @@ The encoding parameter describes the type of encoding that was performed on the 
 
 * encoding: "String"
 
-    This MUST be one of the following strings:
+This MUST be one of the following strings:
 
     * "base64url": The payload of the file has been Base64Url encoded and provided as the string value of the body parameter.
 
@@ -425,26 +426,31 @@ The the value of vcon parameter contains the syntactic version of the JSON forma
 
 * vcon: "String"
 
-    For syntax defined in this document, the string MUST have the value: "0.0.2"
+For syntax defined in this document, the string MUST have the value: "0.0.2"
 
 ### uuid
 
-The [UUID] for the vCon is used to refer to it when privacy or security may not allow for inclusion or URL reference to a vCon.
+The [UUID] for the vCon is used to refer to it when privacy or security may not allow for inclusion or URL
+reference to a vCon.
 The UUID MUST be globally unique.
 
 * uuid: "String"
 
-    The value of the string SHOULD be generated using the version 8 UUID defined in [UUID] which is generated identically to a version 7 UUID with the exception that:
+The value of the string SHOULD be generated using the version 8 UUID defined in [UUID] which is generated
+identically to a version 7 UUID with the exception that:
 
     * rand_b/custom_c is generated from the high 62 bits of the SHA-1 hash of the FQHN string
 
     * the variant and version fields are set as described for version 8 UUID
 
-    The DNS name string used in generating the uuid value SHOULD be the same FQHN, or a subdomain to allow for more distributed generation of UUIDs, as would used in the signing certificate as they are the same domains of uniqueness.
+The DNS name string used in generating the uuid value SHOULD be the same FQHN, or a subdomain to allow
+for more distributed generation of UUIDs, as would used in the signing certificate as they are the same
+domains of uniqueness.
 
 ### created_at
 
-The created_at parameter provides the creation time of this vcon, which MUST be present, and should not changed once the vcon object is created.
+The created_at parameter provides the creation time of this vcon, which MUST be present, and should not
+changed once the vcon object is created.
 
 * created_at: "Date"
 
@@ -452,7 +458,8 @@ The created_at parameter provides the creation time of this vcon, which MUST be 
 
 The updated_at parameter provides the last modified time of this vcon, which MAY be present.
 For unsigned forms, the updated_at of the vcon object SHOULD be updated as it is modified.
-For signed forms of the vCon object, the updated_at contains the time when this vcon was last signed. Future updates MUST first set the updated_at to the new signing time as the vcon object is signed again.
+For signed forms of the vCon object, the updated_at contains the time when this vcon was last signed.
+Future updates MUST first set the updated_at to the new signing time as the vcon object is signed again.
 
 * updated_at: "Date"
 
@@ -465,7 +472,7 @@ The subject may also be derived from analysis of the dialog.
 
 * subject: "String" (optional)
 
-    The string value of the subject parameter is a free formed JSON string with no constrained syntax.
+The string value of the subject parameter is a free formed JSON string with no constrained syntax.
 
 ### redacted
 
@@ -475,11 +482,13 @@ For privacy reasons, it may be necessary to redact a vCon to construct another v
 This allows the non-PII portion of the vCon to still be analyzed or used in a broader scope.
 The Redacted Object SHOULD contain the uuid parameter and MAY include the vCon inline via the body and encoding parameters or alternatively the url, content_hash parameters (see [Inline Files](#inline-files) and [Externally Referenced Files](#externally-referenced-files)).
 If the unredacted vCon is included in the body, the unredacted vCon MUST be in the encrypted form.
-If a reference to the unredacted vCon is provided in the url parameter, the access to that URL MUST be restricted to only those who should be allowed to see the identity or PII for the redacted vCon.
+If a reference to the unredacted vCon is provided in the url parameter, the access to that URL MUST
+be restricted to only those who should be allowed to see the identity or PII for the redacted vCon.
 
 The method(s) for redaction of text, audio and video can be done with existing post processing of media.
 The method of redaction is out of scope of this document.
-The assurance of the accuracy of the redaction is made by the entity that creates the redaction which SHOULD sign the redacted version of the vCon.
+The assurance of the accuracy of the redaction is made by the entity that creates the redaction which
+SHOULD sign the redacted version of the vCon.
 
 All data and parameters in the prior, less redacted, vCon instance version are either:
 
@@ -487,7 +496,9 @@ All data and parameters in the prior, less redacted, vCon instance version are e
 * Copied and partially redacted
 * Copied as is
 
-Data which is to be completely removed from the redacted version, that is contained in a JSON array in the unredacted vCon, SHOULD create an empty placeholder such that object array indices do not change for the rest of the elements of the array.
+Data which is to be completely removed from the redacted version, that is contained in a JSON array in
+the unredacted vCon, SHOULD create an empty placeholder such that object array indices do not change for
+the rest of the elements of the array.
 
 * redacted: "Redacted" (optional, mutually exclusive with appended and group parameters)
 
@@ -495,13 +506,15 @@ A Redacted Object contains the following parameters:
 
 * uuid: "String"
 
-    The value contains the [uuid string value](#uuid) of the unredacted/prior vCon instance version.
-    The absence of a value for uuid indicates that the less redacted version of this vCon is not available or does not exist.
+The value contains the [uuid string value](#uuid) of the unredacted/prior vCon instance version.
+The absence of a value for uuid indicates that the less redacted version of this vCon is not available or
+does not exist.
 
 * type: "String"
 
-    The value of the redacted type parameter is used to indicate the type of redaction that was performed on this vCon relative to the less redacted version referenced by the redacted uuid parameter.
-    This should indicate the type of information that was redacted.
+The value of the redacted type parameter is used to indicate the type of redaction that was performed on
+this vCon relative to the less redacted version referenced by the redacted uuid parameter.
+This should indicate the type of information that was redacted.
 
 As defined in [Inline Files](#inline-files) body and encoding MAY be included:
 
@@ -515,10 +528,14 @@ included unless redacted and content_hash MUST be included:
 * content_hash: "String" \| "String\[\]"
 
 The following diagram illustrates an example partial JSON object tree for a redacted vCon.
-The top level object is a JWS signed vCon which contains a vCon in the unsigned form in the payload parameter.
-The second level object is the redacted vcon which refers to the encrypted unredacted vCon in it's redacted parameter.
-Note that the redacted vCon references the JWE encrypted vCon by UUID and may reference it by URL or direct inclusion.
-The JWE encrypted unredacted vCon contains the signed version of the unredacted vCon in the ciphertext parameter.
+The top level object is a JWS signed vCon which contains a vCon in the unsigned form in the payload
+parameter.
+The second level object is the redacted vcon which refers to the encrypted unredacted vCon in it's
+redacted parameter.
+Note that the redacted vCon references the JWE encrypted vCon by UUID and may reference it by URL or
+direct inclusion.
+The JWE encrypted unredacted vCon contains the signed version of the unredacted vCon in the ciphertext
+parameter.
 The signed unredacted vCon contains the unredacted vCon in the unsigned form in it's payload parameter.
 
 ~~~
@@ -541,7 +558,7 @@ The Appended Object contains the following parameters:
 
 * uuid: "String" (optional if inline or external reference provided)
 
-    The value contains the [uuid string value](#uuid) of the unredacted/original vCon instance version.
+The value contains the [uuid string value](#uuid) of the unredacted/original vCon instance version.
 
 Alternatively, as defined in [Inline Files](#inline-files) body and encoding MAY be included:
 
@@ -568,7 +585,8 @@ The appended vCon in this figure refers to the JWS signed version of the vCon, w
 
 ### group Objects Array
 
-The scope of a conversation is defined by the observer.  It may be any of the following in this non-exhaustive list:
+The scope of a conversation is defined by the observer.
+It may be any of the following in this non-exhaustive list:
 
 * a quick text exchange
 
@@ -582,13 +600,14 @@ The scope of a conversation is defined by the observer.  It may be any of the fo
 
 * a series of weekly status calls
 
-In support of these constructs, it may be desirable to aggregate a group of vCons as opposed to including all of the dialog in a single vCon.
+In support of these constructs, it may be desirable to aggregate a group of vCons as opposed to including
+all of the dialog in a single vCon.
 The conversations may be over heterogeneous or homogeneous medium.
 A vCon MAY aggregated a group of vCon instances in the group array, using a Group Object for each vCon instance.
 
 * group: "Group\[\]" (optional, mutually exclusive with redacted and appended parameters)
 
-    The group array contains a [Group Object](#group-object) for each vCon.
+The group array contains a [Group Object](#group-object) for each vCon.
 
 ### parties Objects Array
 
@@ -599,7 +618,7 @@ TODO: Should this be a object not an array to make it easier to append parties (
 
 * parties: "Party\[\]"
 
-    The value of the parties parameter is an array of [Party Objects](#party-object).
+The value of the parties parameter is an array of [Party Objects](#party-object).
 
 ### dialog Objects Array
 
@@ -607,7 +626,7 @@ The actual conversation which occurred over text, audio or video that was captur
 
 * dialog: "Dialog\[\]" (optional)
 
-    The value of the dialog parameter is an array of [Dialog Objects](#dialog-object).
+The value of the dialog parameter is an array of [Dialog Objects](#dialog-object).
 
 ### analysis Objects Array
 
@@ -615,7 +634,7 @@ Analysis, which is performed on the conversational data, is stored in the analys
 
 * analysis: "Analysis\[\]" (optional)
 
-    The value of the analysis parameter is an array of [Analysis Objects](#analysis-object).
+The value of the analysis parameter is an array of [Analysis Objects](#analysis-object).
 
 ### attachments Objects Array
 
@@ -623,7 +642,7 @@ Ancillary documents, discussed, presented, referenced or related to the conversa
 
 * attachments: "Attachment\[\]" (optional)
 
-    The value of the attachments parameter is an array of [Attachment Objects](#attachment-object).
+The value of the attachments parameter is an array of [Attachment Objects](#attachment-object).
 
 ## Party Object
 
@@ -633,16 +652,17 @@ If the tel URL for the party is known, it can be included in the tel parameter.
 
 * tel: "String" (optional)
 
-    The value of the tel parameter SHOULD be a valid [TEL] URL.  The URL scheme prefix (i.e. "tel:") is optional.
+The value of the tel parameter SHOULD be a valid [TEL] URL.  The URL scheme prefix (i.e. "tel:") is optional.
 
 
 ### stir
 
-If the STIR [PASSporT] was provided to identify the party, the PASSporT can be included in the stir parameter for the party.
+If the STIR [PASSporT] was provided to identify the party, the PASSporT can be included in the stir
+parameter for the party.
 
 * stir: "String" (optional)
 
-    The string value of the stir parameter contains the [PASSporT] in the JWS Compact Serialization form.
+The string value of the stir parameter contains the [PASSporT] in the JWS Compact Serialization form.
 
 ### mailto
 
@@ -650,7 +670,8 @@ If the mailto URL is known for the party, it can be included in the mailto param
 
 * mailto: "String" (optional)
 
-    The value of the mailto parameter is a string of the format of a valid [MAILTO] URL.  The URL scheme prefix (i.e. "mailto:") is optional.
+The value of the mailto parameter is a string of the format of a valid [MAILTO] URL.  The URL scheme
+prefix (i.e. "mailto:") is optional.
 
 ### name
 
@@ -658,7 +679,7 @@ If the party's name is known, it can be included in the name parameter.
 
 * name: "String" (optional)
 
-    The string value of the name parameter is a free form JSON string in which part or all of the party's name can be included.
+The string value of the name parameter is a free form JSON string in which part or all of the party's name can be included.
 
 ### validation
 
@@ -672,7 +693,7 @@ It is up to the domain creating the vCon to define the set of tokens or values t
 
 * validation: "String" (SHOULD be provided if name parameter is provided)
 
-    The value of the validation string MAY be "none" or enterprise or domain defined token or string values.
+The value of the validation string MAY be "none" or enterprise or domain defined token or string values.
 
 ### jCard
 
@@ -685,7 +706,7 @@ The gmlpos parameter contains the latitude and longitude of the location of the 
 
 * gmlpos: "String" (optional)
 
-    The gmlpos parameter value contains a string of the same format as the gml:pos element defined in section 3.2 of the [PIDF-LO] PIDF.
+The gmlpos parameter value contains a string of the same format as the gml:pos element defined in section 3.2 of the [PIDF-LO] PIDF.
 
 ### civicaddress
 
@@ -758,7 +779,7 @@ In a contact center scenario, the conversation with this party may be part of a 
 It is sometimes useful to reference the list from which this party was included.
 The contact_list may be used as a label for foreign key reference to the contact list that this party was on.
 
-*  contact_list "String" (optional)
+* contact_list "String" (optional)
 
 ## Dialog Object
 
@@ -772,15 +793,15 @@ TODO: Is there other signalling data that we want to capture other than start an
 
 * type: "String"
 
-    The sting MUST have the value of either "recording", "text", "transfer" or "incomplete".
-    A dialog of type "recording" has Dialog Content that either contains a body or refers to via url, which is a recording of the video and/or audio of a segment of the conversation.
-    A dialog of type "text" had  has Dialog Content that either contains a body or refers to via url, which contains the text from one of the parties for a segment of the conversation.
-    A dialog of type "transfer" does not capture actual conversation exchange, but rather captures operations, parties and relations between dialog segments.
-    A dialog of type "incomplete" or "transfer" MUST NOT have Dialog Content.
-    In the "incomplete" case the call or conversation failed to be setup to the point of exchanging any conversation.
-    Incomplete dialogs MUST have a disposition parameter which indicates why the call or conversations failed.
-    In the "transfer" case, the conversation is recorded in other dialogs.
-    The Dialog Transfer parameters, are used to show the roles and relationships between the parties and other dialogs as the transfer process occurred.
+The sting MUST have the value of either "recording", "text", "transfer" or "incomplete".
+A dialog of type "recording" has Dialog Content that either contains a body or refers to via url, which is a recording of the video and/or audio of a segment of the conversation.
+A dialog of type "text" had  has Dialog Content that either contains a body or refers to via url, which contains the text from one of the parties for a segment of the conversation.
+A dialog of type "transfer" does not capture actual conversation exchange, but rather captures operations, parties and relations between dialog segments.
+A dialog of type "incomplete" or "transfer" MUST NOT have Dialog Content.
+In the "incomplete" case the call or conversation failed to be setup to the point of exchanging any conversation.
+Incomplete dialogs MUST have a disposition parameter which indicates why the call or conversations failed.
+In the "transfer" case, the conversation is recorded in other dialogs.
+The Dialog Transfer parameters, are used to show the roles and relationships between the parties and other dialogs as the transfer process occurred.
 
 
 ### start
@@ -799,7 +820,7 @@ For recordings, it is the duration of the recording.
 
 * duration: "UnsignedInt" \| "UnsignedFloat" (optional)
 
-    The value MUST be the dialog duration in seconds.
+The value MUST be the dialog duration in seconds.
 
 ### parties
 
@@ -807,18 +828,18 @@ The party(s) which generated the text or recording for this piece of dialog are 
 
 * parties: "UnsignedInt" \| "UnsignedInt\[\]" \| ("UnsignedInt" \| "UnsignedInt\[\]")\[\]
 
-    Single channel recordings should have a parties value of the form: "UnisignedInt" or "UnsignedInt\[\]" where the integer value or array of integer values are the indices to the Party Object(s) in the parties array that contributed to the mix for the single channel recording.
-    The index for the Party Object SHOULD be included even if the indicated party was silent the entire piece of dialog.
+Single channel recordings should have a parties value of the form: "UnisignedInt" or "UnsignedInt\[\]" where the integer value or array of integer values are the indices to the Party Object(s) in the parties array that contributed to the mix for the single channel recording.
+The index for the Party Object SHOULD be included even if the indicated party was silent the entire piece of dialog.
 
-    Multi-channel recordings MUST have a parties value that is an array of the same size as the number of channels in the recording.
-    The values in that array are either an integer or an array of integers which are the indices to the parties that contributed to the mix for the associated channel of the recording.
-    The index for Party Objects SHOULD be included even if the party was silent the entire conversation.
+Multi-channel recordings MUST have a parties value that is an array of the same size as the number of channels in the recording.
+The values in that array are either an integer or an array of integers which are the indices to the parties that contributed to the mix for the associated channel of the recording.
+The index for Party Objects SHOULD be included even if the party was silent the entire conversation.
 
-    It is implied that the first party in the dialog Object parties list, is the originator of the dialog.
-    However, in some situations, it is difficult to impose the constraint that the first channel of a recording is the originator.
-    If ensuring that the first channel and party listed is the originator is not possible, the optional originator parameter indicates the originator party.
-    In other cases, there may be a separate recording file for each party in a conversation, where only one party is recorded per file.
-    In this situation, it is necessary to indicate the originator as the dialog Object parties parameter will contain only one party and may not be the originator.
+It is implied that the first party in the dialog Object parties list, is the originator of the dialog.
+However, in some situations, it is difficult to impose the constraint that the first channel of a recording is the originator.
+If ensuring that the first channel and party listed is the originator is not possible, the optional originator parameter indicates the originator party.
+In other cases, there may be a separate recording file for each party in a conversation, where only one party is recorded per file.
+In this situation, it is necessary to indicate the originator as the dialog Object parties parameter will contain only one party and may not be the originator.
 
 TODO: For an email thread, To and Cc parties are all passive.  Do we just put the sender as the party or do we want to list all of the recipients and by convention the sender is the first party?  Note that each dialog/email could have a difference set of recipients.
 
@@ -831,7 +852,7 @@ The originator parameter is only provided if the first party of the dialog Objec
 
 * originator: "UnsignedInt" (optional)
 
-    The originator value is the index into the parties Objects Array, to the party that originated the dialog.
+The originator value is the index into the parties Objects Array, to the party that originated the dialog.
 
 ### mediatype
 
@@ -840,7 +861,7 @@ The mediatype parameter MUST be provided for inline dialog files and MUST be pro
 
 * mediatype: "Mediatype" (optional for externally referenced files)
 
-    The media types SHOULD be one of the following strings:
+The media types SHOULD be one of the following strings:
 
     * "text/plain"
     * "audio/x-wav"
@@ -887,7 +908,7 @@ This latter definition of call disposition is not dialog, but analysis of the co
 
 * disposition: "String" (required for incomplete type dialogs, SHOULD NOT be present for other dialog types)
 
-    The value of the disposition parameter MUST be one of the following string:
+The value of the disposition parameter MUST be one of the following string:
 
     * "no-answer" - a call or connection was attempted, but no one answered or accepted the connection
     * "congestion" - a call or connection was attempted, but was unable to be completed due to system load
@@ -911,11 +932,11 @@ The Party_History Object contains the following parameters:
 
 * party: "UnsignedInt"
 
-    The index of the party for this event.
+The index of the party for this event.
 
 * event: "String"
 
-    The string token for the event which MUST be one of the following:
+The string token for the event which MUST be one of the following:
 
     * "join" - when the party joins the dialog
 
@@ -936,43 +957,43 @@ The Party_History Object contains the following parameters:
 A dialog of type "transfer" documents the rolls of three parties and the relationship between 2 or three dialog segments.
 In a transfer operation, the roles of the three parties to a transfer are defined in [SIP-XFER] as:
 
-    * Transferee
-    * Transferor
-    * Transfer Target
+* Transferee
+* Transferor
+* Transfer Target
 
 There are two or three calls in which the parties are connected:
 
-    * original call
-    * consultative call (optional as this call may not get created)
-    * target call
+* original call
+* consultative call (optional as this call may not get created)
+* target call
 
 To capture the above roles and dialog segments, the following parameters are defined and SHOULD be present in the "transfer" type dialog and MUST NOT be present in other dialog types.
 
-    * transferee: "UnsignedInt"
+* transferee: "UnsignedInt"
 
-    The value of the transferee parameter is the index into the parties Object array to the party that played the role of the Transferee.
+The value of the transferee parameter is the index into the parties Object array to the party that played the role of the Transferee.
 
-    * transferor: "UnsignedInt"
+* transferor: "UnsignedInt"
 
-    The value of the transferor parameter is the index into the parties Object array to the party that played the role of the Transferor.
+The value of the transferor parameter is the index into the parties Object array to the party that played the role of the Transferor.
 
-    * transfer-target: "UnsignedInt"
+* transfer-target: "UnsignedInt"
 
-    The value of the transfer-target parameter is the index into the parties Object array to the party that played the role of the Transfer Target.
+The value of the transfer-target parameter is the index into the parties Object array to the party that played the role of the Transfer Target.
 
-    * original: "UnsignedInt"
+* original: "UnsignedInt"
 
-    The value of the original parameter is the index into the dialogs Object array to the "recording" or "text" type dialog for the original dialog between the Transferee and the Transferor.
+The value of the original parameter is the index into the dialogs Object array to the "recording" or "text" type dialog for the original dialog between the Transferee and the Transferor.
 
-    * consultation: "UnsignedInt" (optional)
+* consultation: "UnsignedInt" (optional)
 
-    The value of the consultation parameter is the index into the dialogs Object array to the "recording", "text" or "incomplete" type dialog for the consultative dialog between the Transferor and the Transfer Target.
+The value of the consultation parameter is the index into the dialogs Object array to the "recording", "text" or "incomplete" type dialog for the consultative dialog between the Transferor and the Transfer Target.
 
-    * target-dialog: "UnsignedInt"
+* target-dialog: "UnsignedInt"
 
-    The value of the target-dialog parameter is the index into the dialogs Object array to the "recording", "text" or "incomplete" type dialog for the target dialog between the Transferee and the Transfer Target.
+The value of the target-dialog parameter is the index into the dialogs Object array to the "recording", "text" or "incomplete" type dialog for the target dialog between the Transferee and the Transfer Target.
 
-    A "transfer" type dialog MUST NOT contain the parties, originator, mediatype, filename or Dialog Content parameters.
+A "transfer" type dialog MUST NOT contain the parties, originator, mediatype, filename or Dialog Content parameters.
 
 The "transfer" type dialog only captures the roles, operations and events of the parties and the dialog setup.
 It does not capture the purpose or reason for the transfer as that is analysis to be captures in the analysis section of the Vcon after the conversation has occurred.
@@ -1065,7 +1086,7 @@ The dialog parameter is used to indicate which Dialog Objects this analysis was 
 
 * dialog: "UnsignedInt" \| "UnsignedInt\[\]" (optional only if the analysis was not derived from any of the dialog)
 
-    The value of the dialog parameter is the index to the dialog or array of indices to dialogs in the dialog array to which this analysis object corresponds.
+The value of the dialog parameter is the index to the dialog or array of indices to dialogs in the dialog array to which this analysis object corresponds.
 
 ### mediatype
 
@@ -1073,7 +1094,7 @@ The media type for the included or referenced analysis file is provided in the m
 
 * mediatype: "Mediatype" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
 
-    The mediatype string contains the media type or [MIME] type of the analysis file.
+The mediatype string contains the media type or [MIME] type of the analysis file.
 
 ### filename
 
@@ -1082,7 +1103,7 @@ This can be done in the filename parameter.
 
 * filename: "String" (optional)
 
-    The file name string contains an optional name for the analysis data file referenced in this Analysis Object.
+The file name string contains an optional name for the analysis data file referenced in this Analysis Object.
 
 ### vendor
 
@@ -1093,7 +1114,7 @@ For this reason, the vendor or product name is provided in the vendor parameter.
 
 * vendor: "String"
 
-    The vendor string value contains the vendor or product name of the software which generated this analysis.
+The vendor string value contains the vendor or product name of the software which generated this analysis.
 
 ### product
 
@@ -1108,8 +1129,8 @@ The schema parameter allows the data format, schema or configuration used to gen
 
 * schema: "String" (optional)
 
-    The schema string contains a token or label for the data format or schema for the analysis data.
-    As the vendor name may not be specific enough to identify the format of the analysis, the schema value is provide to differentiate from potentially multiple data formats for analysis provided by the same vendor or software.
+The schema string contains a token or label for the data format or schema for the analysis data.
+As the vendor name may not be specific enough to identify the format of the analysis, the schema value is provide to differentiate from potentially multiple data formats for analysis provided by the same vendor or software.
 
 ### Analysis Content
 
@@ -1151,7 +1172,7 @@ This party is identified by the party parameter in the Attachment Object.
 
 * party: "UnsignedInt"
 
-    The value of the party parameter is the index into the Parties Object array to the party that contributed the attachment.
+The value of the party parameter is the index into the Parties Object array to the party that contributed the attachment.
 
 ### mediatype
 
@@ -1159,7 +1180,7 @@ The media type for the included or referenced attachment file is provided in the
 
 * mediatype: "Mediatype" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
 
-    The mediatype string contains the media type or [MIME] type of the attached file.
+The mediatype string contains the media type or [MIME] type of the attached file.
 
 ### filename
 
@@ -1168,7 +1189,7 @@ This can be done in the filename parameter.
 
 * filename: "String" (optional)
 
-    The file name string contains an optional name for the attachment file referenced in this Attachment Object.
+The file name string contains an optional name for the attachment file referenced in this Attachment Object.
 
 ### Attachment Content
 
@@ -1211,18 +1232,18 @@ The vCon MAY be referenced via UUID:
 
 * uuid: "String"
 
-    The value of the uuid parameter, is the [uuid string value](#uuid) of the referenced vCon to be aggregated.
+The value of the uuid parameter, is the [uuid string value](#uuid) of the referenced vCon to be aggregated.
 
 The vCon MAY be included in line as the value of the body parameter.
 The encoding parameter MUST be included with the body parameter, if provided, to describe the encoding of the vCon body.
 
 * body: "vCon"
 
-    The JSON unsigned form of the vCon, the JWS signed form of the vCon or the JWE encrypted form of the vCon.
+The JSON unsigned form of the vCon, the JWS signed form of the vCon or the JWE encrypted form of the vCon.
 
 * encoding: "String"
 
-    The encoding string MUST have the value: "json".
+The encoding string MUST have the value: "json".
 
 Alternatively, the vCon can be externally referenced.
 The url and content_hash parameters and values are defined in
@@ -1274,7 +1295,10 @@ Externally referenced data will be "signed" using [SHA-512] hash which along wit
 [SHA-512] was chosen due to the relatively low cost to generate and verify the signature for what could be very large externally referenced media files.
 As the hash for each externally referenced file is contained in the vCon which will be signed, the chain of authentication is provided via the signature on the vCon itself.
 
-This document specifies the JSON format for vCons.  So it seemed the logical solution for signing vCons, is JOSE [JWS] JSON Serialization and likewise for encrypting vCons is JOSE [JWE] JSON Serialization.  The solutions are well documents, implementations are readily available and tested.
+This document specifies the JSON format for vCons.
+So it seemed the logical solution for signing vCons, is JOSE [JWS] JSON Serialization and likewise for
+encrypting vCons is JOSE [JWE] JSON Serialization.
+The solutions are well documents, implementations are readily available and tested.
 
 Methods of redaction exist for text, audio and video using post processing of the media.
 The method of redaction used is out of the scope of this document.
@@ -1304,12 +1328,12 @@ The vCon General JWS JSON Serialization MUST include x5c or x5u in the unprotect
 
 * payload: "String"
 
-    The value of the payload is the Base64Url Encoded string containing the unsigned form of the JSON vCon.
-    The general construction of the payload string value is described in section 7.2.1 of [JWK]
+The value of the payload is the Base64Url Encoded string containing the unsigned form of the JSON vCon.
+The general construction of the payload string value is described in section 7.2.1 of [JWK]
 
 * signatures "Signature\[\]"
 
-    The value of signatures is an array of [Signature Objects](#signature-object)
+The value of signatures is an array of [Signature Objects](#signature-object)
 
 ### Signature Object
 
@@ -1317,7 +1341,7 @@ The Signature Object MUST contain a header, protected and signature parameter as
 
 * header: "Header"
 
-    The value of header is defined in [Header Object](#header-object)
+The value of header is defined in [Header Object](#header-object)
 
 * protected: "String"
 * signature" "String"
@@ -1331,21 +1355,21 @@ The x5c or x5u requirement makes the management and use of vCons easier, allowin
 
 * alg: "String"
 
-    The string value of alg is defined in section 4.1.1 of [JWS].  For a signed vCon this value SHOULD be "RS256" to maximize interoperability.
+The string value of alg is defined in section 4.1.1 of [JWS].  For a signed vCon this value SHOULD be "RS256" to maximize interoperability.
 
 * x5c: "String\[\]" (MUST provide x5c or x5u)
 
-    The array of string values for x5c are defined in section 4.1.6 of [JWS].
+The array of string values for x5c are defined in section 4.1.6 of [JWS].
 
 * x5u: "String" (MUST provide x5c or x5u)
 
-    The string value of x5u MUST contain an [HTTPS] URL as defined in section 4.1.5 of [JWS].
+The string value of x5u MUST contain an [HTTPS] URL as defined in section 4.1.5 of [JWS].
 
 * uuid: "String" (SHOULD be provided)
 
-    The string value of the UUID for the vCon contained in the payload parameter.
-    This is added for convenience to not require verification of the signed vCon to get it's UUID.
-    When the vCon is verified, the value of this uuid parameter SHOULD be verified against the UUID in the signed vCon.
+The string value of the UUID for the vCon contained in the payload parameter.
+This is added for convenience to not require verification of the signed vCon to get it's UUID.
+When the vCon is verified, the value of this uuid parameter SHOULD be verified against the UUID in the signed vCon.
 
 TODO: How to deal with expired signatures?
 
@@ -1366,31 +1390,31 @@ A encrypted vCon uses [JWE] and takes the General JWE JSON Serialization Syntax 
 
 * iv: "String"
 
-    The string value of iv is the Initialization Vector as constructed as defined in section 7.2.1 of [JWE].
+The string value of iv is the Initialization Vector as constructed as defined in section 7.2.1 of [JWE].
 
 * ciphertext: "String"
 
-    The string value of ciphertext is constructed as defined in section 7.2.1 of [JWE] using the signed form of the vCon as the plaintext input for encryption.
+The string value of ciphertext is constructed as defined in section 7.2.1 of [JWE] using the signed form of the vCon as the plaintext input for encryption.
 
 * tag: "String"
 
-    The string value of tag is the the Authentication Tag as defined in section 7.2.1 of [JWE].
+The string value of tag is the the Authentication Tag as defined in section 7.2.1 of [JWE].
 
 ### Unprotected Object
 
 * cty: "String"
 
-    The string value of cty SHOULD be "application/vcon"
+The string value of cty SHOULD be "application/vcon"
 
 * enc: "String"
 
-    The string value of enc SHOULD be "A256CBC-HS512"
+The string value of enc SHOULD be "A256CBC-HS512"
 
 * uuid: "String" (SHOULD be provided)
 
-    The string value of the UUID for the vCon contained in the ciphertext parameter.
-    This is provided for identification of the encrypted vCon without the need of the key to decrypt the vCon.
-    The value of this uuid parameter SHOULD be verified when the vCon is decrypted.
+The string value of the UUID for the vCon contained in the ciphertext parameter.
+This is provided for identification of the encrypted vCon without the need of the key to decrypt the vCon.
+The value of this uuid parameter SHOULD be verified when the vCon is decrypted.
 
 ### Recipient Object
 
@@ -1398,13 +1422,13 @@ A encrypted vCon uses [JWE] and takes the General JWE JSON Serialization Syntax 
 
 * encrypted_key: "String"
 
-    The string value of encrypted_key is defined in section 7.2.1 of [JWE].
+The string value of encrypted_key is defined in section 7.2.1 of [JWE].
 
 ### Header Object
 
 * alg: "String"
 
-    The string value of alg SHOULD be "RSA-OAEP".
+The string value of alg SHOULD be "RSA-OAEP".
 
 
 TODO: describe how to differentiate unsigned, JWS and JWE forms of vCon
@@ -1418,44 +1442,43 @@ This section includes the information required for IANA to register the applicat
 
 The JSON format for vCon is manditory to implement.
 
-Type name: application
+* Type name: application
 
-Subtype name: vcon+json
-Subtype name: vcon+gzip
+* Subtype name: vcon+json
 
-Required parameters: N/A
+* Required parameters: N/A
 
-Optional parameters: N/A; unrecognized parameters should be ignored.
+* Optional parameters: N/A; unrecognized parameters should be ignored.
 
-Encoding considerations: [JSON]
+* Encoding considerations: [JSON]
 
-Additional information:
+* Additional information:
 
-Security considerations: See Security Considerations section of this document.
+* Security considerations: See Security Considerations section of this document.
 
-Interoperability considerations:
+* Interoperability considerations:
 
-Published specification: VCON, this document
+* Published specification: VCON, this document
 
-Applications that use this media type:
+* Applications that use this media type:
 
-Fragment identifier considerations:
+* Fragment identifier considerations:
 
-Additional Information:
+* Additional Information:
 
-   Deprecated alias names for this type: N/A
+   * Deprecated alias names for this type: N/A
 
-   Magic number(s): N/A
+   * Magic number(s): N/A
 
-   File extension(s): "vcon"
+   * File extension(s): "vcon"
 
-   Macintosh file type code(s): N/A
+   * Macintosh file type code(s): N/A
 
-   Windows Clipboard Name: VCON
+   * Windows Clipboard Name: VCON
 
-Author: See the Author's Addresses section of this document.
+* Author: See the Author's Addresses section of this document.
 
-Change controller: IETF
+* Change controller: IETF
 
 ## gzip Format vCon Mediatype
 
@@ -1466,43 +1489,43 @@ Applications SHOULD support the receiving of gzip format vCons, but do not need 
 when sending.
 
 
-Type name: application
+* Type name: application
 
-Subtype name: vcon+gzip
+* Subtype name: vcon+gzip
 
-Required parameters: N/A
+* Required parameters: N/A
 
-Optional parameters: N/A; unrecognized parameters should be ignored.
+* Optional parameters: N/A; unrecognized parameters should be ignored.
 
-Encoding considerations: [GZIP]
+* Encoding considerations: [GZIP]
 
-Additional information:
+* Additional information:
 
-Security considerations: See Security Considerations section of this document.
+* Security considerations: See Security Considerations section of this document.
 
-Interoperability considerations:
+* Interoperability considerations:
 
-Published specification: [VCON], this document
+* Published specification: [VCON], this document
 
-Applications that use this media type:
+* Applications that use this media type:
 
-Fragment identifier considerations:
+* Fragment identifier considerations:
 
-Additional Information:
+* Additional Information:
 
-   Deprecated alias names for this type: N/A
+   * Deprecated alias names for this type: N/A
 
-   Magic number(s): N/A
+   * Magic number(s): N/A
 
-   File extension(s): "vcon"
+   * File extension(s): "vcon"
 
-   Macintosh file type code(s): N/A
+   * Macintosh file type code(s): N/A
 
-   Windows Clipboard Name: VCON
+   * Windows Clipboard Name: VCON
 
-Author: See the Author's Addresses section of this document.
+* Author: See the Author's Addresses section of this document.
 
-Change controller: IETF
+* Change controller: IETF
 
 
 # Non-Upward Compatible Changes to the vCon Container
@@ -1621,7 +1644,8 @@ TODO: group vCon example
 # Acknowledgments
 {:numbered="false"}
 
-  * Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
-  * Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
-  * The examples in this document were generated using the command line interface (CLI) from the py-vcon [PY-VCON] python open source project.
+* Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
+* Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
+* The examples in this document were generated using the command line interface (CLI) from the py-vcon [PY-VCON] python open source project.
+* Thank you to Steve Lasker for formatting and spelling edits.
 

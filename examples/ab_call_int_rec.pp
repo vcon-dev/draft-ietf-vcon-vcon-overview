@@ -1,5 +1,5 @@
 {
-  "vcon": "0.0.1",
+  "vcon": "0.0.2",
   "parties": [
     {
       "tel": "+12345678901",
@@ -19,7 +19,7 @@
         0,
         1
       ],
-      "mimetype": "audio/x-wav",
+      "mediatype": "audio/x-wav",
       "filename": "ab_call.wav",
       "encoding": "base64url",
       "body": "UklGRioeAABXQVZFZm10IBQAAAAxAAEAQB8AAFkGAABBAAAAAg
@@ -207,5 +207,5 @@
   ],
   "analysis": [],
   "attachments": [],
-  "uuid": "018b4f72-d342-8696-b9a2-279e0d16bc46"
+  "uuid": "0195544a-bd15-8960-b9a2-279e0d16bc46"
 }

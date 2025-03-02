@@ -1,5 +1,5 @@
 {
-  "vcon": "0.0.1",
+  "vcon": "0.0.2",
   "parties": [
     {
       "tel": "+12345678901",
@@ -21,14 +21,13 @@
       ],
       "url": "https://github.com/ietf-wg-vcon/draft-ietf-vcon-vco
         n-container/raw/refs/heads/main/examples/ab_call.mp3",
-      "mimetype": "audio/x-mp3",
+      "mediatype": "audio/x-mp3",
       "filename": "ab_call.mp3",
-      "signature": "GLy6IPaIUM1GqzZqfIPZlWjaDsNgNvZM0iCONNThnH0a7
-        5fhUM6cYzLZ5GynSURREvZwmOh54-2lRRieyj82UQ",
-      "alg": "SHA-512"
+      "content_hash": "sha512-GLy6IPaIUM1GqzZqfIPZlWjaDsNgNvZM0iC
+        ONNThnH0a75fhUM6cYzLZ5GynSURREvZwmOh54-2lRRieyj82UQ"
     }
   ],
   "analysis": [],
   "attachments": [],
-  "uuid": "01928d46-fd43-8c6b-b9a2-279e0d16bc46"
+  "uuid": "0195544a-b9b1-8ee4-b9a2-279e0d16bc46"
 }

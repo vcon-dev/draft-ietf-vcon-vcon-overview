@@ -1,5 +1,5 @@
 {
-  "vcon": "0.0.1",
+  "vcon": "0.0.2",
   "parties": [
     {
       "name": "Alice"
@@ -17,16 +17,15 @@
         0,
         1
       ],
-      "mimetype": "audio/x-mp3",
+      "mediatype": "audio/x-mp3",
       "filename": "ab_call.mp3",
-      "signature": "GLy6IPaIUM1GqzZqfIPZlWjaDsNgNvZM0iCONNThnH0a7
-        5fhUM6cYzLZ5GynSURREvZwmOh54-2lRRieyj82UQ",
-      "alg": "SHA-512"
+      "content_hash": "sha512-GLy6IPaIUM1GqzZqfIPZlWjaDsNgNvZM0iC
+        ONNThnH0a75fhUM6cYzLZ5GynSURREvZwmOh54-2lRRieyj82UQ"
     }
   ],
   "analysis": [
     {
-      "type": "transcript",
+      "type": "transcript-redacted",
       "dialog": 0,
       "body": [
         {
@@ -38,24 +37,25 @@
         },
         {
           "parties": 0,
-          "start": "2022-06-21T17:53:32.240000+00:00",
-          "duration": 15.194999999999999,
-          "text": "I'd like to add Fu to my service.  Okay.  Can 
-            you give me your name and phone number so I can look 
-            up your account?  My name is Alice, and my number is 
-            {{PHONE_NUMBER}}.  Thank you."
+          "start": "2022-06-21T17:53:32.320000+00:00",
+          "duration": 15.1950003,
+          "text": "I'd like to add Sue to my service.  Okay.  Can
+             you give me your name and phone number so I can look
+             up your account?  My name is Alice, and my number is
+             {{INTEGER}} {{SSN}}.  Thank you."
         },
         {
           "parties": 0,
           "start": "2022-06-21T17:53:49.015000+00:00",
           "duration": 6.239874999999998,
-          "text": "Okay.  I've added 2 to your service.  Is there
-             anything else I can help you with?  No.  Thank you."
+          "text": "{{US_STATE}}.  I've added two to your service.
+              Is there anything else I can help you with?  No.  T
+            hank you."
         },
         {
           "parties": 0,
           "start": "2022-06-21T17:53:55.254875+00:00",
-          "duration": 2.9000020000000006,
+          "duration": 2.8200000000000003,
           "text": "Goodbye.  Goodbye.  Have a nice day."
         }
       ],
@@ -68,7 +68,7 @@
   "attachments": [],
   "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",
   "redacted": {
-    "uuid": "01928d46-fd43-8c6b-b9a2-279e0d16bc46",
+    "uuid": "0195544a-b9b1-8ee4-b9a2-279e0d16bc46",
     "type": "PII Redaction"
   }
 }

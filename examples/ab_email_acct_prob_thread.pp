@@ -1,5 +1,5 @@
 {
-  "vcon": "0.0.1",
+  "vcon": "0.0.2",
   "group": [],
   "parties": [
     {
@@ -20,8 +20,8 @@
         0,
         1
       ],
-      "mimetype": "multipart/mixed; \n\tboundary=\"----=_Part_388
-        314_1108189513.1663969465698\"",
+      "mediatype": "multipart/mixed; \n\tboundary=\"----=_Part_38
+        8314_1108189513.1663969465698\"",
       "encoding": "none",
       "body": "------=_Part_388314_1108189513.1663969465698\r\nCo
         ntent-Type: multipart/alternative;\r\n\tboundary=\"----=_
@@ -60,7 +60,9 @@
         e7NKgOwY6qPrMcUs+2PqchL14P+oyz+fHx77K5Sv8xyxAyZ0uBaxn/Spc
         U\r\n8NxcosAut1Y3NtjVX7UjZlmpgWTSFyvVQPKB16tSqW53bFnKtyyZ
         vYT3rSsAWADWAlOjseYFfwAA\r\nAABJRU5ErkJggg==\r\n\r\n-----
-        -=_Part_388314_1108189513.1663969465698--\r\n"
+        -=_Part_388314_1108189513.1663969465698--\r\n",
+      "message_id": "<1126698042.388315.1663969465698@mail.yahoo.
+        com>"
     },
     {
       "type": "text",
@@ -70,8 +72,8 @@
         1,
         0
       ],
-      "mimetype": "multipart/alternative; \n\tboundary=\"----=_Pa
-        rt_390234_811845464.1663969499935\"",
+      "mediatype": "multipart/alternative; \n\tboundary=\"----=_P
+        art_390234_811845464.1663969499935\"",
       "encoding": "none",
       "body": "------=_Part_390234_811845464.1663969499935\r\nCon
         tent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-
@@ -112,13 +114,15 @@
         amily:Helvetica, Arial, sans-serif;font-size:16px;\">Bob<
         /div></div><br></div></div></div></div></div>\r\n        
             </div>\r\n        </div></body></html>\r\n------=_Par
-        t_390234_811845464.1663969499935--\r\n"
+        t_390234_811845464.1663969499935--\r\n",
+      "message_id": "<2031327240.390235.1663969499936@mail.yahoo.
+        com>"
     }
   ],
   "analysis": [],
   "attachments": [],
-  "created_at": "2023-10-20T23:36:50.256+00:00",
+  "created_at": "2025-03-02T00:39:02.990+00:00",
   "redacted": {},
   "subject": "Account problem",
-  "uuid": "018b4f72-df56-82ac-b9a2-279e0d16bc46"
+  "uuid": "0195544a-cc55-8d85-b9a2-279e0d16bc46"
 }

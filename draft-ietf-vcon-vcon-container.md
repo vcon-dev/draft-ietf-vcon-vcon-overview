@@ -1556,6 +1556,9 @@ The example vcons in this document were generated using the [PY-VCON] command li
 This example vCon is for a simple 2 party PSTN call.
 It has a single Dialog Object which contains a single channel wav format recording with the two parties audio mixed into the single channel.
 
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_call_int_rec.vcon
+
 ~~~
 {::include examples/ab_call_int_rec.pp}
 ~~~
@@ -1568,6 +1571,9 @@ TODO: text vCon example
 
 The following is an unsigned form of an vCon for a 2 message email thread between 2 parties.
 The email messages are multipart MIME message bodies.
+
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_email_acct_prob_thread.vcon
 
 ~~~
 {::include examples/ab_email_acct_prob_thread.pp}

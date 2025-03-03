@@ -1425,8 +1425,35 @@ The string value of encrypted_key is defined in section 7.2.1 of [JWE].
 
 The string value of alg SHOULD be "RSA-OAEP".
 
+## Differentiation of unsigned, signed and encrypted forms of vCon
 
-TODO: describe how to differentiate unsigned, JWS and JWE forms of vCon
+vCons in the unsigned, signed and encrypted form are all valid JSON.
+It is necessary to distinguish which form a vCOn is in order to properly handle it.
+For example a signed vCon needs to be verified.
+The following is the recommended approaches to idenfying which form a particular vCon is in:
+
+* unsigned
+
+  The presence of one or more of the following parameters indicates that the vCOn is in the unsigned form:
+
+  * parties
+  * dialog
+  * analysis
+  * attachments
+
+* signed (JWS)
+
+  The presence of both of the following parameters indicates that the vCon is in the signed (JWS) form:
+
+  * payload
+  * signatures
+
+* encrypted (JWE)
+
+  The presence of both of the following parameters indicates that the vCon is in the encrypted (JWE) form:
+
+  * ciphertext
+  * recipients
 
 # IANA Considerations
 

@@ -363,7 +363,7 @@ The algorithm and hash value are contained in the content_hash parameter.
 The value of the content_hash can be a single token or an array of tokens if multiple hash
 algorithms are desired to be provided.
 The SHA-512 [SHA-512] algorithm MUST be supported.
-Other algorythms MAY be included.
+Other algorithms MAY be included.
 The algorithm used for signing the externally referenced file is defined in section 6.3 and 6.4 of [SHA-512].
 
   content_hash: "String" \| String\[\]
@@ -1204,7 +1204,7 @@ Alternatively, for externally referenced attachments:
 
 ### dialog
 
-Attachements are added as data related to the dialog.
+Attachments are added as data related to the dialog.
 The dialog parameter is used to identify the dialog that the attachment is part of.
 The dialog is identified by the index to the dialog Object in the dialog objects array.
 
@@ -1428,13 +1428,13 @@ The string value of alg SHOULD be "RSA-OAEP".
 ## Differentiation of unsigned, signed and encrypted forms of vCon
 
 vCons in the unsigned, signed and encrypted form are all valid JSON.
-It is necessary to distinguish which form a vCOn is in order to properly handle it.
+It is necessary to distinguish which form a vCon is in order to properly handle it.
 For example a signed vCon needs to be verified.
-The following is the recommended approaches to idenfying which form a particular vCon is in:
+The following is the recommended approaches to identifying which form a particular vCon is in:
 
 * unsigned
 
-  The presence of one or more of the following parameters indicates that the vCOn is in the unsigned form:
+  The presence of one or more of the following parameters indicates that the vCon is in the unsigned form:
 
   * parties
   * dialog
@@ -1462,7 +1462,7 @@ This section includes the information required for IANA to register the applicat
 
 ## JSON Format vCon Mediatype
 
-The JSON format for vCon is manditory to implement.
+The JSON format for vCon is mandatory to implement.
 
 * Type name: application
 
@@ -1504,7 +1504,7 @@ The JSON format for vCon is manditory to implement.
 
 ## gzip Format vCon Mediatype
 
-A gzip format vCon is a JSON format vCon that has been compressed using the gzip [GZIP] compression algorythm.
+A gzip format vCon is a JSON format vCon that has been compressed using the gzip [GZIP] compression algorithm.
 The gzip format is used to reduce the size of potentially very large vCons containing audio or video media in
 dialog objects.
 Applications SHOULD support the receiving of gzip format vCons, but do not need to use the gzip format
@@ -1571,7 +1571,7 @@ This appendix contains example vCons in the unsigned, signed and encrypted form.
 The JSON has been indented for readability.
 The vCons have been formatted such that long text lines have been wrapped with a left hand white space indent for readability purposes.
 Links for unformatted versions of the vCons are provided for each of the examples.
-The example vcons in this document were generated using the [PY-VCON] command line interface.
+The example vCons in this document were generated using the [PY-VCON] command line interface.
 
 
 ## Two Party Call vCon With Inline Recording

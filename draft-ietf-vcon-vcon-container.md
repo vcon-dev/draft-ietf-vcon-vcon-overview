@@ -336,11 +336,11 @@ The encoding parameter describes the type of encoding that was performed on the 
 
 This MUST be one of the following strings:
 
-    * "base64url": The payload of the file has been Base64Url encoded and provided as the string value of the body parameter.
+* "base64url": The payload of the file has been Base64Url encoded and provided as the string value of the body parameter.
 
-    * "json": The value of the body string is a JSON object.
+* "json": The value of the body string is a JSON object.
 
-    * "none": The payload of the file is a valid JSON string and can be included without modification as the string value to the body parameter.
+* "none": The payload of the file is a valid JSON string and can be included without modification as the string value to the body parameter.
 
 ## Externally Referenced Files
 
@@ -439,9 +439,9 @@ The UUID MUST be globally unique.
 The value of the string SHOULD be generated using the version 8 UUID defined in [UUID] which is generated
 identically to a version 7 UUID with the exception that:
 
-    * rand_b/custom_c is generated from the high 62 bits of the SHA-1 hash of the FQHN string
+  * rand_b/custom_c is generated from the high 62 bits of the SHA-1 hash of the FQHN string
 
-    * the variant and version fields are set as described for version 8 UUID
+  * the variant and version fields are set as described for version 8 UUID
 
 The DNS name string used in generating the uuid value SHOULD be the same FQHN, or a subdomain to allow
 for more distributed generation of UUIDs, as would used in the signing certificate as they are the same
@@ -859,18 +859,18 @@ The originator value is the index into the parties Objects Array, to the party t
 The media type for the piece of dialog included or referenced is provided in the mediatype parameter.
 The mediatype parameter MUST be provided for inline dialog files and MUST be provided if the Content-Type header in the [HTTPS] response for the externally referenced URL is not provided.
 
-* mediatype: "Mediatype" (optional for externally referenced files)
+* mediatype: "Mediatype" (optional for externally referenced files, if absent, this is provided in the [HTTPS] Content-Type header)
 
 The media types SHOULD be one of the following strings:
 
-    * "text/plain"
-    * "audio/x-wav"
-    * "audio/x-mp3"
-    * "audio/x-mp4"
-    * "audio/ogg"
-    * "video/x-mp4"
-    * "video/ogg"
-    * "multipart/mixed"
+  * "text/plain"
+  * "audio/x-wav"
+  * "audio/x-mp3"
+  * "audio/x-mp4"
+  * "audio/ogg"
+  * "video/x-mp4"
+  * "video/ogg"
+  * "multipart/mixed"
 
     Note: multi-part will also likely include the boundary parameter
 
@@ -910,12 +910,12 @@ This latter definition of call disposition is not dialog, but analysis of the co
 
 The value of the disposition parameter MUST be one of the following string:
 
-    * "no-answer" - a call or connection was attempted, but no one answered or accepted the connection
-    * "congestion" - a call or connection was attempted, but was unable to be completed due to system load
-    * "failed" - a call or connection was attempted, but failed
-    * "busy" - a call or connection was attempted, but the party was busy with another conversation
-    * "hung-up" - a call or connection was made, but the party hung-up before any conversation occurred
-    * "voicemail-no-message" - a call or connection was made, the voicemail system answered, but no message was left
+  * "no-answer" - a call or connection was attempted, but no one answered or accepted the connection
+  * "congestion" - a call or connection was attempted, but was unable to be completed due to system load
+  * "failed" - a call or connection was attempted, but failed
+  * "busy" - a call or connection was attempted, but the party was busy with another conversation
+  * "hung-up" - a call or connection was made, but the party hung-up before any conversation occurred
+  * "voicemail-no-message" - a call or connection was made, the voicemail system answered, but no message was left
 
     Note: if a message was left with the voicemail system this is no longer an "incomplete" type dialog, it is a "recording" type and the conversation SHOULD be included in the Dialog Content.
 
@@ -938,17 +938,17 @@ The index of the party for this event.
 
 The string token for the event which MUST be one of the following:
 
-    * "join" - when the party joins the dialog
+  * "join" - when the party joins the dialog
 
-    * "drop" - when the party drops out of the dialog
+  * "drop" - when the party drops out of the dialog
 
-    * "hold" - when the party is put on hold
+  * "hold" - when the party is put on hold
 
-    * "unhold" - when the part is taken off hold
+  * "unhold" - when the part is taken off hold
 
-    * "mute" - when the party is muted
+  * "mute" - when the party is muted
 
-    * "unmute" - when the part is taken off mute
+  * "unmute" - when the part is taken off mute
 
 * time: "Date"
 
@@ -1071,13 +1071,13 @@ The type parameter is used to label the semantic type of analysis data.
 
 * type: "String"
 
-    The string value SHOULD be one of the following:
+The string value SHOULD be one of the following:
 
-    * "summary"
-    * "transcript"
-    * "translation"
-    * "sentiment"
-    * "tts"
+  * "summary"
+  * "transcript"
+  * "translation"
+  * "sentiment"
+  * "tts"
 
 ### dialog
 
@@ -1092,7 +1092,7 @@ The value of the dialog parameter is the index to the dialog or array of indices
 
 The media type for the included or referenced analysis file is provided in the mediatype parameter.
 
-* mediatype: "Mediatype" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
+* mediatype: "Mediatype" (optional for externally referenced files, if absent, this is provided in the [HTTPS] Content-Type header)
 
 The mediatype string contains the media type or [MIME] type of the analysis file.
 
@@ -1178,7 +1178,7 @@ The value of the party parameter is the index into the Parties Object array to t
 
 The media type for the included or referenced attachment file is provided in the mediatype parameter.
 
-* mediatype: "Mediatype" (optional for externally referenced files, if it this is provided in the [HTTPS] Content-Type header)
+* mediatype: "Mediatype" (optional for externally referenced files, if absent, this is provided in the [HTTPS] Content-Type header)
 
 The mediatype string contains the media type or [MIME] type of the attached file.
 
@@ -1466,15 +1466,15 @@ The JSON format for vCon is manditory to implement.
 
 * Additional Information:
 
-   * Deprecated alias names for this type: N/A
+  * Deprecated alias names for this type: N/A
 
-   * Magic number(s): N/A
+  * Magic number(s): N/A
 
-   * File extension(s): "vcon"
+  * File extension(s): "vcon"
 
-   * Macintosh file type code(s): N/A
+  * Macintosh file type code(s): N/A
 
-   * Windows Clipboard Name: VCON
+  * Windows Clipboard Name: VCON
 
 * Author: See the Author's Addresses section of this document.
 
@@ -1513,15 +1513,15 @@ when sending.
 
 * Additional Information:
 
-   * Deprecated alias names for this type: N/A
+  * Deprecated alias names for this type: N/A
 
-   * Magic number(s): N/A
+  * Magic number(s): N/A
 
-   * File extension(s): "vcon"
+  * File extension(s): "vcon"
 
-   * Macintosh file type code(s): N/A
+  * Macintosh file type code(s): N/A
 
-   * Windows Clipboard Name: VCON
+  * Windows Clipboard Name: VCON
 
 * Author: See the Author's Addresses section of this document.
 

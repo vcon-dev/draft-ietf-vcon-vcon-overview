@@ -38,11 +38,6 @@ author:
     organization: SIPez LLC
     email: dan.ietf@sipez.com
 
- -
-    fullname: Thomas McCarthy-Howe
-    organization: Strolid
-    email: thomas.howe@strolid.com
-
 normative:
 
   RFC3339:
@@ -135,8 +130,8 @@ informative:
       date: 1998
 
   PY-VCON:
-    target: https://github.com/py-vcon
-    title: "Python open source CLI, library and workflow server"
+    target: https://github.com/py-vcon/py-vcon
+    title: "Python open source vCon command line interface, library and workflow server"
 
 --- abstract
 
@@ -1547,7 +1542,8 @@ TODO: insert draft-rosenberg-vcon-cc-usecases here
 
 This appendix contains example vCons in the unsigned, signed and encrypted form.
 The JSON has been indented for readability.
-Long text lines have been wrapped with a left hand white space indent for readability purposes.
+The vCons have been formatted such that long text lines have been wrapped with a left hand white space indent for readability purposes.
+Links for unformatted versions of the vCons are provided for each of the examples.
 The example vcons in this document were generated using the [PY-VCON] command line interface.
 
 
@@ -1584,6 +1580,9 @@ https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/re
 The following is an unsigned form of an vCon for a 3 message email thread between 2 parties.
 The email messages are plain text message bodies.
 
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_email_prob_followup_text_thread.vcon
+
 ~~~
 {::include examples/ab_email_prob_followup_text_thread.pp}
 ~~~
@@ -1593,6 +1592,9 @@ The email messages are plain text message bodies.
 This example vCon is for a simple 2 party PSTN call.
 It has a single Dialog Object which reference a single channel wav format recording with the two parties audio mixed into the single channel.
 
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_call_ext_rec.vcon
+
 ~~~
 {::include examples/ab_call_ext_rec.pp}
 ~~~
@@ -1600,6 +1602,9 @@ It has a single Dialog Object which reference a single channel wav format record
 ## Two Party Call vCon with Analysis
 
 TODO: fix diarization in transcript
+
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_call_ext_rec_analysis.vcon
 
 ~~~
 {::include examples/ab_call_ext_rec_analysis.pp}
@@ -1614,6 +1619,9 @@ The private key used to sign this can be found at:
 
 The certificate chain is included in the x5c parameter of the header Object.
 
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_call_ext_rec_signed.vcon
+
 ~~~
 {::include examples/ab_call_ext_rec_signed.pp}
 ~~~
@@ -1625,6 +1633,9 @@ The private key to decrypt it can be found at:
 
     https://raw.githubusercontent.com/vcon-dev/vcon/main/certs/fake_grp.key
 
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_call_ext_rec_encrypted.vcon
+
 ~~~
 {::include examples/ab_call_ext_rec_encrypted.pp}
 ~~~
@@ -1634,6 +1645,9 @@ The private key to decrypt it can be found at:
 This is an example redaction of the vCon in the example [Two Party Call vCon With Externally Referenced Recording](#two-party-call-vcon-with-externally-referenced-recording).
 Most notable is the [Redacted object](#redacted) which references the lesser redacted version of this vCon.
 In addition the **url** parameter has been redacted from the [Dialog Object](#dialog-object), but the rest of the [Dialog Object](#dialog-object) was left in the redaction.
+
+The unformatted version of the following example can be downloaded from:
+https://raw.githubusercontent.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/refs/heads/main/examples/ab_call_ext_rec_redacted.vcon
 
 ~~~
 {::include examples/ab_call_ext_rec_redacted.pp}
@@ -1650,6 +1664,7 @@ TODO: group vCon example
 # Acknowledgments
 {:numbered="false"}
 
+* Thank you to Thomas McCarthy-Howe for inventing the concept of a vCon and the many discussions that we had while this concept was developed into reality.
 * Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
 * Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
 * The examples in this document were generated using the command line interface (CLI) from the py-vcon [PY-VCON] python open source project.

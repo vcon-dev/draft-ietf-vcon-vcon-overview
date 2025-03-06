@@ -38,6 +38,11 @@ author:
     organization: SIPez LLC
     email: dan.ietf@sipez.com
 
+ -
+    fullname: Thomas McCarthy-Howe
+    organization: Strolid
+    email: thomas.howe@strolid.com
+
 normative:
 
   RFC3339:

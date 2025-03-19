@@ -10,8 +10,8 @@ number:
 date:
 consensus: true
 v: 3
-# area: ""
-# workgroup: "Virtualized Conversations"
+area: ""
+workgroup: "Virtualized Conversations"
 keyword:
  - conversation
  - vcon
@@ -25,10 +25,10 @@ keyword:
  - video conference
  - conference recording
 venue:
-#  group: "Virtualized Conversations"
-#  type: ""
-#  mail: "vcon@ietf.org"
-#  arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
+  group: "Virtualized Conversations"
+  type: ""
+  mail: "vcon@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "ietf-wg-vcon/draft-ietf-vcon-vcon-container"
   latest: "https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-container/draft-ietf-vcon-vcon-container.html"
 

@@ -10,7 +10,7 @@ number:
 date:
 consensus: true
 v: 3
-area: "ART"
+area: "Applications and Real-Time"
 workgroup: "Virtualized Conversations"
 keyword:
  - conversation
@@ -26,7 +26,7 @@ keyword:
  - conference recording
 venue:
   group: "Virtualized Conversations"
-  type: ""
+  type: "Working Group"
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "ietf-wg-vcon/draft-ietf-vcon-vcon-overview"

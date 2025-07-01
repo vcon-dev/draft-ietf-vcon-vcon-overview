@@ -1,7 +1,7 @@
 ---
 title: "The vCon - Conversation Data Container - Overview"
 abbrev: "vCon Overveiw"
-category: fyi
+category: info
 
 docname: draft-ietf-vcon-vcon-overview-latest
 

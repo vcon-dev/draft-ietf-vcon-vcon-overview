@@ -2,16 +2,16 @@
 
 This is the working area for the IETF [VCON Working Group](https://datatracker.ietf.org/group/vcon/documents/) Internet-Draft, "The JSON format for vCon - Conversation Data Container".
 
-* [Editor's Copy](https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-container/#go.draft-ietf-vcon-vcon-container.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-vcon-vcon-container)
-* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-vcon-vcon-container)
-* [Compare Editor's Copy to Working Group Draft](https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-container/#go.draft-ietf-vcon-vcon-container.diff)
+* [Editor's Copy](https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-overview/#go.draft-ietf-vcon-vcon-overview.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-vcon-vcon-overview)
+* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-vcon-vcon-overview)
+* [Compare Editor's Copy to Working Group Draft](https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-overview/#go.draft-ietf-vcon-vcon-overview.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/ietf-wg-vcon/draft-ietf-vcon-vcon-container/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/ietf-wg-vcon/draft-ietf-vcon-vcon-overview/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.

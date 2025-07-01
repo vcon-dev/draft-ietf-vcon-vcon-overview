@@ -50,7 +50,7 @@ normative:
 
 informative:
 
-TODO:  the following were normative in the container I-D.  Most can probably be deleted.
+# TODO:  the following were normative in the container I-D.  Most can probably be deleted.
 
   GEOPRIV: RFC4119
 
@@ -86,7 +86,7 @@ TODO:  the following were normative in the container I-D.  Most can probably be 
 
   UUID: I-D.draft-peabody-dispatch-new-uuid-format
 
-TODO:  end formerly normative references.  Many of the following informationaly references can probably also be deleted from this overview I-D
+#TODO:  end formerly normative references.  Many of the following informationaly references can probably also be deleted from this overview I-D
 
   CBOR: RFC8949
 

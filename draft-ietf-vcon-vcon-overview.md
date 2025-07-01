@@ -190,10 +190,12 @@ In the metadata, vCons contain the unique ID of the parent vCon, such that they 
 
 ## Use Cases and Requirements
 
-The use cases for vCon in a contact center environment are explored in the appendix: [cc-usecases](#contact-center-use-cases).
-These use cases and others have led to the metadata contents of this definition of the vCon container.
+### Contact Center Use Case
 
-TODO: would love to see use case Internet-Drafts for ECRIT and Messaging.
+### Messaging Use Case
+
+### ECRIT Use Case
+
 
 May of the initial set of use cases for vCons are expected to be in the interchange between front end and back end application and lower layers of the network stack, critical for enablement of analysis of conversations.
 It is expected that JavaScript handling of vCons in the front end and RESTful interfaces and back end platforms will be used for operations and manipulation of vCons.

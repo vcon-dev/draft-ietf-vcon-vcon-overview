@@ -1,6 +1,8 @@
-# The JSON format for vCon - Conversation Data Container
+<!-- regenerate: on (set to off if you edit this file) -->
 
-This is the working area for the IETF [VCON Working Group](https://datatracker.ietf.org/group/vcon/documents/) Internet-Draft, "The JSON format for vCon - Conversation Data Container".
+# The vCon - Conversation Data Container - Overview
+
+This is the working area for the IETF [VCON Working Group](https://datatracker.ietf.org/group/vcon/documents/) Internet-Draft, "The vCon - Conversation Data Container - Overview".
 
 * [Editor's Copy](https://ietf-wg-vcon.github.io/draft-ietf-vcon-vcon-overview/#go.draft-ietf-vcon-vcon-overview.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-vcon-vcon-overview)

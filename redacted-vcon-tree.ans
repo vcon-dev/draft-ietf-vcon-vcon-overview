@@ -1,30 +1,32 @@
                 --------------
-Signed          | JWS        |
-redacted vCon:  |            | payload parameter
-                |    payload-|-- contains unsigned
-                -------------- / redacted vCon
+Signed          | JWS   uuid-|-- redacted vCon uuid in header
+redacted vCon:  |            |
+                |    payload-|-- unsigned redacted vCon in
+                -------------- / payload parameter
                               /
             -------------    /
 vCon which  |vCon       |<---
-has been    |           | redacted parameter contains
-redacted:   |  redacted-|-- or refers to JWE
-            ------------- / encrypted unredacted vCon
-                         /
+has been    |           |
+redacted:   |  redacted-|-- Redacted Object
+            ------------- / refers to JWE
+                         / encrypted unredacted vCon
                         /
                        /
                       /
                      /
-                    / ---------------
-                    ->| JWE         | cyphertext
-Encrypted signed      |             | parameter
-unredacted vCon:      |  cyphertext-|--- contains
-                      ---------------  / JWS signed
-                                      / unredacted
-                  -------------      / vCon
-Signed            |JWS        |<-----
-unredacted vcon:  |           | payload contains 
-                  |   payload-|-- unsigned
-                  -------------  \ unredacted vCon
+                    / ---------------   signed unredacted vCon
+                    ->| JWE    uuid-|-- uuid in unprotected
+Encrypted signed      |             |
+unredacted vCon:      |  cyphertext-|--- JWS signed
+                      ---------------  / unredacted vCon
+                                      / in cyphertext
+                 /-------------------/ parameter
+                /
+               /  -------------
+Signed         -> |JWS   uuid-|-- unredacted vCon uuid in header
+unredacted vcon:  |           |
+                  |   payload-|-- unsigned unredacted vCon
+                  -------------  \ in payload
                                   \   ----------
                                    -->| vCon   |
 Unsigned unredacted vCon:             |        |

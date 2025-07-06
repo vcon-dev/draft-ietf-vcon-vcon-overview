@@ -235,21 +235,13 @@ The implementation of vCons in emergency services environments provides operatio
 An outline of the vCon requirements derived from the explored use case follows:
 
 * Standardize container for conversational data exchange
-
 * Consolidation of data and information for a conversation
-
 * Multiple modes of communication, changing over time
-
 * Snapshots of conversation during or once completed along with analysis
-
 * Ease of integration of services and analysis
-
 * Better organize conversational data so that it can be handled in a consistent, privacy safer means
-
 * Immutable
-
 * Hiding of PII or entire conversation
-
 * Amendable with additional information and data elements
 
 Define a standard for exchange of conversational data in a sea of modes, platforms and service offerings for conversations.
@@ -257,37 +249,23 @@ Define a standard for exchange of conversational data in a sea of modes, platfor
 Example conversational modes and protocols:
 
 * SMS
-
 * MMS
-
 * JABBER
-
 * SIMPLE
-
 * Proprietary web chat
-
 * SMTP
-
 * PSTN
-
 * SIP
-
 * WEBRTC
-
 * Proprietary video conferencing
 
 The following  are considered not in scope or non-requirements:
 
 * Real-time streaming or updating of conversational data
-
 * Transport mechanisms
-
 * Storage or databases specifications
-
 * Methods of redaction of text, audio or video media
-
 * Validation of redactions or appended data beyond the signature of the domain making the changes to the conversational data (e.g. Merkle tree like redactions)
-
 * Standardization of analysis data formats or file media types
 
 # Conventions and Definitions
@@ -297,7 +275,6 @@ The following  are considered not in scope or non-requirements:
 ## Terminology
 
 * analysis - analysis, transformations, summary, sentiment, or translation typically of the dialog data
-
 * conversation - an exchange of communication using text, audio or video medium between at least one human and one or more bots or humans
 
 * consent - explicit permission granted by a party for the collection, processing, or sharing of their conversation data
@@ -307,19 +284,12 @@ The following  are considered not in scope or non-requirements:
 * de-identification - removal of all information that could identify a party in a conversation. This includes PII as well as audio and video recordings. Voice recordings might be re-vocalized with a different speaker.
 
 * dialog - the captured conversation in its original form (e.g. text, audio or video)
-
 * encrypted form - encrypted JWE document with the JWS signed vCon form contained in the ciphertext
-
 * file - a data block either included or referenced in a vCon
-
 * object - JSON object containing key and value pairs
-
 * parameter - JSON key and value pair
-
 * party - an observer or participant to the conversation, either passive or active
-
 * payload - the contents or bytes that make up a file
-
 * PII - Personal Identifiable Information
 
 * PII masked - may include voice recordings, but PII is removed from transcripts and recordings (audio and video)
@@ -329,7 +299,6 @@ The following  are considered not in scope or non-requirements:
 * signed form - JWS signed document with the unsigned vCon form contained in the payload
 
 * vCon - container for conversational information
-
 * vCon instance - a vCon populated with data for a specific conversation
 
 * vCon instance version - a single version of an instance of a conversation, which may be modified to redact or append additional information forming a subsequent vCon instance version
@@ -443,9 +412,8 @@ The JSON form of a vCon is contained in a JSON object in one of three forms:
 
 # IANA Considerations
 
-
-# Non-Upward Compatible Changes to the vCon Container
-
+This document has no IANA considerations.
+They will be addressed in other vCon documents.
 
 
 --- back

@@ -172,7 +172,7 @@ The use of vCons can ease service integration by using a common container and fo
 
 ## What's in a vCon?
 
-A vCon contains four major categories of data (parties , dialog , analysis and attachments), with descriptive identifiers and metadata (uuid, created_on, subject, references to related or earlier versions of the vCon), inside a JSON container that can be signed and encrypted.
+A vCon contains four major categories of data (parties , dialog , analysis and attachments), with descriptive identifiers and metadata (unique id, timestamps, subject and summaries, references to related or earlier versions of the vCon), inside a JSON container that can be signed and encrypted.
 The parties portion allows for an expanded set of data from a typical call detail record ([CDR]), with identifications of the participants or parties to the conversation.
 The dialog portion contains a set of multimedia and media type elements, each representing the actual, physical conversation in original media form: text, audio, video and imagery.
 The analysis portion contains data derived from the party and dialog portions, intended to carry items like transcripts, translations, summaries, text to speech, sentiment analysis and other semantic tagging.

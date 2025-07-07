@@ -400,6 +400,42 @@ Groups of vCons can be expressed, to indicate general interlationships.
 Redactions are at the heart of data minimization, a primary technique of personal data protection.
 vCons enable the sharing of limited data through redaction, while retaining the ability of systems to guarantee the accuracy of the redaction itself.
 
+## Appended Use Cases
+
+A vCon will often evolve over time.
+It is not always created with all of its metadata, conversation media, attachments, and analysis at once.
+There are several reasons for this:
+
+- Different components of the vCon may be produced by different application platforms or entities.
+- The vCon may pass across multiple trust boundaries during its lifecycle, with entities on either side contributing content.
+- Each of these entities may wish to sign the vCon to attest to its integrity or to the authenticity of their contributions.
+
+Once a vCon has been signed, it becomes immutable.
+Any modification will invalidate the signature.
+To address this, a new vCon can be created containing the updated or additional content.
+This new vCon can reference the previously signed version, preserving the integrity of the earlier state while allowing the overall conversation record to evolve.
+
+This approach can also be applied even when a vCon is unsigned, for scenarios where maintaining a historical snapshot is important.
+For example, an application may wish to preserve a point-in-time representation of the vCon at a significant stage in its lifecycle.
+
+There are two competing requirements in this use case:
+
+- **Ease of use and access to the latest version of the vCon**
+- **Data size minimization and normalization**
+
+For ease of use, it is often desirable to work with a fully composed vCon that contains all prior and newly added or updated content.
+This has sometimes been referred to in vCon discussions as a "deep copy." Such a vCon requires no special handling, redirection, or reconstruction.
+It contains all relevant information in a single, self-contained structure.
+
+However, this approach introduces duplication and increases document size.
+To address concerns around efficiency and data normalization, a more compact representation using *patches* or *incremental updates* may be preferred.
+This method allows changes to be recorded relative to earlier versions, reducing redundancy.
+Additionally, it enables labeling or referencing specific stages in the vCon's lifecycle, offering a flexible way to manage changes.
+In vCon discussions, this method has been referred to as representing *incremental changes*.
+
+### signed vCon modified for correction, or addition of conversational informaiton or analysis
+
+### Capture of vCon in various life cycle stages signed or unsigned
 
 # Security Considerations
 

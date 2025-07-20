@@ -34,14 +34,10 @@ venue:
 
 author:
  -
-    fullname: Daniel G Petrie
-    organization: SIPez LLC
-    email: dan.ietf@sipez.com
-
- -
     fullname: Thomas McCarthy-Howe
     organization: Strolid
     email: thomas.howe@strolid.com
+
 
 normative:
 
@@ -458,9 +454,5 @@ They will be addressed in other vCon documents.
 # Acknowledgments
 {:numbered="false"}
 
-- Thank you to Thomas McCarthy-Howe for inventing the concept of a vCon and the many discussions that we had while this concept was developed into reality.
 - Thank you to Daniel Petrie for making a concept real, for all the right reasons, and for the many projects we've shared over our careers.
-- Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
-- Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
-- Thank you to Steve Lasker for formatting and spelling edits.
-
+- Thank you to Mitch Leiberman and Alan Quayle for their support, encouragements and insights during the early days of vCons.

@@ -2,15 +2,15 @@
 
 
 
-Virtualized Conversations                                    D. G Petrie
+vcon                                                         D. G Petrie
 Internet-Draft                                                 SIPez LLC
 Intended status: Informational                          T. McCarthy-Howe
-Expires: 8 January 2026                                          Strolid
-                                                             7 July 2025
+Expires: 21 January 2026                                         Strolid
+                                                            20 July 2025
 
 
            The vCon - Conversation Data Container - Overview
-                  draft-ietf-vcon-vcon-overview-latest
+                    draft-ietf-vcon-overview-latest
 
 Abstract
 
@@ -33,10 +33,10 @@ About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at https://ietf-wg-
-   vcon.github.io/draft-ietf-vcon-vcon-overview/draft-ietf-vcon-vcon-
+   The latest revision of this draft can be found at https://vcon-
+   dev.github.io/draft-ietf-vcon-vcon-overview/draft-ietf-vcon-vcon-
    overview.html.  Status information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-ietf-vcon-vcon-overview/.
+   https://datatracker.ietf.org/doc/draft-ietf-vcon-overview/.
 
    Discussion of this document takes place on the Virtualized
    Conversations Working Group mailing list (mailto:vcon@ietf.org),
@@ -44,7 +44,7 @@ About This Document
    Subscribe at https://www.ietf.org/mailman/listinfo/vcon/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/ietf-wg-vcon/draft-ietf-vcon-vcon-overview.
+   https://github.com/vcon-dev/draft-ietf-vcon-vcon-overview.
 
 Status of This Memo
 
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2026.
+   This Internet-Draft will expire on 21 January 2026.
 
 Copyright Notice
 
@@ -100,7 +100,7 @@ Table of Contents
      3.6.  Relationships between vCons
      3.7.  Appended Use Cases
        3.7.1.  signed vCon modified for correction, or addition of
-               conversational informaiton or analysis
+               conversational information or analysis
        3.7.2.  Capture of vCon in various life cycle stages signed or
                unsigned
    4.  Security Considerations
@@ -495,7 +495,7 @@ Table of Contents
    vCons define conversations, and are created by systems during and
    after the conversation itself. vCons provide ways to express and
    define the contents, participants and context of a particular
-   conversation.  Unlike some measureable physical phenomena, like mass
+   conversation.  Unlike some measurable physical phenomena, like mass
    and volume, conversations are heterogeneous, relatively complex and
    contain relevant information outside of the physical phenomena, such
    as consent and provenance.  Some communication modes, like SMS
@@ -598,21 +598,21 @@ Table of Contents
 
    The purpose of the dialog section is two-fold:
 
-   *  *Content Representation*: It accurately captures the details of
-      any conversation exchange—be it spoken words, text messages, or
-      other communication types.  This ensures that the exact sequence
-      and content are archived in a standardized format.  The content
-      appropriate to dialogs are any of the times and places where
-      personal data is communicated and recorded: audio, video, email,
-      fax, rich emails as examples.
+   *Content Representation*: It accurately captures the details of any
+   conversation exchange—be it spoken words, text messages, or other
+   communication types.  This ensures that the exact sequence and
+   content are archived in a standardized format.  The content
+   appropriate to dialogs are any of the times and places where personal
+   data is communicated and recorded: audio, video, email, fax, rich
+   emails as examples.
 
-   *  *Interoperability and Analysis*: The dialog's structured format
-      supports further analysis (such as transcription or sentiment
-      analysis) and ensures that conversations can be reliably exchanged
-      between systems.  By storing metadata like timestamps and
-      participant references, the dialog section also enables the
-      reconstruction of events (such as when participants join or leave
-      a conversation) and aids in analytic processing.
+   *Interoperability and Analysis*: The dialog's structured format
+   supports further analysis (such as transcription or sentiment
+   analysis) and ensures that conversations can be reliably exchanged
+   between systems.  By storing metadata like timestamps and participant
+   references, the dialog section also enables the reconstruction of
+   events (such as when participants join or leave a conversation) and
+   aids in analytic processing.
 
    In summary, the dialog section is critical for recording, storing,
    and later analyzing the actual conversation data within a vCon
@@ -742,7 +742,7 @@ Table of Contents
    _incremental changes_.
 
 3.7.1.  signed vCon modified for correction, or addition of
-        conversational informaiton or analysis
+        conversational information or analysis
 
 3.7.2.  Capture of vCon in various life cycle stages signed or unsigned
 

@@ -98,10 +98,6 @@ Table of Contents
      3.5.  Analysis
      3.6.  Relationships between vCons
      3.7.  Appended Use Cases
-       3.7.1.  signed vCon modified for correction, or addition of
-               conversational information or analysis
-       3.7.2.  Capture of vCon in various life cycle stages signed or
-               unsigned
    4.  Security Considerations
    5.  IANA Considerations
    6.  References
@@ -739,11 +735,6 @@ Table of Contents
    lifecycle, offering a flexible way to manage changes.  In vCon
    discussions, this method has been referred to as representing
    _incremental changes_.
-
-3.7.1.  signed vCon modified for correction, or addition of
-        conversational information or analysis
-
-3.7.2.  Capture of vCon in various life cycle stages signed or unsigned
 
 4.  Security Considerations
 

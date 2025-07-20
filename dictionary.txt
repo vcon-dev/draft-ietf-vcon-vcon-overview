@@ -28,6 +28,7 @@ diarization
 DOB
 docname
 ECRIT
+EHR
 enablement
 enc
 encyrpted

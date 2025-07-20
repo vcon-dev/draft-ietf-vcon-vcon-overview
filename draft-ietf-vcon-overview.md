@@ -3,15 +3,15 @@ title: "The vCon - Conversation Data Container - Overview"
 abbrev: "vCon Overview"
 category: info
 
-docname: draft-ietf-vcon-vcon-overview-latest
+docname: draft-ietf-vcon-overview-latest
 
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:
 consensus: true
 v: 3
-area: "Applications and Real-Time"
-workgroup: "Virtualized Conversations"
+area: art
+workgroup: vcon
 keyword:
  - conversation
  - vcon
@@ -163,11 +163,11 @@ Often the system providing the communications service, the consumer and/or owner
 vCons provide a standard means of exchanging communications data between these systems and services.
 The use of vCons can ease service integration by using a common container and format for enterprise communications, becoming the standardized input to communication analysis tools and machine learning and categorization.
 
-* For organizations in dialog with customers or citizens, a vCon can be the container of where  conversations are stored and personal data protections are expressed, managed and governed.
+- For organizations in dialog with customers or citizens, a vCon can be the container of where  conversations are stored and personal data protections are expressed, managed and governed.
 
-* For conversations of record, the vCon can be a legal instrument, providing a testable expression of conversational fact, while enabling conversational trust and transparency.
+- For conversations of record, the vCon can be a legal instrument, providing a testable expression of conversational fact, while enabling conversational trust and transparency.
 
-* For machine learning efforts, vCons can track what information was used in the training of models. As the result of a customer right to know request, an accurate answer to how their data was processed can be derived and communicated, and as the result of customer correction or deletion request, the responsible organization can properly and ethically respond as required by governing law.
+- For machine learning efforts, vCons can track what information was used in the training of models. As the result of a customer right to know request, an accurate answer to how their data was processed can be derived and communicated, and as the result of customer correction or deletion request, the responsible organization can properly and ethically respond as required by governing law.
 
 
 ## What's in a vCon?
@@ -234,39 +234,39 @@ The implementation of vCons in emergency services environments provides operatio
 
 An outline of the vCon requirements derived from the explored use case follows:
 
-* Standardize container for conversational data exchange
-* Consolidation of data and information for a conversation
-* Multiple modes of communication, changing over time
-* Snapshots of conversation during or once completed along with analysis
-* Ease of integration of services and analysis
-* Better organize conversational data so that it can be handled in a consistent, privacy safer means
-* Immutable
-* Hiding of PII or entire conversation
-* Amendable with additional information and data elements
+- Standardize container for conversational data exchange
+- Consolidation of data and information for a conversation
+- Multiple modes of communication, changing over time
+- Snapshots of conversation during or once completed along with analysis
+- Ease of integration of services and analysis
+- Better organize conversational data so that it can be handled in a consistent, privacy safer means
+- Immutable
+- Hiding of PII or entire conversation
+- Amendable with additional information and data elements
 
 Define a standard for exchange of conversational data in a sea of modes, platforms and service offerings for conversations.
 
 Example conversational modes and protocols:
 
-* SMS
-* MMS
-* JABBER
-* SIMPLE
-* Proprietary web chat
-* SMTP
-* PSTN
-* SIP
-* WEBRTC
-* Proprietary video conferencing
+- SMS
+- MMS
+- JABBER
+- SIMPLE
+- Proprietary web chat
+- SMTP
+- PSTN
+- SIP
+- WEBRTC
+- Proprietary video conferencing
 
 The following  are considered not in scope or non-requirements:
 
-* Real-time streaming or updating of conversational data
-* Transport mechanisms
-* Storage or databases specifications
-* Methods of redaction of text, audio or video media
-* Validation of redactions or appended data beyond the signature of the domain making the changes to the conversational data (e.g. Merkle tree like redactions)
-* Standardization of analysis data formats or file media types
+- Real-time streaming or updating of conversational data
+- Transport mechanisms
+- Storage or databases specifications
+- Methods of redaction of text, audio or video media
+- Validation of redactions or appended data beyond the signature of the domain making the changes to the conversational data (e.g. Merkle tree like redactions)
+- Standardization of analysis data formats or file media types
 
 # Conventions and Definitions
 
@@ -274,36 +274,36 @@ The following  are considered not in scope or non-requirements:
 
 ## Terminology
 
-* analysis - analysis, transformations, summary, sentiment, or translation typically of the dialog data
-* conversation - an exchange of communication using text, audio or video medium between at least one human and one or more bots or humans
+- analysis - analysis, transformations, summary, sentiment, or translation typically of the dialog data
+- conversation - an exchange of communication using text, audio or video medium between at least one human and one or more bots or humans
 
-* consent - explicit permission granted by a party for the collection, processing, or sharing of their conversation data
+- consent - explicit permission granted by a party for the collection, processing, or sharing of their conversation data
 
-* data minimization - the practice of limiting the collection and processing of personal data to what is necessary for the stated purpose
+- data minimization - the practice of limiting the collection and processing of personal data to what is necessary for the stated purpose
 
-* de-identification - removal of all information that could identify a party in a conversation. This includes PII as well as audio and video recordings. Voice recordings might be re-vocalized with a different speaker.
+- de-identification - removal of all information that could identify a party in a conversation. This includes PII as well as audio and video recordings. Voice recordings might be re-vocalized with a different speaker.
 
-* dialog - the captured conversation in its original form (e.g. text, audio or video)
-* encrypted form - encrypted JWE document with the JWS signed vCon form contained in the ciphertext
-* file - a data block either included or referenced in a vCon
-* object - JSON object containing key and value pairs
-* parameter - JSON key and value pair
-* party - an observer or participant to the conversation, either passive or active
-* payload - the contents or bytes that make up a file
-* PII - Personal Identifiable Information
+- dialog - the captured conversation in its original form (e.g. text, audio or video)
+- encrypted form - encrypted JWE document with the JWS signed vCon form contained in the ciphertext
+- file - a data block either included or referenced in a vCon
+- object - JSON object containing key and value pairs
+- parameter - JSON key and value pair
+- party - an observer or participant to the conversation, either passive or active
+- payload - the contents or bytes that make up a file
+- PII - Personal Identifiable Information
 
-* PII masked - may include voice recordings, but PII is removed from transcripts and recordings (audio and video)
+- PII masked - may include voice recordings, but PII is removed from transcripts and recordings (audio and video)
 
-* redaction - the process of removing or obscuring specific content from a vCon while maintaining the overall structure and integrity
+- redaction - the process of removing or obscuring specific content from a vCon while maintaining the overall structure and integrity
 
-* signed form - JWS signed document with the unsigned vCon form contained in the payload
+- signed form - JWS signed document with the unsigned vCon form contained in the payload
 
-* vCon - container for conversational information
-* vCon instance - a vCon populated with data for a specific conversation
+- vCon - container for conversational information
+- vCon instance - a vCon populated with data for a specific conversation
 
-* vCon instance version - a single version of an instance of a conversation, which may be modified to redact or append additional information forming a subsequent vCon instance version
+- vCon instance version - a single version of an instance of a conversation, which may be modified to redact or append additional information forming a subsequent vCon instance version
 
-* vCon syntax version - the version for the data syntax used to form a vCon
+- vCon syntax version - the version for the data syntax used to form a vCon
 
 
 ## Inline vs Externally Referenced Files
@@ -318,7 +318,7 @@ Alternatively, vCons may directly contain the media of the entire dialog interna
 
 vCons define conversations, and are created by systems during and after the conversation itself.
 vCons provide ways to express and define the contents, participants and context of a particular conversation.
-Unlike some measureable physical phenomena, like mass and volume, conversations are heterogeneous, relatively complex and contain relevant information outside of the physical phenomena, such as consent and provenance.
+Unlike some measurable physical phenomena, like mass and volume, conversations are heterogeneous, relatively complex and contain relevant information outside of the physical phenomena, such as consent and provenance.
 Some communication modes, like SMS texting, lack natural session boundaries and require explicit definition.
 Thus, the definition of a conversation requires more than a simple scalar value, or a series of samples of a time-based waveform.
 The definition of a conversation enables tools and systems to precisely identify, responsibly manage, efficiently process and accurately govern their use.
@@ -326,9 +326,9 @@ The definition of a conversation enables tools and systems to precisely identify
 vCons also enables the definer of the conversation to express the scope of the conversations.
 A vCon may contain any combination of content appropriate to the use case:
 
-* A vCon may be a single audio recording, or a complete conversational journey from a text message, to a resulting conversation and a followup email.
-* A vCon may represent a conversation between two people, a conversation between a person and a machine, or all of the conversations between customers and a contact center team.
-* A vCon may be sent in response to a Right To Know request to a single customer, or to a governance body during an audit
+- A vCon may be a single audio recording, or a complete conversational journey from a text message, to a resulting conversation and a followup email.
+- A vCon may represent a conversation between two people, a conversation between a person and a machine, or all of the conversations between customers and a contact center team.
+- A vCon may be sent in response to a Right To Know request to a single customer, or to a governance body during an audit
 
 None of the major parts of the vCon (parties, dialog, attachments and analysis) are required to be present, to maximize the conversations that can be expressed.
 For instance, a recording without a parties definition is a valid expression of a conversation without defining the people involved, either because it is unknown, to be discovered through the analysis of the recording, or to be hidden for data minimization reasons.
@@ -357,11 +357,11 @@ The identification and tracking of dialog content serves critical privacy and co
 
 The purpose of the dialog section is two-fold:
 
-* **Content Representation**: It accurately captures the details of any conversation exchange—be it spoken words, text messages, or other communication types.
+**Content Representation**: It accurately captures the details of any conversation exchange—be it spoken words, text messages, or other communication types.
 This ensures that the exact sequence and content are archived in a standardized format.
 The content appropriate to dialogs are any of the times and places where personal data is communicated and recorded: audio, video, email, fax, rich emails as examples.
 
-* **Interoperability and Analysis**: The dialog's structured format supports further analysis (such as transcription or sentiment analysis) and ensures that conversations can be reliably exchanged between systems. By storing metadata like timestamps and participant references, the dialog section also enables the reconstruction of events (such as when participants join or leave a conversation) and aids in analytic processing.
+**Interoperability and Analysis**: The dialog's structured format supports further analysis (such as transcription or sentiment analysis) and ensures that conversations can be reliably exchanged between systems. By storing metadata like timestamps and participant references, the dialog section also enables the reconstruction of events (such as when participants join or leave a conversation) and aids in analytic processing.
 
 In summary, the dialog section is critical for recording, storing, and later analyzing the actual conversation data within a vCon object.
 
@@ -433,7 +433,7 @@ This method allows changes to be recorded relative to earlier versions, reducing
 Additionally, it enables labeling or referencing specific stages in the vCon's lifecycle, offering a flexible way to manage changes.
 In vCon discussions, this method has been referred to as representing *incremental changes*.
 
-### signed vCon modified for correction, or addition of conversational informaiton or analysis
+### signed vCon modified for correction, or addition of conversational information or analysis
 
 ### Capture of vCon in various life cycle stages signed or unsigned
 
@@ -441,9 +441,9 @@ In vCon discussions, this method has been referred to as representing *increment
 
 The JSON form of a vCon is contained in a JSON object in one of three forms:
 
-* unsigned - for internal use or trusted environments where data integrity and authenticity verification are not required
-* signed - for scenarios requiring data integrity verification and authenticity confirmation without encryption, enabling tamper detection while maintaining readability
-* encrypted - for sensitive conversations requiring confidentiality protection, ensuring that only authorized parties with proper decryption keys can access the conversation content
+- unsigned - for internal use or trusted environments where data integrity and authenticity verification are not required
+- signed - for scenarios requiring data integrity verification and authenticity confirmation without encryption, enabling tamper detection while maintaining readability
+- encrypted - for sensitive conversations requiring confidentiality protection, ensuring that only authorized parties with proper decryption keys can access the conversation content
 
 
 # IANA Considerations
@@ -458,9 +458,9 @@ They will be addressed in other vCon documents.
 # Acknowledgments
 {:numbered="false"}
 
-* Thank you to Thomas McCarthy-Howe for inventing the concept of a vCon and the many discussions that we had while this concept was developed into reality.
-* Thank you to Daniel Petrie for making a concept real, for all the right reasons, and for the many projects we've shared over our careers.
-* Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
-* Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
-* Thank you to Steve Lasker for formatting and spelling edits.
+- Thank you to Thomas McCarthy-Howe for inventing the concept of a vCon and the many discussions that we had while this concept was developed into reality.
+- Thank you to Daniel Petrie for making a concept real, for all the right reasons, and for the many projects we've shared over our careers.
+- Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
+- Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
+- Thank you to Steve Lasker for formatting and spelling edits.
 

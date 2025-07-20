@@ -18,7 +18,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-ietf-vcon-vcon-overview.xml
+draft-ietf-vcon-overview.xml
 package-lock.json
 report.xml
 !requirements.txt

@@ -10,8 +10,8 @@ number:
 date:
 consensus: true
 v: 3
-area: art
-workgroup: vcon
+area: "Applications and Real-Time"
+workgroup: "Virtualized Conversations"
 keyword:
  - conversation
  - vcon
@@ -30,7 +30,7 @@ venue:
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "vcon-dev/draft-ietf-vcon-vcon-overview"
-  latest: "https://vcon-dev.github.io/draft-ietf-vcon-vcon-overview/draft-ietf-vcon-vcon-overview.html"
+  latest: "https://vcon-dev.github.io/draft-ietf-vcon-vcon-overview/draft-ietf-vcon-overview.html"
 
 author:
  -

@@ -429,9 +429,6 @@ This method allows changes to be recorded relative to earlier versions, reducing
 Additionally, it enables labeling or referencing specific stages in the vCon's lifecycle, offering a flexible way to manage changes.
 In vCon discussions, this method has been referred to as representing *incremental changes*.
 
-### signed vCon modified for correction, or addition of conversational information or analysis
-
-### Capture of vCon in various life cycle stages signed or unsigned
 
 # Security Considerations
 

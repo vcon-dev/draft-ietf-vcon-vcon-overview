@@ -2,11 +2,10 @@
 
 
 
-vcon                                                         D. G Petrie
-Internet-Draft                                                 SIPez LLC
-Intended status: Informational                          T. McCarthy-Howe
-Expires: 21 January 2026                                         Strolid
-                                                            20 July 2025
+Virtualized Conversations                               T. McCarthy-Howe
+Internet-Draft                                                   Strolid
+Intended status: Informational                              20 July 2025
+Expires: 21 January 2026
 
 
            The vCon - Conversation Data Container - Overview
@@ -34,7 +33,7 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at https://vcon-
-   dev.github.io/draft-ietf-vcon-vcon-overview/draft-ietf-vcon-vcon-
+   dev.github.io/draft-ietf-vcon-vcon-overview/draft-ietf-vcon-
    overview.html.  Status information for this document may be found at
    https://datatracker.ietf.org/doc/draft-ietf-vcon-overview/.
 
@@ -109,7 +108,7 @@ Table of Contents
      6.1.  Normative References
      6.2.  Informative References
    Acknowledgments
-   Authors' Addresses
+   Author's Address
 
 1.  Introduction
 
@@ -920,29 +919,14 @@ Table of Contents
 
 Acknowledgments
 
-   *  Thank you to Thomas McCarthy-Howe for inventing the concept of a
-      vCon and the many discussions that we had while this concept was
-      developed into reality.
-
    *  Thank you to Daniel Petrie for making a concept real, for all the
       right reasons, and for the many projects we've shared over our
       careers.
 
-   *  Thank you to Jonathan Rosenberg and Andrew Siciliano for their
-      input to the vCon container requirements in the form of I-D:
-      draft-rosenberg-vcon-cc-usecases.
+   *  Thank you to Mitch Leiberman and Alan Quayle for their support,
+      encouragements and insights during the early days of vCons.
 
-   *  Thank you to Rohan Mahy for his help in exploring the CDDL schema
-      and CBOR format for vCon.
-
-   *  Thank you to Steve Lasker for formatting and spelling edits.
-
-Authors' Addresses
-
-   Daniel G Petrie
-   SIPez LLC
-   Email: dan.ietf@sipez.com
-
+Author's Address
 
    Thomas McCarthy-Howe
    Strolid

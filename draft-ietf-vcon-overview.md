@@ -170,6 +170,7 @@ The dialog portion contains a set of multimedia and media type elements, each re
 The analysis portion contains data derived from the party and dialog portions, intended to carry items like transcripts, translations, summaries, text to speech, sentiment analysis and other semantic tagging.
 Finally, the attachment portion contains any other documents, such as slide deck or sales lead information, expressions of consent or authenticity, which provides context and support for the conversation itself.
 In addition to these four major categories, the vCon itself has metadata, such as unique identifiers, timestamps and references to other vCons through redaction or grouping.  The vCon may also contain integrity checking information such as the issuer of the vCon and tamper-proof features such as signatures.
+vCons may also include registered extensions, and some extensions can be marked critical; see the core specification for details.
 
 ## Data Responsibility: Privacy vs Utility
 
@@ -267,7 +268,7 @@ An outline of the vCon requirements derived from the explored use case follows:
 * Snapshots of conversation during or once completed along with analysis
 * Ease of integration of services and analysis
 * Better organize conversational data so that it can be handled in a consistent, privacy safer means
-* Immutable
+* Immutable once signed or encrypted
 * Hiding of PII or entire conversation
 * Amendable with additional information and data elements
 
@@ -291,8 +292,8 @@ The following  are considered not in scope or non-requirements:
 * Real-time streaming or updating of conversational data
 * Transport mechanisms
 * Storage or databases specifications
-* Methods of redaction of text, audio or video media
-* Validation of redactions or appended data beyond the signature of the domain making the changes to the conversational data (e.g. Merkle tree like redactions)
+* Media-specific redaction algorithms for text, audio or video
+* Advanced validation of redactions or appended data beyond signatures (e.g. Merkle tree like redactions)
 * Standardization of analysis data formats or file media types
 
 # Conventions and Definitions
@@ -320,13 +321,14 @@ The following  are considered not in scope or non-requirements:
 * vCon - container for conversational information
 * vCon instance - a vCon populated with data for a specific conversation
 * vCon instance version - a single version of an instance of a conversation, which may be modified to redact or append additional information forming a subsequent vCon instance version
-* vCon syntax version - the version for the data syntax used to form a vCon
+* vCon extension - a registered schema addition; some extensions may be marked critical
 
 ## Inline vs Externally Referenced Files
 
 Due to the size and complexity of some portions of a vCon, both inline and externally referenced dialog, analysis, attachments and other vCon reference assets are supported.
 For instance, vCons may reference a video conference media recording as an external URL with an accompanying content hash of the contents to detect tampering.
 Alternatively, vCons may directly contain the media of the entire dialog internally, keeping the conversation in one place, and optionally encrypted.
+External content should be signed and transported over HTTPS; vCons sent over non-secure channels should be encrypted.
 
 # vCon JSON Object
 
@@ -420,6 +422,7 @@ Redaction enables data minimization, a fundamental principle of privacy protecti
 When a vCon is redacted, each piece of data from the original version is handled in one of three ways: removed entirely from the redacted version, copied with partial redaction applied, or copied unchanged. For data that is completely removed from JSON arrays, empty placeholders should be created to maintain consistent array indices across versions. This structural preservation ensures that references and indices remain valid even as content is removed.
 
 The redacted vCon contains a Redacted Object that references the unredacted or less-redacted prior version through its UUID. The reference may include a URL for accessing the original version and a content hash for integrity verification. Access to the unredacted version must be strictly controlled to protect the sensitive information that was removed. The entity creating the redaction should sign the redacted vCon to attest to the accuracy and appropriateness of the redaction performed.
+When shared, the referenced unredacted version should be encrypted.
 
 Common redaction scenarios include removing personally identifiable information to enable broader analysis, creating versions appropriate for different security clearances or authorization levels, producing versions suitable for sharing with third-party processors who need limited information, and generating versions that comply with specific regulatory requirements for data minimization.
 
@@ -524,8 +527,7 @@ Access control determines who can read, modify, or delete vCons at various stage
 
 # IANA Considerations
 
-This document has no IANA considerations.
-They will be addressed in other vCon documents.
+IANA considerations for vCon are defined in the vCon core specification.
 
 --- back
 

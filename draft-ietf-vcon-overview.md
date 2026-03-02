@@ -40,22 +40,8 @@ author:
 
 normative:
 
-  RFC3339:
-
 
 informative:
-
-# TODO:  the following were normative in the container I-D.  Most can probably be deleted.
-
-  GEOPRIV: RFC4119
-
-  GZIP: RFC1952
-
-  HTTPS: RFC9110
-
-  IANA-COSE-ALG:
-    target: <https://www.iana.org/assignments/cose/cose.xhtml>
-    title: "COSE Algorithms"
 
   JSON: RFC8259
 
@@ -63,45 +49,9 @@ informative:
 
   JWE: RFC7516
 
-  JWK: RFC7517
-
-  MAILTO: RFC6068
-
-  MEDIATYPE: RFC6838
-
-  MIME: RFC2045
-
-  PASSporT: RFC8225
-
-  PIDF-LO: RFC5491
-
-  SMTP: RFC5321
-
-  TEL: RFC3966
-
-  UUID: I-D.draft-peabody-dispatch-new-uuid-format
-
-#TODO:  end formerly normative references.  Many of the following informationaly references can probably also be deleted from this overview I-D
-
   CBOR: RFC8949
 
   CDDL: RFC8610
-
-  ISOBMFF:
-    target: https://www.iso.org/standard/83102.html
-    title: "Information technology -- Coding of audio-visual objects -- Part 12: ISO base media file format"
-    refcontent: ISO/IEC 14496-12:2022
-    date: 2022-01
-
-  JMAP: RFC8620
-
-  JWT: RFC7519
-
-  SHA-512: RFC6234
-
-  SIP-XFER: RFC5589
-
-  STIR-PASS: I-D.draft-ietf-stir-passport-rcd
 
   vCard: RFC7095
 
@@ -129,14 +79,9 @@ informative:
   CDR:
     target: https://www.itu.int/rec/T-REC-Q.825
     title: "Recommendation Q.825: Specification of TMN applications at the Q3 interface: Call detail recording"
-    date: 1998
     author:
       org: ITU
-
-  PY-VCON:
-    target: https://github.com/py-vcon/py-vcon
-    title: "Python open source vCon command line interface, library and workflow server"
----
+      date: 1998
 
 --- abstract
 
@@ -144,7 +89,7 @@ A vCon is the container for data and information relating to a real-time, human 
 It is analogous to a {{vCard}} which enables the definition, interchange and storage of an individual's various points of contact.
 The data contained in a vCon may be derived from any multimedia session, traditional phone call, video conference, SMS or MMS message exchange, webchat or email thread.
 The data in the container relating to the conversation may include Call Detail Records (CDR), call meta data, participant identity information (e.g. STIR PASSporT), the actual conversational data exchanged (e.g. audio, video, text), realtime or post conversational analysis and attachments of files exchanged during the conversation.
-A standardized conversation container enables many applications, establishes a common method of storage and interchange, and supports identity, privacy and security efforts (see {{vCon-white-paper}}).
+A standardized conversation container enables many applications, establishes a common method of storage and interchange, and supports identity, privacy and security efforts (see {{vCon-white-paper}})
 
 --- middle
 
@@ -159,18 +104,23 @@ vCons provide a standard means of exchanging communications data between these s
 The use of vCons can ease service integration by using a common container and format for enterprise communications, becoming the standardized input to communication analysis tools and machine learning and categorization.
 
 * For organizations in dialog with customers or citizens, a vCon can be the container of where  conversations are stored and personal data protections are expressed, managed and governed.
+
 * For conversations of record, the vCon can be a legal instrument, providing a testable expression of conversational fact, while enabling conversational trust and transparency.
+
 * For machine learning efforts, vCons can track what information was used in the training of models. As the result of a customer right to know request, an accurate answer to how their data was processed can be derived and communicated, and as the result of customer correction or deletion request, the responsible organization can properly and ethically respond as required by governing law.
+
 
 ## What's in a vCon?
 
-A vCon contains four major categories of data (parties , dialog , analysis and attachments), with descriptive identifiers and metadata (unique id, timestamps, subject and summaries, references to related or earlier versions of the vCon), inside a JSON container that can be signed and encrypted.
+A vCon contains four major categories of data (parties, dialog, analysis and attachments), with descriptive identifiers and metadata, inside a JSON container that can be signed and encrypted.
 The parties portion allows for an expanded set of data from a typical call detail record ([CDR]), with identifications of the participants or parties to the conversation.
 The dialog portion contains a set of multimedia and media type elements, each representing the actual, physical conversation in original media form: text, audio, video and imagery.
 The analysis portion contains data derived from the party and dialog portions, intended to carry items like transcripts, translations, summaries, text to speech, sentiment analysis and other semantic tagging.
 Finally, the attachment portion contains any other documents, such as slide deck or sales lead information, expressions of consent or authenticity, which provides context and support for the conversation itself.
-In addition to these four major categories, the vCon itself has metadata, such as unique identifiers, timestamps and references to other vCons through redaction or grouping.  The vCon may also contain integrity checking information such as the issuer of the vCon and tamper-proof features such as signatures.
-vCons may also include registered extensions, and some extensions can be marked critical; see the core specification for details.
+
+In addition to these four major categories, the vCon itself carries top-level metadata including a globally unique identifier (UUID), creation and last-modified timestamps (`created_at` and `updated_at`), an optional subject, and references to other vCons through redaction or amendment.
+The vCon may also contain integrity checking information such as the issuer of the vCon and tamper-proof features such as signatures.
+An extensions mechanism allows the vCon schema to be extended for specialized use cases while maintaining interoperability with implementations that support only the core format.
 
 ## Data Responsibility: Privacy vs Utility
 
@@ -188,49 +138,14 @@ To enable adoption, the JSON format implemented by the vCon is the lingua franca
 It is expected that JavaScript handling of vCons in the front end and RESTful interfaces and back end platforms will be used for operations and manipulation of vCons.
 Many media analysis services which will be used with vCons, such as transcription, already use JSON based interfaces.
 For these reasons, JSON has been chosen for the initial format binding of vCons and the scope of this document.
-Other bindings (e.g. [CBOR] or [CDDL]) may be consider for vCon in the future in other documents.
-
-### Core Privacy Principles
-
-Modern privacy regulations establish fundamental principles that govern the collection, processing, and management of personal data. The vCon framework is designed to support these principles throughout the conversation lifecycle.
-
-**Data Subject Rights** are central to privacy protection. Individuals whose conversations are captured in vCons have rights including the right to access their data, the right to rectification of inaccurate information, the right to erasure (also known as the "right to be forgotten"), and the right to data portability. The vCon structure enables these rights by providing clear identification of parties, maintaining relationships between vCon versions through redaction and appending mechanisms, and supporting the creation of redacted vCons that remove personal information while preserving conversation context.
-
-**Purpose Limitation** requires that personal data be collected for specified, explicit, and legitimate purposes and not further processed in a manner incompatible with those purposes. vCons support purpose limitation through structured mechanisms for documenting the intended use of conversation data. Analysis and attachment sections can carry explicit purpose declarations, and extensions enable the expression of consent or other lawful bases tied to specific processing purposes.
-
-**Data Minimization** is the practice of limiting the collection and processing of personal data to what is necessary for the stated purpose. vCons facilitate data minimization in several ways: parties information can be limited to only what is necessary for the use case; dialog content can reference external storage rather than embedding full media inline; redacted vCons enable sharing of limited information while maintaining verifiable links to complete versions; and analysis sections can be selectively included based on actual processing needs.
-
-**Storage Limitation** requires that personal data be kept in a form that permits identification of data subjects for no longer than necessary. While vCons themselves do not enforce retention policies, their structured format and versioning capabilities support storage limitation practices. Organizations can track vCon lifecycles, implement automated expiration based on metadata timestamps, create time-limited redacted versions for specific purposes, and maintain audit trails of when vCons were created, modified, and should be deleted.
-
-### Data Roles and Responsibilities
-
-Privacy regulations distinguish between different roles in data processing, each carrying distinct responsibilities and legal obligations. Understanding these roles is essential for proper vCon lifecycle management.
-
-The **Data Controller** is the entity that determines the purposes and means of processing personal data. In the vCon context, the controller decides what conversations to record, how long to retain them, what analysis to perform, and with whom to share the data. The controller bears primary responsibility under privacy laws and must ensure that all processing has a lawful basis, that data subjects are informed, and that appropriate technical and organizational measures are in place.
-
-The **Data Processor** acts on behalf of the controller, processing personal data according to the controller's instructions. In vCon workflows, processors might include transcription services, sentiment analysis providers, or storage platforms. Processors have a duty to process data only as instructed, implement appropriate security measures, and assist controllers in fulfilling data subject rights requests. The relationship between controllers and processors is typically governed by data processing agreements that specify the scope and terms of processing.
-
-**Accountability** is a fundamental principle requiring organizations to demonstrate compliance with privacy obligations. For vCons, accountability means maintaining records of processing activities, documenting lawful bases for data collection and use, implementing privacy by design principles in vCon handling systems, and being able to prove appropriate handling in response to regulatory inquiries. The structured nature of vCons, combined with cryptographic signing capabilities, supports accountability by creating verifiable records of what data was collected, when it was processed, and how it was shared.
-
-These roles matter throughout the vCon lifecycle because as vCons move between organizations, responsibilities may shift, and clear documentation of who controls the data at each stage is essential for proper privacy governance.
-
-### Communications Privacy
-
-Conversations involve unique privacy considerations beyond general data protection. The act of recording, storing, and analyzing human communications raises specific legal and ethical questions that vary by jurisdiction and context.
-
-**Consent models** for conversation recording differ significantly across legal frameworks. Some jurisdictions follow a one-party consent model, where only one participant in a conversation needs to consent to recording. Others require all-party consent, where every participant must agree before recording can occur. Still others permit recording only with explicit, informed consent documented before the conversation begins. vCons are designed to be neutral regarding consent models; they can carry consent information through attachments or extensions, document when and how consent was obtained, and support different consent mechanisms appropriate to the applicable legal framework. The choice of consent model and its implementation remains a deployment decision based on jurisdictional requirements.
-
-**Reasonable expectation of privacy** is a legal concept that influences when conversation recording is permissible. A person generally has a reasonable expectation of privacy in conversations held in private spaces, in intimate discussions, or when the circumstances suggest confidentiality. This expectation diminishes in public spaces, business contexts with clear policies, or when participants are aware of recording. vCons support privacy expectations through clear metadata about conversation context, the ability to document notification and consent, and mechanisms for redacting sensitive portions while preserving non-sensitive content.
-
-**Notice requirements** mandate informing individuals that their conversations are being recorded or monitored. Notice may be provided through explicit announcements, signage, terms of service, or automated messages at the beginning of calls. Adequate notice typically explains what is being recorded, why the recording is occurring, how the data will be used, and who will have access to it. The structured nature of vCons enables organizations to attach notice text, document when notice was provided, reference applicable policies, and maintain records demonstrating compliance with notice requirements.
-
-These communications privacy principles intersect with the broader data protection framework to create specific obligations for conversation data. Organizations using vCons must consider both general privacy principles and communications-specific requirements when designing their conversation management systems.
+Other bindings (e.g. [CBOR] or [CDDL]) may be considered for vCon in the future in other documents.
 
 For most application architectures, JSON objects are created by applications, for applications.
-However, most of the initial set of use cases for differ from this established pattern, and are expected to be in the interchange between front end and back end application and lower layers of the network stack, critical for enablement of analysis of conversations.
+However, most of the initial set of use cases differ from this established pattern, and are expected to be in the interchange between front end and back end application and lower layers of the network stack, critical for enablement of analysis of conversations.
 Thus, the contents of the vCon, if not the vCon itself, are generated by various and diverse network and communications elements like SIP user agents and SMTP servers, and then delivered across networks, and sometimes across security boundaries.
 This diversity of conversational data creates difficulty in creating unified views of customer conversations, especially as they traverse conversational modes.
 By providing a common mechanism to describe conversations, appropriate to the various network elements that create them, enables new scenarios and usage kinds.
+
 
 ## Use Cases and Requirements
 
@@ -258,9 +173,7 @@ A vCon implementation for emergency services enables real-time creation and main
 
 The implementation of vCons in emergency services environments provides operational improvements including complete situational awareness for emergency response personnel, reduced response times through expedited access to critical information, enhanced inter-agency coordination through standardized information sharing protocols, regulatory compliance through complete tamper-evident record keeping, and improved public safety outcomes through enhanced information management capabilities.  Integration with existing emergency services infrastructure including Computer-Aided Dispatch (CAD) systems, Geographic Information Systems (GIS), and Next Generation 911 (NG911) platforms ensures that vCon implementation enhances rather than replaces current emergency response capabilities.
 
-## Requirements
-
-An outline of the vCon requirements derived from the explored use case follows:
+## VCON Requirements
 
 * Standardize container for conversational data exchange
 * Consolidation of data and information for a conversation
@@ -268,33 +181,33 @@ An outline of the vCon requirements derived from the explored use case follows:
 * Snapshots of conversation during or once completed along with analysis
 * Ease of integration of services and analysis
 * Better organize conversational data so that it can be handled in a consistent, privacy safer means
-* Immutable once signed or encrypted
+* Immutable
 * Hiding of PII or entire conversation
 * Amendable with additional information and data elements
 
-Define a standard for exchange of conversational data in a sea of modes, platforms and service offerings for conversations.
+### VCON Communication Modes
 
-Example conversational modes and protocols:
+Define a standard for exchange of conversational data in a sea of modes, platforms and service offerings for conversations, such as these example conversational modes and protocols:
 
-* SMS
-* MMS
-* JABBER
-* SIMPLE
-* Proprietary web chat
-* SMTP
-* PSTN
-* SIP
-* WEBRTC
-* Proprietary video conferencing
+  * SMS
+  * MMS
+  * JABBER
+  * SIMPLE
+  * Proprietary web chat
+  * SMTP
+  * PSTN
+  * SIP
+  * WEBRTC
+  * Proprietary video conferencing
 
 The following  are considered not in scope or non-requirements:
+  * Real-time streaming or updating of conversational data
+  * Transport mechanisms
+  * Storage or databases specifications
+  * Methods of redaction of text, audio or video media
+  * Validation of redactions or amended data beyond the signature of the domain making the changes to the conversational data (e.g. Merkle tree like redactions)
 
-* Real-time streaming or updating of conversational data
-* Transport mechanisms
-* Storage or databases specifications
-* Media-specific redaction algorithms for text, audio or video
-* Advanced validation of redactions or appended data beyond signatures (e.g. Merkle tree like redactions)
-* Standardization of analysis data formats or file media types
+Standardization of analysis data formats or file media types is supported by the extensions mechanism, described in section 3.7.
 
 # Conventions and Definitions
 
@@ -302,33 +215,49 @@ The following  are considered not in scope or non-requirements:
 
 ## Terminology
 
+* amended vCon - a new vCon instance version created by adding to or modifying a prior signed vCon, referencing the earlier version through the amended parameter while containing a deep copy of all prior data plus new content
+
 * analysis - analysis, transformations, summary, sentiment, or translation typically of the dialog data
-* conversation - an exchange of communication using text, audio or video medium between at least one human and one or more bots or humans
+
+* compatible extension - a vCon schema extension that introduces additional data or fields without altering the meaning of existing elements, allowing implementations that do not recognize the extension to safely ignore it
+
 * consent - explicit permission granted by a party for the collection, processing, or sharing of their conversation data
+
+* conversation - an exchange of communication using text, audio or video medium between at least one human and one or more bots or humans
+
+* critical extension - an incompatible vCon schema extension that modifies existing semantics and must be listed in the vCon's critical parameter; implementations that do not support a critical extension must reject the vCon
+
 * data minimization - the practice of limiting the collection and processing of personal data to what is necessary for the stated purpose
+
 * de-identification - removal of all information that could identify a party in a conversation. This includes PII as well as audio and video recordings. Voice recordings might be re-vocalized with a different speaker.
+
 * dialog - the captured conversation in its original form (e.g. text, audio or video)
-* encrypted form - encrypted JWE document with the JWS signed vCon form contained in the ciphertext
+* encrypted form - encrypted [JWE] document with the [JWS] signed vCon form contained in the ciphertext
+* extension - a registered addition to the vCon schema that defines new parameters or modifies existing semantics, identified by a unique token value registered with IANA
 * file - a data block either included or referenced in a vCon
 * object - JSON object containing key and value pairs
 * parameter - JSON key and value pair
 * party - an observer or participant to the conversation, either passive or active
 * payload - the contents or bytes that make up a file
 * PII - Personal Identifiable Information
+
 * PII masked - may include voice recordings, but PII is removed from transcripts and recordings (audio and video)
+
 * redaction - the process of removing or obscuring specific content from a vCon while maintaining the overall structure and integrity
-* signed form - JWS signed document with the unsigned vCon form contained in the payload
+
+* signed form - [JWS] signed document with the unsigned vCon form contained in the payload
+
 * vCon - container for conversational information
 * vCon instance - a vCon populated with data for a specific conversation
-* vCon instance version - a single version of an instance of a conversation, which may be modified to redact or append additional information forming a subsequent vCon instance version
-* vCon extension - a registered schema addition; some extensions may be marked critical
+
+* vCon instance version - a single version of an instance of a conversation, which may be modified to redact or amend additional information forming a subsequent vCon instance version
+
 
 ## Inline vs Externally Referenced Files
 
 Due to the size and complexity of some portions of a vCon, both inline and externally referenced dialog, analysis, attachments and other vCon reference assets are supported.
 For instance, vCons may reference a video conference media recording as an external URL with an accompanying content hash of the contents to detect tampering.
 Alternatively, vCons may directly contain the media of the entire dialog internally, keeping the conversation in one place, and optionally encrypted.
-External content should be signed and transported over HTTPS; vCons sent over non-secure channels should be encrypted.
 
 # vCon JSON Object
 
@@ -336,7 +265,7 @@ External content should be signed and transported over HTTPS; vCons sent over no
 
 vCons define conversations, and are created by systems during and after the conversation itself.
 vCons provide ways to express and define the contents, participants and context of a particular conversation.
-Unlike some measureable physical phenomena, like mass and volume, conversations are heterogeneous, relatively complex and contain relevant information outside of the physical phenomena, such as consent and provenance.
+Unlike some measurable physical phenomena, like mass and volume, conversations are heterogeneous, relatively complex and contain relevant information outside of the physical phenomena, such as consent and provenance.
 Some communication modes, like SMS texting, lack natural session boundaries and require explicit definition.
 Thus, the definition of a conversation requires more than a simple scalar value, or a series of samples of a time-based waveform.
 The definition of a conversation enables tools and systems to precisely identify, responsibly manage, efficiently process and accurately govern their use.
@@ -350,38 +279,52 @@ A vCon may contain any combination of content appropriate to the use case:
 
 None of the major parts of the vCon (parties, dialog, attachments and analysis) are required to be present, to maximize the conversations that can be expressed.
 For instance, a recording without a parties definition is a valid expression of a conversation without defining the people involved, either because it is unknown, to be discovered through the analysis of the recording, or to be hidden for data minimization reasons.
-vCons may have two or more parties involved, but since a fundamental role of the vCon is to define and protect the data it contains, at least one should be, in the words of the GDPR, a "natural person." Future protocol versions or extensions may focus on more inter-machine conversations, as the fundamental parts of conversation are not dissimilar between the two use cases.
+vCons may have two or more parties involved, but since a fundamental role of the vCon is to define and protect the data it contains, at least one should be, in the words of the GDPR, a "natural person."
+For instance, an interaction between a bot and a human is an appropriate scope for vCons, but a conversation between two bots would not.
 
 ## Parties
-
 The parties section in a vCon serves as the container for all participant identity information involved in the conversation.
 Structurally, it is an array of party objects, each of which can include various attributes such as telephone numbers, email addresses, names, and even structured contact information (like civic addresses and geographic coordinates).
 The purpose of this section is to provide clear attribution of every interaction by documenting who participated in the conversation.
 This not only supports accurate record-keeping but also enables accountability, context, and subsequent analysis of the conversation data.
 
-For example, as defined by the vCon standard, each party object may contain fields such as telephone numbers, email addresses, participant names, and more detailed address and identification data.
-This detailed structure ensures that each participant can be uniquely identified and that their roles (such as agent or customer) are clearly established within the conversation record.
+Each party object may contain a variety of identification attributes.
+Traditional contact identifiers include telephone numbers, email addresses, SIP URIs, and participant names.
+Decentralized Identifiers (DIDs) provide a verifiable, decentralized digital identity that is independent of centralized registries.
+A validation parameter records how the party's identity was verified (for example, by social security number, date of birth, or user credentials), capturing the method of validation without exposing the actual verification data.
+For scenarios requiring cross-conversation correlation, such as contact center agents handling multiple interactions, a persistent UUID can be assigned to a party that remains stable across vCon instances.
+Geographic context can be captured through geolocation coordinates and civic address information, recording the party's location at the time of conversation.
 
 The identification of parties serves multiple purposes beyond simple attribution.
 It enables proper consent management by clearly identifying whose data is being processed, supports data subject rights requests by providing a clear mapping of individuals to their conversation data, and facilitates compliance with privacy regulations that require organizations to track and manage personal data throughout its lifecycle.
 Additionally, the structured nature of party identification allows for consistent handling of privacy-related operations such as data deletion, anonymization, or redaction requests across different systems and jurisdictions.
 
 ## Dialog
-
 The dialog section in a vCon captures the actual conversation content that occurred between parties. This is the core of what makes a vCon valuable - it contains the real communication that took place, whether that was spoken words, text messages, or other forms of interaction. The dialog section serves as the primary record of what was said, when it was said, and who was involved in each exchange. Dialogs contain the "ground truths" of the conversation.
 
 Each dialog entry represents a distinct communication event within the broader conversation. This could be a single text message, a phone call, a video conference session, or any other form of communication. The dialog section maintains the chronological flow and context of the conversation, preserving not just what was communicated, but the timing and sequence of exchanges that give meaning to the interaction.
 
 The identification and tracking of dialog content serves critical privacy and compliance functions. The structured format enables precise identification of which specific conversations contain personal information, allowing for targeted data subject rights fulfillment such as selective deletion of specific dialog segments rather than entire conversation records. The timestamp and party reference metadata provide essential context for privacy impact assessments and data retention decisions. Additionally, the content hash mechanism ensures data integrity while also enabling verification that external content has not been tampered with, which is crucial for maintaining the trustworthiness of conversation records in legal or compliance contexts.
 
+The dialog section supports several types of content.
+Recording dialogs capture audio or video segments of the conversation.
+Text dialogs contain written exchanges such as chat messages, SMS, or email content.
+Transfer dialogs record call transfer events, identifying the transferee, transferor, and transfer target roles along with references to the original and resulting dialog segments.
+Incomplete dialogs capture failed or unanswered communication attempts, with a disposition parameter indicating the reason for failure (such as no-answer, busy, congestion, or voicemail without a message).
+
+Each dialog entry carries rich metadata beyond the conversation content itself.
+An originator parameter explicitly identifies the initiating party (the caller, message sender, or conference host).
+A party_history array tracks temporal events within the dialog, such as when participants join, drop, go on hold, mute, or press DTMF keys, providing a detailed timeline of the interaction dynamics.
+The application parameter identifies the communication platform or service provider (for example, distinguishing between different video conferencing services), while a message_id parameter enables cross-referencing with messaging system identifiers such as SMTP message-ids for deduplication and threading.
+A session_id parameter links the dialog to SIP Session-ID values for cross-system correlation in telephony environments.
+
 The purpose of the dialog section is two-fold:
 
 * **Content Representation**: It accurately captures the details of any conversation exchange—be it spoken words, text messages, or other communication types.
-  This ensures that the exact sequence and content are archived in a standardized format.
-  The content appropriate to dialogs are any of the times and places where personal data is communicated and recorded: audio, video, email, fax, rich emails as examples.
-* **Interoperability and Analysis**: The dialog's structured format supports further analysis (such as transcription or sentiment analysis) and ensures that conversations can be reliably exchanged between systems. By storing metadata like timestamps and participant references, the dialog section also enables the reconstruction of events (such as when participants join or leave a conversation) and aids in analytic processing.
+This ensures that the exact sequence and content are archived in a standardized format.
+The content appropriate to dialogs are any of the times and places where personal data is communicated and recorded: audio, video, email, fax, rich emails as examples.
 
-In summary, the dialog section is critical for recording, storing, and later analyzing the actual conversation data within a vCon object.
+* **Interoperability and Analysis**: The dialog's structured format supports further analysis (such as transcription or sentiment analysis) and ensures that conversations can be reliably exchanged between systems. By storing metadata like timestamps and participant references, the dialog section also enables the reconstruction of events (such as when participants join or leave a conversation) and aids in analytic processing.
 
 ## Attachments
 
@@ -392,6 +335,8 @@ In them, they may contain expressions of consent, references to content authenti
 
 In parallel with each opaque object is a set of metadata that enables semantic understanding of the contents without the exposure of the underlying data.
 Attachment metadata contains information such as the type of data it contains, the party or dialog it refers to, and whether or not the data is contained in the attachment itself, or is referenced by external network identifier.
+A purpose parameter provides a free-form description of why the attachment is included, enabling downstream systems to understand the relevance of supplemental materials without necessarily inspecting their contents.
+Each attachment is linked to a specific party (the contributor, not necessarily the author) and a specific dialog segment through index references, maintaining clear provenance within the conversation record.
 
 ## Analysis
 
@@ -399,7 +344,13 @@ The analysis section of a vCon contains processed insights and derived informati
 serving as a bridge between the raw conversation data and business intelligence applications.
 The analysis section increases the utility of the conversation record by transforming raw dialog data into meaningful information.
 This can include automatically deriving summaries, measuring sentiment, extracting key topics, and identifying action items.
+Common analysis types include reports, sentiment assessments, summaries, transcripts, translations, and text-to-speech renderings.
 Such insights are pivotal in generating business intelligence, facilitating quality control, and supporting various applications where actionable information from conversations is crucial.
+
+Each analysis entry identifies its provenance through a required vendor parameter, which names the service or organization that produced the analysis.
+This is important because different analysis implementations can produce significantly different results in quality, format, and interpretation.
+An optional product parameter differentiates between multiple offerings from the same vendor, while a schema parameter labels the specific data format or configuration used to generate the analysis.
+Together, these parameters enable consumers of vCon data to understand exactly how analysis was produced and to select appropriate processing logic for different analysis sources.
 
 Analysis data represents a significant privacy consideration as it often contains processed personal information that may reveal insights about individuals beyond what is explicitly stated in the original conversation.
 This includes inferred characteristics, behavioral patterns, emotional states, and other derived information that could be considered personal data under privacy regulations.
@@ -413,50 +364,31 @@ By clearly documenting what analysis has been performed and linking it back to s
 
 ## Relationships between vCons
 
-vCons can be related to other vCons through three distinct mechanisms: redaction, appending, and grouping. These relationship types are mutually exclusive, meaning a vCon can use only one of these mechanisms at a time. Each relationship type serves different purposes in the conversation lifecycle and enables specific use cases while maintaining data integrity and provenance.
+Relationships between vCons may also be defined, either through grouping, redaction or through amending past vCons.
+Groups of vCons can be expressed, to indicate general interrelationships.
+Redactions are at the heart of data minimization, a primary technique of personal data protection.
+vCons enable the sharing of limited data through redaction, while retaining the ability of systems to guarantee the accuracy of the redaction itself.
 
-### Redacted vCons
+## Extensions Mechanism
 
-Redaction enables data minimization, a fundamental principle of privacy protection. A redacted vCon creates a new version with reduced information while maintaining a verifiable reference to the original, more complete version. This mechanism allows organizations to share conversation data appropriate to different contexts and authorization levels while preserving the ability to verify the authenticity and accuracy of the redaction.
+The vCon schema provides a formal mechanism for extending the core format to address specialized use cases and evolving requirements.
+Extensions allow new parameters to be defined at any level of the schema, and can also redefine the semantics of or deprecate existing parameters.
+This replaces the earlier approach of schema versioning through a version parameter, which has been deprecated.
 
-When a vCon is redacted, each piece of data from the original version is handled in one of three ways: removed entirely from the redacted version, copied with partial redaction applied, or copied unchanged. For data that is completely removed from JSON arrays, empty placeholders should be created to maintain consistent array indices across versions. This structural preservation ensures that references and indices remain valid even as content is removed.
+Extensions are classified into two categories:
 
-The redacted vCon contains a Redacted Object that references the unredacted or less-redacted prior version through its UUID. The reference may include a URL for accessing the original version and a content hash for integrity verification. Access to the unredacted version must be strictly controlled to protect the sensitive information that was removed. The entity creating the redaction should sign the redacted vCon to attest to the accuracy and appropriateness of the redaction performed.
-When shared, the referenced unredacted version should be encrypted.
+* **Compatible extensions** introduce additional data or fields without altering the meaning or structure of existing elements.  Implementations that do not recognize these extensions can safely ignore them while maintaining valid processing of the vCon.  Wherever feasible, extensions should be designed as compatible to preserve interoperability.
 
-Common redaction scenarios include removing personally identifiable information to enable broader analysis, creating versions appropriate for different security clearances or authorization levels, producing versions suitable for sharing with third-party processors who need limited information, and generating versions that comply with specific regulatory requirements for data minimization.
+* **Incompatible (critical) extensions** modify existing semantics or schema definitions in ways that require explicit awareness for correct interpretation.  The names of all such extensions must be listed in the vCon's `critical` parameter, allowing implementations to determine whether they can safely process the vCon.  An implementation that encounters an unsupported critical extension must reject the vCon rather than risk misinterpretation.
 
-### Appended vCons
+The distinction between compatible and incompatible is somewhat context-dependent.
+A transcription service can be fairly tolerant of new parameters added to a vCon.
+A redaction service, on the other hand, must be aware of the implications of all parameters to ensure complete redaction of sensitive information, and may need to reject vCons with any unrecognized extension.
 
-Appending addresses the challenge of evolving immutable conversation records. Once a vCon has been cryptographically signed or encrypted, any modification would invalidate the signature. When additional information needs to be added to such a vCon, or when existing information needs to be corrected or updated, a new vCon instance version must be created.
+Each extension must define a unique token value registered with IANA, specify its new or modified parameters and their semantics, and use snake_case naming conventions for parameter names.
+This framework ensures that vCon remains adaptable to industry-specific needs (such as contact centers, messaging platforms, and emergency services) while maintaining a consistent base format for data exchange.
 
-An appended vCon is a deep copy of the prior version with amendments or additions. It contains all the data from the referenced prior version, with the exception of any data that has been specifically amended. This approach maintains the complete conversation record while enabling evolution and enhancement over time. The appended vCon references the prior version through an Appended Object containing the prior version's UUID, and optionally its URL and content hash.
-
-The appending mechanism enables several important use cases. Analysis results can be added to a conversation record that was signed when initially captured. Corrections can be made to metadata or party information while preserving the original signed version. Additional conversational data from later stages of the conversation can be incorporated. Multiple processing stages can each contribute their additions while maintaining a clear chain of versions. Each stage can sign its version, creating an auditable history of how the conversation record evolved.
-
-This approach balances two competing needs: the requirement for immutability to maintain integrity and trust, and the practical necessity to enhance and evolve conversation records as additional information becomes available or processing occurs.
-
-### Group vCons
-
-Grouping enables the aggregation of multiple separate vCon instances into a single logical conversation. The scope and boundaries of a conversation are defined by the observer and the business context. A single conversation might consist of a quick text exchange, a simple two-party call, an evolving group chat, a class lecture with questions and answers, a multi-stage interaction evolving from web chat to phone call to video conference, a series of related calls about the same support incident, or a sequence of periodic meetings on a common topic.
-
-When these components of a conversation are captured in separate vCons, perhaps because they occurred in different communication silos, different security domains, or at different times when each was individually signed, the group mechanism allows them to be treated as a unified conversation. A vCon with a group array aggregates these separate instances, with each Group Object referencing one component vCon through its UUID, URL, and content hash.
-
-The group mechanism differs from appending in a fundamental way: appended vCons create deep copies containing all prior data in a single structure, while grouped vCons maintain references to separate, independent vCon instances. This distinction matters for storage efficiency, security boundaries, and processing patterns. Groups preserve the independence and individual signatures of component vCons while expressing their logical relationship. This is particularly valuable when component conversations occurred across organizational boundaries, involved different sets of parties, or required separate security treatments while still forming part of a larger conversational context.
-
-## Trust and Integrity
-
-Trust in conversation data requires mechanisms to verify authenticity, detect tampering, and establish provenance across organizational boundaries. The vCon framework provides several conceptual approaches to building and maintaining trust throughout the conversation lifecycle.
-
-**Chain of custody** refers to the documented sequence of entities that have possessed, processed, or modified a vCon. In legal, regulatory, and business contexts, establishing an unbroken chain of custody is essential for demonstrating that conversation data has been properly handled and has not been corrupted or altered inappropriately. vCons support chain of custody through version references that link related vCons, timestamps that record when changes occurred, cryptographic signatures that identify who made changes, and metadata that documents the processing history. When a vCon passes between organizations or crosses trust boundaries, maintaining chain of custody becomes critical for both parties to demonstrate proper data handling.
-
-**Tamper evidence** is the ability to detect whether a vCon has been modified after creation or signing. Unlike tamper-proofing, which attempts to prevent modification entirely, tamper evidence focuses on making any unauthorized changes detectable. Cryptographic signatures provide the primary mechanism for tamper evidence in vCons. When a vCon is signed, any subsequent modification to the signed content will invalidate the signature, immediately revealing that tampering has occurred. This property is essential for regulatory compliance, legal proceedings, and audit scenarios where the integrity of conversation records must be demonstrable. The immutability provided by signing also supports the creation of verifiable audit trails.
-
-**Trust boundaries and security domains** represent the organizational or technical perimeters within which data can flow freely, beyond which additional controls and verification become necessary. A vCon might be created within one security domain such as a contact center, transferred to a second domain such as a cloud transcription service, and ultimately stored in a third domain such as a long-term archive. Each boundary crossing represents a point where trust must be explicitly established through authentication of the receiving party, verification of the vCon's integrity, documentation of the transfer for audit purposes, and potentially transformation of the vCon such as through redaction or encryption. Understanding and properly managing trust boundaries is essential for organizations operating distributed systems or engaging external service providers for conversation processing.
-
-**Attestation** is the act of making a verifiable claim about a vCon or its contents. Different entities in the vCon lifecycle may attest to different aspects: a conversation platform might attest that a dialog was captured accurately, a transcription service might attest to the quality of its analysis, a controller might attest that proper consent was obtained, or a redactor might attest that personal information was removed according to specified rules. Attestations can be embedded in vCons through signatures, documented in external transparency services, or recorded through standardized extension mechanisms. The ability to make and verify attestations enables distributed systems to operate with appropriate levels of trust while maintaining independent verification capabilities.
-
-## Appended Use Cases
+## Amended Use Cases
 
 A vCon will often evolve over time.
 It is not always created with all of its metadata, conversation media, attachments, and analysis at once.
@@ -489,6 +421,64 @@ This method allows changes to be recorded relative to earlier versions, reducing
 Additionally, it enables labeling or referencing specific stages in the vCon's lifecycle, offering a flexible way to manage changes.
 In vCon discussions, this method has been referred to as representing *incremental changes*.
 
+### Signed vCon Modified for Correction or Addition of Conversational Data
+
+When a signed vCon requires correction or the addition of new information (such as analysis results produced after the original signing), a new vCon instance version is created using the `amended` parameter.
+The amended vCon is a deep copy of the prior version: it contains all of the original data plus the new or modified content.
+The `amended` object references the prior vCon instance version by UUID, and may optionally include a URL and content hash for direct retrieval and integrity verification of the earlier version.
+
+~~~ ascii-art
+                --------------
+Signed          | JWS        |
+amended vCon:   |            | payload parameter
+                |    payload-|-- contains unsigned
+                -------------- / amended vCon
+                              /
+            -------------    /
+vCon with   |vCon       |<---
+amended     |           | amended parameter contains
+data:       |  amended -|--- or refers to JWS
+            |  analysis |  / signed original vCon
+            ------------- / along with additional
+                         / conversational data
+                        / (e.g. analysis)
+                       /
+                      /
+                     /
+                    / ------------
+                    ->| JWS      | payload
+Encrypted signed      |          | parameter
+original vCon:        |  payload-|--- contains
+                      ------------  / unsigned
+                                   / original
+                  -------------   / vCon
+Original vCon:    |vCon       |<--
+                  |           |
+                  |   parties |
+                  |   dialog  |
+                  -------------
+~~~
+
+This mechanism preserves the cryptographic integrity of the original signed vCon while allowing the conversation record to grow.
+Multiple rounds of amendment can form a chain: each amended vCon references its predecessor, creating a verifiable history of the conversation's evolution.
+
+### Capture of vCon in Various Lifecycle Stages
+
+A vCon may be constructed across several security domains.
+Initially, a vCon exists in unsigned form while conversation data is being collected — it may start with only metadata and party information, then accumulate dialog content, and later receive analysis results.
+
+When a vCon is to be exported from one security domain to another, it should be signed or encrypted by the domain that constructed it.
+The receiving domain may then need to add new data (such as its own analysis results or additional metadata).
+Since the signed vCon is immutable, the receiving domain creates a new amended vCon instance version containing the prior signed version plus any new content, and signs this new version when complete or before exporting to yet another domain.
+
+This lifecycle pattern supports several practical scenarios:
+
+- A communications platform captures dialog and parties, signs the vCon, and sends it to an analysis service
+- The analysis service creates an amended vCon with transcription and sentiment analysis added, signs it, and forwards it to a business intelligence platform
+- The business intelligence platform may further amend the vCon with categorization or disposition data
+
+At each stage, the integrity of prior contributions is preserved through the chain of signatures, while the overall conversation record continues to grow with new information.
+
 # Security Considerations
 
 The JSON form of a vCon is contained in a JSON object in one of three forms:
@@ -497,44 +487,17 @@ The JSON form of a vCon is contained in a JSON object in one of three forms:
 * signed - for scenarios requiring data integrity verification and authenticity confirmation without encryption, enabling tamper detection while maintaining readability
 * encrypted - for sensitive conversations requiring confidentiality protection, ensuring that only authorized parties with proper decryption keys can access the conversation content
 
-## Defense in Depth
-
-Securing conversation data requires multiple layers of protection rather than relying on any single mechanism. Defense in depth recognizes that no security control is perfect, and that comprehensive protection comes from combining complementary safeguards at different levels.
-
-For vCons, defense in depth might include cryptographic protection through signing and encryption of the vCon itself, transport security using TLS or similar protocols when vCons are transmitted between systems, storage security including encryption at rest and access controls where vCons are persisted, application security that validates vCon content and enforces business rules before processing, and organizational security through policies, training, and audit procedures that govern how vCons are handled. Each layer provides protection even if another layer is compromised, creating resilience against both technical attacks and operational failures.
-
-The choice of which security layers to employ depends on the sensitivity of the conversation content, the threat model for the specific deployment, regulatory requirements applicable to the data, and the trust relationships between entities handling the vCon. Organizations should conduct risk assessments to determine appropriate security measures for their specific use cases.
-
-## Encryption at Rest and in Transit
-
-Encryption serves different purposes at different stages of the vCon lifecycle, and understanding when each type applies helps ensure appropriate protection.
-
-**Encryption in transit** protects vCons as they move between systems. When a vCon is transmitted over a network, whether between internal services or to external partners, transport-layer encryption such as TLS prevents interception and eavesdropping. This is particularly important when vCons cross trust boundaries or traverse public networks. Transport encryption is typically mandatory for any transmission of conversation data containing personal information, and most privacy regulations require encryption in transit as a baseline security measure.
-
-**Encryption at rest** protects stored vCons from unauthorized access. When vCons are persisted in databases, file systems, or object storage, encryption at rest ensures that even if storage media is compromised, the conversation content remains protected. The vCon format itself supports encryption through standard mechanisms, allowing individual vCons to be encrypted before storage. This enables fine-grained control where some vCons might be stored encrypted while others remain in readable form based on sensitivity levels.
-
-The relationship between these encryption types and the vCon's own encryption format requires careful consideration. A vCon might be stored in encrypted form using the vCon encryption mechanism, placed in encrypted storage providing a second layer, and transmitted over encrypted channels providing a third layer. Alternatively, a signed but unencrypted vCon might rely solely on storage and transport encryption for confidentiality while the signature provides integrity protection.
-
-## Access Control Principles
-
-Access control determines who can read, modify, or delete vCons at various stages of their lifecycle. Effective access control for conversation data requires careful consideration of roles, permissions, and contexts.
-
-**Role-based access control** maps permissions to organizational roles rather than individuals, simplifying management as personnel change. For vCons, relevant roles might include conversation participants who typically have rights to access their own conversations, contact center agents who need access to conversations they handle, supervisors who require access for quality assurance, analysts who process aggregate conversation data, and administrators who manage the vCon infrastructure. Each role receives the minimum permissions necessary for their function, following the principle of least privilege.
-
-**Attribute-based access control** makes decisions based on properties of the vCon, the requestor, and the context. For example, access might be granted based on whether the vCon contains a specific party, whether adequate consent has been documented, how old the conversation is, what analysis has been performed, or where the access request originates. Attribute-based control provides flexibility for complex scenarios where simple role-based rules are insufficient.
-
-**Audit logging** of access to vCons creates accountability and enables detection of inappropriate access patterns. Every access to conversation data should be logged with sufficient detail to support security investigations and regulatory compliance requirements. The immutable and signed nature of vCons can extend to audit logs, creating tamper-evident records of who accessed what conversation data and when.
 
 # IANA Considerations
 
-IANA considerations for vCon are defined in the vCon core specification.
+This document has no IANA considerations.
+They will be addressed in other vCon documents.
+
 
 --- back
+
 
 # Acknowledgments
 {:numbered="false"}
 
 * Thank you to Daniel Petrie for making a concept real, for all the right reasons, and for the many projects we've shared over our careers.
-* Thank you to Jonathan Rosenberg and Andrew Siciliano for their input to the vCon container requirements in the form of I-D: draft-rosenberg-vcon-cc-usecases.
-* Thank you to Rohan Mahy for his help in exploring the CDDL schema and CBOR format for vCon.
-* Thank you to Steve Lasker for formatting and spelling edits.

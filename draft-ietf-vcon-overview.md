@@ -137,7 +137,7 @@ At the same time, the conversations defined by the vCon carry the most authentic
 To enable adoption, the JSON format implemented by the vCon is the lingua franca of modern software; a frictionless integration to applications that require the human conversation.
 It is expected that JavaScript handling of vCons in the front end and RESTful interfaces and back end platforms will be used for operations and manipulation of vCons.
 Many media analysis services which will be used with vCons, such as transcription, already use JSON based interfaces.
-For these reasons, JSON has been chosen for the initial format binding of vCons and the scope of this document.
+For these reasons, JSON [JSON] has been chosen for the initial format binding of vCons and the scope of this document.
 Other bindings (e.g. [CBOR] or [CDDL]) may be considered for vCon in the future in other documents.
 
 For most application architectures, JSON objects are created by applications, for applications.
@@ -210,8 +210,6 @@ The following  are considered not in scope or non-requirements:
 Standardization of analysis data formats or file media types is supported by the extensions mechanism, described in section 3.7.
 
 # Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
 
 ## Terminology
 
@@ -320,7 +318,7 @@ A session_id parameter links the dialog to SIP Session-ID values for cross-syste
 
 The purpose of the dialog section is two-fold:
 
-* **Content Representation**: It accurately captures the details of any conversation exchange—be it spoken words, text messages, or other communication types.
+* **Content Representation**: It accurately captures the details of any conversation exchange -- be it spoken words, text messages, or other communication types.
 This ensures that the exact sequence and content are archived in a standardized format.
 The content appropriate to dialogs are any of the times and places where personal data is communicated and recorded: audio, video, email, fax, rich emails as examples.
 
@@ -465,7 +463,7 @@ Multiple rounds of amendment can form a chain: each amended vCon references its 
 ### Capture of vCon in Various Lifecycle Stages
 
 A vCon may be constructed across several security domains.
-Initially, a vCon exists in unsigned form while conversation data is being collected — it may start with only metadata and party information, then accumulate dialog content, and later receive analysis results.
+Initially, a vCon exists in unsigned form while conversation data is being collected -- it may start with only metadata and party information, then accumulate dialog content, and later receive analysis results.
 
 When a vCon is to be exported from one security domain to another, it should be signed or encrypted by the domain that constructed it.
 The receiving domain may then need to add new data (such as its own analysis results or additional metadata).

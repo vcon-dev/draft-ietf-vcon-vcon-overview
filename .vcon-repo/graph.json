@@ -1,0 +1,414 @@
+{
+  "schema_version": "1.0.0",
+  "repo": "draft-ietf-vcon-vcon-overview",
+  "repo_version": null,
+  "archetype": "ietf-draft",
+  "generated_at": "2026-04-16T15:15:44.339574+00:00",
+  "stats": {
+    "node_count": 36,
+    "edge_count": 26
+  },
+  "nodes": [
+    {
+      "id": "document:draft",
+      "type": "document",
+      "name": "draft-ietf-vcon-overview",
+      "file": "draft-ietf-vcon-overview.md"
+    },
+    {
+      "id": "section:introduction",
+      "type": "section",
+      "name": "Introduction",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 96,
+      "level": 1
+    },
+    {
+      "id": "section:what-s-in-a-vcon",
+      "type": "section",
+      "name": "What's in a vCon?",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 113,
+      "level": 2
+    },
+    {
+      "id": "section:data-responsibility-privacy-vs-utility",
+      "type": "section",
+      "name": "Data Responsibility: Privacy vs Utility",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 125,
+      "level": 2
+    },
+    {
+      "id": "section:use-cases-and-requirements",
+      "type": "section",
+      "name": "Use Cases and Requirements",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 150,
+      "level": 2
+    },
+    {
+      "id": "section:contact-center-use-case",
+      "type": "section",
+      "name": "Contact Center Use Case",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 152,
+      "level": 3
+    },
+    {
+      "id": "section:messaging-use-case",
+      "type": "section",
+      "name": "Messaging Use Case",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 160,
+      "level": 3
+    },
+    {
+      "id": "section:ecrit-emergency-context-resolution-with-internet-technologies-use-case",
+      "type": "section",
+      "name": "ECRIT (Emergency Context Resolution with Internet Technologies) Use Case",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 168,
+      "level": 3
+    },
+    {
+      "id": "section:vcon-requirements",
+      "type": "section",
+      "name": "VCON Requirements",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 176,
+      "level": 2
+    },
+    {
+      "id": "section:vcon-communication-modes",
+      "type": "section",
+      "name": "VCON Communication Modes",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 188,
+      "level": 3
+    },
+    {
+      "id": "section:conventions-and-definitions",
+      "type": "section",
+      "name": "Conventions and Definitions",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 212,
+      "level": 1
+    },
+    {
+      "id": "section:terminology",
+      "type": "section",
+      "name": "Terminology",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 214,
+      "level": 2
+    },
+    {
+      "id": "section:inline-vs-externally-referenced-files",
+      "type": "section",
+      "name": "Inline vs Externally Referenced Files",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 254,
+      "level": 2
+    },
+    {
+      "id": "section:vcon-json-object",
+      "type": "section",
+      "name": "vCon JSON Object",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 260,
+      "level": 1
+    },
+    {
+      "id": "section:a-conversational-definition",
+      "type": "section",
+      "name": "A Conversational Definition",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 262,
+      "level": 2
+    },
+    {
+      "id": "section:parties",
+      "type": "section",
+      "name": "Parties",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 283,
+      "level": 2
+    },
+    {
+      "id": "section:dialog",
+      "type": "section",
+      "name": "Dialog",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 300,
+      "level": 2
+    },
+    {
+      "id": "section:attachments",
+      "type": "section",
+      "name": "Attachments",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 327,
+      "level": 2
+    },
+    {
+      "id": "section:analysis",
+      "type": "section",
+      "name": "Analysis",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 339,
+      "level": 2
+    },
+    {
+      "id": "section:relationships-between-vcons",
+      "type": "section",
+      "name": "Relationships between vCons",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 363,
+      "level": 2
+    },
+    {
+      "id": "section:extensions-mechanism",
+      "type": "section",
+      "name": "Extensions Mechanism",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 370,
+      "level": 2
+    },
+    {
+      "id": "section:amended-use-cases",
+      "type": "section",
+      "name": "Amended Use Cases",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 389,
+      "level": 2
+    },
+    {
+      "id": "section:signed-vcon-modified-for-correction-or-addition-of-conversational-data",
+      "type": "section",
+      "name": "Signed vCon Modified for Correction or Addition of Conversational Data",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 422,
+      "level": 3
+    },
+    {
+      "id": "section:capture-of-vcon-in-various-lifecycle-stages",
+      "type": "section",
+      "name": "Capture of vCon in Various Lifecycle Stages",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 463,
+      "level": 3
+    },
+    {
+      "id": "section:security-considerations",
+      "type": "section",
+      "name": "Security Considerations",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 480,
+      "level": 1
+    },
+    {
+      "id": "section:iana-considerations",
+      "type": "section",
+      "name": "IANA Considerations",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 489,
+      "level": 1
+    },
+    {
+      "id": "section:acknowledgments",
+      "type": "section",
+      "name": "Acknowledgments",
+      "file": "draft-ietf-vcon-overview.md",
+      "line": 498,
+      "level": 1
+    },
+    {
+      "id": "reference:rfc8259",
+      "type": "reference",
+      "name": "RFC 8259",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259"
+    },
+    {
+      "id": "reference:rfc7515",
+      "type": "reference",
+      "name": "RFC 7515",
+      "url": "https://www.rfc-editor.org/rfc/rfc7515"
+    },
+    {
+      "id": "reference:rfc7516",
+      "type": "reference",
+      "name": "RFC 7516",
+      "url": "https://www.rfc-editor.org/rfc/rfc7516"
+    },
+    {
+      "id": "reference:rfc8949",
+      "type": "reference",
+      "name": "RFC 8949",
+      "url": "https://www.rfc-editor.org/rfc/rfc8949"
+    },
+    {
+      "id": "reference:rfc8610",
+      "type": "reference",
+      "name": "RFC 8610",
+      "url": "https://www.rfc-editor.org/rfc/rfc8610"
+    },
+    {
+      "id": "reference:rfc7095",
+      "type": "reference",
+      "name": "RFC 7095",
+      "url": "https://www.rfc-editor.org/rfc/rfc7095"
+    },
+    {
+      "id": "document:LICENSE",
+      "type": "document",
+      "name": "LICENSE",
+      "file": "LICENSE.md"
+    },
+    {
+      "id": "document:CONTRIBUTING",
+      "type": "document",
+      "name": "CONTRIBUTING",
+      "file": "CONTRIBUTING.md"
+    },
+    {
+      "id": "document:readme",
+      "type": "document",
+      "name": "README",
+      "file": "README.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "document:draft",
+      "to": "section:introduction",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:what-s-in-a-vcon",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:data-responsibility-privacy-vs-utility",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:use-cases-and-requirements",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:contact-center-use-case",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:messaging-use-case",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:ecrit-emergency-context-resolution-with-internet-technologies-use-case",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:vcon-requirements",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:vcon-communication-modes",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:conventions-and-definitions",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:terminology",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:inline-vs-externally-referenced-files",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:vcon-json-object",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:a-conversational-definition",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:parties",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:dialog",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:attachments",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:analysis",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:relationships-between-vcons",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:extensions-mechanism",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:amended-use-cases",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:signed-vcon-modified-for-correction-or-addition-of-conversational-data",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:capture-of-vcon-in-various-lifecycle-stages",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:security-considerations",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:iana-considerations",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:acknowledgments",
+      "type": "contains"
+    }
+  ],
+  "subsystems": []
+}

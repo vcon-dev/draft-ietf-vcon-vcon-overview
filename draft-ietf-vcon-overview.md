@@ -219,9 +219,9 @@ Standardization of analysis data formats or file media types is supported by the
 
 * compatible extension - a vCon schema extension that introduces additional data or fields without altering the meaning of existing elements, allowing implementations that do not recognize the extension to safely ignore it
 
-* consent - explicit permission granted by a party for the collection, processing, or sharing of their conversation data
+* consent - explicit permission granted by a party for the collection, processing, or sharing of their conversation data; one form of lawful basis, unique in that it originates with the data subject rather than being asserted by a data controller
 
-* conversation - an exchange of communication using text, audio or video medium between at least one human and one or more bots or humans
+* conversation - an exchange of communication using text, audio or video medium between humans, between a human and one or more agents (bots), or between agents alone
 
 * critical extension - an incompatible vCon schema extension that modifies existing semantics and must be listed in the vCon's critical parameter; implementations that do not support a critical extension must reject the vCon
 
@@ -233,6 +233,9 @@ Standardization of analysis data formats or file media types is supported by the
 * encrypted form - encrypted [JWE] document with the [JWS] signed vCon form contained in the ciphertext
 * extension - a registered addition to the vCon schema that defines new parameters or modifies existing semantics, identified by a unique token value registered with IANA
 * file - a data block either included or referenced in a vCon
+
+* lawful basis - a valid justification under applicable law (for example GDPR) for processing personal data associated with a conversation. Consent is one lawful basis; others (such as contract, legal obligation, vital interests, public task, and legitimate interests) are justifications asserted by a data controller. A vCon may record lawful basis as structured attachment metadata, and those records may be attested to a transparency service so that the basis for processing is independently auditable over time
+
 * object - JSON object containing key and value pairs
 * parameter - JSON key and value pair
 * party - an observer or participant to the conversation, either passive or active
@@ -244,6 +247,8 @@ Standardization of analysis data formats or file media types is supported by the
 * redaction - the process of removing or obscuring specific content from a vCon while maintaining the overall structure and integrity
 
 * signed form - [JWS] signed document with the unsigned vCon form contained in the payload
+
+* transparency service - an external service that maintains an authoritative, verifiable log of attestations about a vCon, which may include attestations of lawful basis and related consent evidence; SCITT is one protocol used for such registries
 
 * vCon - container for conversational information
 * vCon instance - a vCon populated with data for a specific conversation
@@ -272,13 +277,14 @@ vCons also enables the definer of the conversation to express the scope of the c
 A vCon may contain any combination of content appropriate to the use case:
 
 * A vCon may be a single audio recording, or a complete conversational journey from a text message, to a resulting conversation and a followup email.
-* A vCon may represent a conversation between two people, a conversation between a person and a machine, or all of the conversations between customers and a contact center team.
+* A vCon may represent a conversation between two people, a conversation between a person and a machine, a conversation between agents alone, or all of the conversations between customers and a contact center team.
 * A vCon may be sent in response to a Right To Know request to a single customer, or to a governance body during an audit
 
 None of the major parts of the vCon (parties, dialog, attachments and analysis) are required to be present, to maximize the conversations that can be expressed.
 For instance, a recording without a parties definition is a valid expression of a conversation without defining the people involved, either because it is unknown, to be discovered through the analysis of the recording, or to be hidden for data minimization reasons.
-vCons may have two or more parties involved, but since a fundamental role of the vCon is to define and protect the data it contains, at least one should be, in the words of the GDPR, a "natural person."
-For instance, an interaction between a bot and a human is an appropriate scope for vCons, but a conversation between two bots would not.
+vCons may represent conversations between humans, between a human and an agent (bot), or between agents alone.
+Agent-only conversations remain in scope because they may still relate to customer rights and accountability, for example AI bias studies, evaluations, or audits, even when they contain no human-generated content.
+They may also be a redacted form of a broader conversation in which human content has been removed while the agent interaction is retained for those purposes.
 
 ## Parties
 The parties section in a vCon serves as the container for all participant identity information involved in the conversation.

@@ -22,3 +22,5 @@ draft-ietf-vcon-vcon-overview.xml
 package-lock.json
 report.xml
 !requirements.txt
+.omc/
+.DS_Store

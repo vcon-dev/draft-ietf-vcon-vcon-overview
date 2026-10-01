@@ -36,7 +36,7 @@ author:
  -
     fullname: Thomas McCarthy-Howe
     organization: Strolid
-    email: thomas.howe@strolid.com
+    email: thomas@vconic.com
 
 normative:
 

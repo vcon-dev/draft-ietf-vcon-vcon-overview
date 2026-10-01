@@ -24,8 +24,8 @@ jobs:
     - name: "Git Config"
       if: ${{ steps.first.outputs.first != 'true' }}
       run: |
-        git config user.email "idbot@example.com"
-        git config user.name "I-D Bot"
+        git config user.email "ghostofbasho@gmail.com"
+        git config user.name "Thomas McCarthy-Howe"
 
     - name: "Update Draft Name"
       if: ${{ steps.first.outputs.first != 'true' }}
